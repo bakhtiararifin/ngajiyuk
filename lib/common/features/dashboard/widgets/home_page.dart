@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ngajiyuk/lesson/features/lesson/lesson_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -19,9 +20,9 @@ class _HomePageState extends State<HomePage> {
         crossAxisSpacing: 16,
         children: <Widget>[
           _Lesson('Sholat'),
-          _Lesson('Sholat'),
-          _Lesson('Sholat'),
-          _Lesson('Sholat'),
+          _Lesson('Puasa'),
+          _Lesson('Zakat'),
+          _Lesson('Haji'),
         ],
       ),
     );
@@ -39,13 +40,21 @@ class _Lesson extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: InkWell(
-        onTap: () {},
+        onTap: () => _gotoLessonPage(context),
         child: Center(
           child: Text(
             title,
             style: TextStyle(fontSize: 24.0),
           ),
         ),
+      ),
+    );
+  }
+
+  void _gotoLessonPage(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => LessonPage(title),
       ),
     );
   }

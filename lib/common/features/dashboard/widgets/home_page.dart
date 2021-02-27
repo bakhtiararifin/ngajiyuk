@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ngajiyuk/lesson/blocs/lessons/lessons_bloc.dart';
 import 'package:ngajiyuk/lesson/features/lesson/lesson_page.dart';
+import 'package:ngajiyuk/lesson/model/lesson/lesson.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -13,26 +16,31 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text('Ngajiyuk'),
       ),
-      body: GridView.count(
-        crossAxisCount: 2,
-        padding: EdgeInsets.all(16),
-        mainAxisSpacing: 16,
-        crossAxisSpacing: 16,
-        children: <Widget>[
-          _Lesson('Sholat'),
-          _Lesson('Puasa'),
-          _Lesson('Zakat'),
-          _Lesson('Haji'),
-        ],
+      body: BlocBuilder<LessonsBloc, LessonsState>(
+        builder: (context, state) {
+          return state.maybeWhen(
+            success: (List<Lesson> lessons) {
+              return GridView.count(
+                crossAxisCount: 2,
+                padding: EdgeInsets.all(16),
+                mainAxisSpacing: 16,
+                crossAxisSpacing: 16,
+                children: lessons.map((lesson) => _Lesson(lesson)).toList(),
+              );
+            },
+            orElse: () => Center(child: CircularProgressIndicator()),
+          );
+        },
       ),
     );
   }
 }
 
 class _Lesson extends StatelessWidget {
-  final String title;
+  final Lesson lesson;
+
   const _Lesson(
-    this.title, {
+    this.lesson, {
     Key key,
   }) : super(key: key);
 
@@ -43,7 +51,7 @@ class _Lesson extends StatelessWidget {
         onTap: () => _gotoLessonPage(context),
         child: Center(
           child: Text(
-            title,
+            lesson.title,
             style: TextStyle(fontSize: 24.0),
           ),
         ),
@@ -54,7 +62,7 @@ class _Lesson extends StatelessWidget {
   void _gotoLessonPage(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (_) => LessonPage(title),
+        builder: (_) => LessonPage(lesson),
       ),
     );
   }

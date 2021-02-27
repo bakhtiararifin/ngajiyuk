@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:ngajiyuk/core/services/configure_injection.dart';
 import 'package:ngajiyuk/core/widgets/app_widget.dart';
+import 'package:ngajiyuk/core/widgets/global_bloc_provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,7 +16,9 @@ Future<void> main() async {
 
   return runZonedGuarded(() async {
     runApp(
-      AppWidget(),
+      GlobalBlocProvider(
+        child: AppWidget(),
+      ),
     );
   }, (error, stack) {
     print(stack);

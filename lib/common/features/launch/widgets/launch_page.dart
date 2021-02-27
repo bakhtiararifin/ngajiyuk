@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ngajiyuk/common/features/dashboard/widgets/home_page.dart';
 import 'package:ngajiyuk/common/features/launch/blocs/launch/launch_bloc.dart';
+import 'package:ngajiyuk/lesson/blocs/lessons/lessons_bloc.dart';
 
 class LaunchPage extends StatelessWidget {
   @override
@@ -28,6 +29,8 @@ class LaunchPage extends StatelessWidget {
   }
 
   void _gotoHome(BuildContext context) {
+    BlocProvider.of<LessonsBloc>(context).add(LessonsEvent.getLessons());
+
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
         builder: (context) {

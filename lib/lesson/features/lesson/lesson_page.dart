@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:ngajiyuk/lesson/model/lesson/lesson.dart';
+import 'package:ngajiyuk/lesson/model/lesson_item/lesson_item.dart';
 
 class LessonPage extends StatelessWidget {
-  final String title;
+  final Lesson lesson;
 
-  const LessonPage(this.title, {Key key}) : super(key: key);
+  const LessonPage(this.lesson, {Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(lesson.title),
       ),
       body: ListView.builder(
-        itemCount: 13,
+        itemCount: lesson.items.length,
         itemBuilder: (context, index) {
+          final LessonItem lessonItem = lesson.items[index];
           return ListTile(
-            title: Text('Belajar Sholat'),
+            title: Text(lessonItem.title),
             onTap: () {},
           );
         },

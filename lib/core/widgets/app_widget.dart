@@ -10,8 +10,6 @@ import 'package:ngajiyuk/core/theme/app_theme.dart';
 class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    FirebaseAnalytics analytics = FirebaseAnalytics();
-
     return MaterialApp(
       theme: AppTheme.getDefaultTheme(context),
       home: BlocProvider<LaunchBloc>(
@@ -19,7 +17,7 @@ class AppWidget extends StatelessWidget {
         child: LaunchPage(),
       ),
       navigatorObservers: [
-        FirebaseAnalyticsObserver(analytics: analytics),
+        FirebaseAnalyticsObserver(analytics: getIt<FirebaseAnalytics>()),
       ],
     );
   }

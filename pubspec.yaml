@@ -16,12 +16,14 @@ dependencies:
   firebase_analytics: ^7.0.1
   firebase_core: ^0.7.0
   flutter_bloc: ^6.1.2
+  flutter_dotenv: ^3.1.0
   freezed_annotation: ^0.12.0
   get_it: ^5.0.6
   injectable: ^1.1.0
   intl: ^0.16.0
   json_serializable: ^3.5.1
   rxdart: ^0.25.0
+  sentry_flutter: ^4.0.6
   url_launcher: ^5.7.10
 
 dev_dependencies:
@@ -34,4 +36,5 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+    - .env
     - assets/images/

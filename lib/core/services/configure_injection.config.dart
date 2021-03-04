@@ -28,7 +28,7 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i6.LessonRepository(get<_i4.FirebaseFirestore>()));
   gh.lazySingleton<_i7.LessonsBloc>(
       () => _i7.LessonsBloc(get<_i6.LessonRepository>()));
-  gh.factory<_i8.LessonItemsBloc>(
+  gh.lazySingleton<_i8.LessonItemsBloc>(
       () => _i8.LessonItemsBloc(get<_i6.LessonRepository>()));
   return get;
 }

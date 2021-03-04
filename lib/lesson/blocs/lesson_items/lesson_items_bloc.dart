@@ -11,7 +11,7 @@ part 'lesson_items_event.dart';
 part 'lesson_items_state.dart';
 part 'lesson_items_bloc.freezed.dart';
 
-@injectable
+@lazySingleton
 class LessonItemsBloc extends Bloc<LessonItemsEvent, LessonItemsState> {
   final LessonRepository _lessonRepository;
   StreamSubscription _lessonItemsListener;
@@ -31,7 +31,8 @@ class LessonItemsBloc extends Bloc<LessonItemsEvent, LessonItemsState> {
   }
 
   Stream<LessonItemsState> _setLessonItems(
-      List<LessonItem> lessonItems) async* {
+    List<LessonItem> lessonItems,
+  ) async* {
     yield LessonItemsState.success(lessonItems);
   }
 
@@ -39,6 +40,9 @@ class LessonItemsBloc extends Bloc<LessonItemsEvent, LessonItemsState> {
     yield LessonItemsState.loading();
 
     final lessonItemsStream = _lessonRepository.getLessonItems(lesson);
+
+    _lessonItemsListener?.cancel();
+
     _lessonItemsListener = lessonItemsStream.listen(
       (List<LessonItem> lessonItems) {
         add(LessonItemsEvent.setLessonItems(lessonItems));

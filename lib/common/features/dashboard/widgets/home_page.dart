@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
-    getIt<FirebaseAnalytics>().setCurrentScreen(screenName: 'HomePage');
+    getIt<FirebaseAnalytics>().logEvent(name: 'HomePage');
     super.initState();
   }
 
@@ -69,17 +69,13 @@ class _Lesson extends StatelessWidget {
   }
 
   void _gotoLessonPage(BuildContext context) {
+    BlocProvider.of<LessonItemsBloc>(context).add(
+      LessonItemsEvent.getLessonItems(lesson),
+    );
+
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (_) {
-          return BlocProvider<LessonItemsBloc>(
-            create: (context) {
-              return getIt<LessonItemsBloc>()
-                ..add(LessonItemsEvent.getLessonItems(lesson));
-            },
-            child: LessonPage(lesson),
-          );
-        },
+        builder: (_) => LessonPage(lesson),
       ),
     );
   }

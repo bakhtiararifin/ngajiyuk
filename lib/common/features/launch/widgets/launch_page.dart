@@ -14,7 +14,7 @@ class LaunchPage extends StatefulWidget {
 class _LaunchPageState extends State<LaunchPage> {
   @override
   void initState() {
-    getIt<FirebaseAnalytics>().setCurrentScreen(screenName: 'LaunchPage');
+    getIt<FirebaseAnalytics>().logEvent(name: 'LaunchPage');
     super.initState();
   }
 

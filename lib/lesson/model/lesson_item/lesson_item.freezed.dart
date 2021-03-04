@@ -17,11 +17,11 @@ class _$LessonItemTearOff {
   const _$LessonItemTearOff();
 
 // ignore: unused_element
-  _LessonItem call({String id, String title, String link}) {
+  _LessonItem call({String id, String title, String youtubeId}) {
     return _LessonItem(
       id: id,
       title: title,
-      link: link,
+      youtubeId: youtubeId,
     );
   }
 
@@ -39,7 +39,7 @@ const $LessonItem = _$LessonItemTearOff();
 mixin _$LessonItem {
   String get id;
   String get title;
-  String get link;
+  String get youtubeId;
 
   Map<String, dynamic> toJson();
   @JsonKey(ignore: true)
@@ -51,7 +51,7 @@ abstract class $LessonItemCopyWith<$Res> {
   factory $LessonItemCopyWith(
           LessonItem value, $Res Function(LessonItem) then) =
       _$LessonItemCopyWithImpl<$Res>;
-  $Res call({String id, String title, String link});
+  $Res call({String id, String title, String youtubeId});
 }
 
 /// @nodoc
@@ -66,12 +66,12 @@ class _$LessonItemCopyWithImpl<$Res> implements $LessonItemCopyWith<$Res> {
   $Res call({
     Object id = freezed,
     Object title = freezed,
-    Object link = freezed,
+    Object youtubeId = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
       title: title == freezed ? _value.title : title as String,
-      link: link == freezed ? _value.link : link as String,
+      youtubeId: youtubeId == freezed ? _value.youtubeId : youtubeId as String,
     ));
   }
 }
@@ -82,7 +82,7 @@ abstract class _$LessonItemCopyWith<$Res> implements $LessonItemCopyWith<$Res> {
           _LessonItem value, $Res Function(_LessonItem) then) =
       __$LessonItemCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String title, String link});
+  $Res call({String id, String title, String youtubeId});
 }
 
 /// @nodoc
@@ -99,12 +99,12 @@ class __$LessonItemCopyWithImpl<$Res> extends _$LessonItemCopyWithImpl<$Res>
   $Res call({
     Object id = freezed,
     Object title = freezed,
-    Object link = freezed,
+    Object youtubeId = freezed,
   }) {
     return _then(_LessonItem(
       id: id == freezed ? _value.id : id as String,
       title: title == freezed ? _value.title : title as String,
-      link: link == freezed ? _value.link : link as String,
+      youtubeId: youtubeId == freezed ? _value.youtubeId : youtubeId as String,
     ));
   }
 }
@@ -113,7 +113,7 @@ class __$LessonItemCopyWithImpl<$Res> extends _$LessonItemCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_LessonItem implements _LessonItem {
-  _$_LessonItem({this.id, this.title, this.link});
+  _$_LessonItem({this.id, this.title, this.youtubeId});
 
   factory _$_LessonItem.fromJson(Map<String, dynamic> json) =>
       _$_$_LessonItemFromJson(json);
@@ -123,11 +123,23 @@ class _$_LessonItem implements _LessonItem {
   @override
   final String title;
   @override
-  final String link;
+  final String youtubeId;
+
+  bool _didurl = false;
+  dynamic _url;
+
+  @override
+  dynamic get url {
+    if (_didurl == false) {
+      _didurl = true;
+      _url = 'https://www.youtube.com/watch?v=$youtubeId';
+    }
+    return _url;
+  }
 
   @override
   String toString() {
-    return 'LessonItem(id: $id, title: $title, link: $link)';
+    return 'LessonItem(id: $id, title: $title, youtubeId: $youtubeId, url: $url)';
   }
 
   @override
@@ -138,8 +150,9 @@ class _$_LessonItem implements _LessonItem {
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.title, title) ||
                 const DeepCollectionEquality().equals(other.title, title)) &&
-            (identical(other.link, link) ||
-                const DeepCollectionEquality().equals(other.link, link)));
+            (identical(other.youtubeId, youtubeId) ||
+                const DeepCollectionEquality()
+                    .equals(other.youtubeId, youtubeId)));
   }
 
   @override
@@ -147,7 +160,7 @@ class _$_LessonItem implements _LessonItem {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(link);
+      const DeepCollectionEquality().hash(youtubeId);
 
   @JsonKey(ignore: true)
   @override
@@ -161,7 +174,8 @@ class _$_LessonItem implements _LessonItem {
 }
 
 abstract class _LessonItem implements LessonItem {
-  factory _LessonItem({String id, String title, String link}) = _$_LessonItem;
+  factory _LessonItem({String id, String title, String youtubeId}) =
+      _$_LessonItem;
 
   factory _LessonItem.fromJson(Map<String, dynamic> json) =
       _$_LessonItem.fromJson;
@@ -171,7 +185,7 @@ abstract class _LessonItem implements LessonItem {
   @override
   String get title;
   @override
-  String get link;
+  String get youtubeId;
   @override
   @JsonKey(ignore: true)
   _$LessonItemCopyWith<_LessonItem> get copyWith;

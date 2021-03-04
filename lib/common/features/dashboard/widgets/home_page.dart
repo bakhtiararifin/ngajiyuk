@@ -2,6 +2,7 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ngajiyuk/core/services/configure_injection.dart';
+import 'package:ngajiyuk/lesson/blocs/lesson_items/lesson_items_bloc.dart';
 import 'package:ngajiyuk/lesson/blocs/lessons/lessons_bloc.dart';
 import 'package:ngajiyuk/lesson/features/lesson/lesson_page.dart';
 import 'package:ngajiyuk/lesson/model/lesson/lesson.dart';
@@ -70,7 +71,15 @@ class _Lesson extends StatelessWidget {
   void _gotoLessonPage(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (_) => LessonPage(lesson),
+        builder: (_) {
+          return BlocProvider<LessonItemsBloc>(
+            create: (context) {
+              return getIt<LessonItemsBloc>()
+                ..add(LessonItemsEvent.getLessonItems(lesson));
+            },
+            child: LessonPage(lesson),
+          );
+        },
       ),
     );
   }

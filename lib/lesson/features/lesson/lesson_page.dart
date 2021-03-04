@@ -1,6 +1,8 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ngajiyuk/core/services/configure_injection.dart';
+import 'package:ngajiyuk/lesson/blocs/lesson_items/lesson_items_bloc.dart';
 import 'package:ngajiyuk/lesson/model/lesson/lesson.dart';
 import 'package:ngajiyuk/lesson/model/lesson_item/lesson_item.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -27,13 +29,22 @@ class _LessonPageState extends State<LessonPage> {
       appBar: AppBar(
         title: Text(widget.lesson.title),
       ),
-      body: ListView.builder(
-        itemCount: widget.lesson.items.length,
-        itemBuilder: (context, index) {
-          final LessonItem lessonItem = widget.lesson.items[index];
-          return ListTile(
-            title: Text(lessonItem.title),
-            onTap: () => _watchLessonItem(lessonItem),
+      body: BlocBuilder<LessonItemsBloc, LessonItemsState>(
+        builder: (context, state) {
+          return state.maybeWhen(
+            success: (List<LessonItem> lessonItems) {
+              return ListView.builder(
+                itemCount: lessonItems.length,
+                itemBuilder: (context, index) {
+                  final LessonItem lessonItem = lessonItems[index];
+                  return ListTile(
+                    title: Text(lessonItem.title ?? ''),
+                    onTap: () => _watchLessonItem(lessonItem),
+                  );
+                },
+              );
+            },
+            orElse: () => Center(child: CircularProgressIndicator()),
           );
         },
       ),
@@ -46,6 +57,6 @@ class _LessonPageState extends State<LessonPage> {
       parameters: lessonItem.toJson(),
     );
 
-    launch(lessonItem.link);
+    launch(lessonItem.url);
   }
 }

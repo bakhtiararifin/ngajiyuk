@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
 import 'package:ngajiyuk/lesson/model/lesson/lesson.dart';
 import 'package:ngajiyuk/lesson/model/lesson_item/lesson_item.dart';
-import 'package:rxdart/rxdart.dart';
 
 @lazySingleton
 class LessonRepository {
@@ -12,40 +11,33 @@ class LessonRepository {
 
   Stream<List<Lesson>> getLessons() {
     final lessonsStream = _firestore.collection('lessons').snapshots();
-    final lessonItemsStream = _firestore.collection('lessonItems').snapshots();
+    return lessonsStream.map((QuerySnapshot snapshot) {
+      return snapshot.docs.map((QueryDocumentSnapshot doc) {
+        final data = doc.data();
+        return Lesson(
+          id: doc.id,
+          title: data['title'],
+        );
+      }).toList();
+    });
+  }
 
-    return Rx.combineLatest2(
-      lessonsStream,
-      lessonItemsStream,
-      (QuerySnapshot lessonsSnapshot, QuerySnapshot lessonItemsSnapshot) {
-        final lessonsDocs = lessonsSnapshot.docs;
-        final lessonItemsDocs = lessonItemsSnapshot.docs;
-        List<Lesson> lessons = [];
+  Stream<List<LessonItem>> getLessonItems(Lesson lesson) {
+    final lessonItemsStream = _firestore
+        .collection('lessons')
+        .doc(lesson.id)
+        .collection('lessonItems')
+        .snapshots();
 
-        for (final lessonDoc in lessonsDocs) {
-          final lessonData = lessonDoc.data();
-          final lessonItems = lessonItemsDocs.where((lessonItemDoc) {
-            return lessonItemDoc.data()['lessonId'] == lessonDoc.id;
-          });
-
-          final lesson = Lesson(
-            id: lessonDoc.id,
-            title: lessonData['title'],
-            items: lessonItems.map((lessonItem) {
-              final lessonItemData = lessonItem.data();
-              return LessonItem(
-                id: lessonItem.id,
-                title: lessonItemData['title'],
-                link: lessonItemData['link'],
-              );
-            }).toList(),
-          );
-
-          lessons.add(lesson);
-        }
-
-        return lessons;
-      },
-    );
+    return lessonItemsStream.map((QuerySnapshot snapshot) {
+      return snapshot.docs.map((QueryDocumentSnapshot doc) {
+        final data = doc.data();
+        return LessonItem(
+          id: doc.id,
+          title: data['title'],
+          youtubeId: data['youtubeId'],
+        );
+      }).toList();
+    });
   }
 }

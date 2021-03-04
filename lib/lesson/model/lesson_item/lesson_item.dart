@@ -16,4 +16,7 @@ abstract class LessonItem with _$LessonItem {
 
   @late
   get url => 'https://www.youtube.com/watch?v=$youtubeId';
+
+  @late
+  get thumbnailUrl => 'https://img.youtube.com/vi/$youtubeId/hqdefault.jpg';
 }

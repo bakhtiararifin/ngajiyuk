@@ -37,15 +37,28 @@ class _LessonPageState extends State<LessonPage> {
         builder: (context, state) {
           return state.maybeWhen(
             success: (List<LessonItem> lessonItems) {
-              return ListView.builder(
-                itemCount: lessonItems.length,
-                itemBuilder: (context, index) {
-                  final LessonItem lessonItem = lessonItems[index];
-                  return ListTile(
-                    title: Text(lessonItem.title ?? ''),
+              return GridView.count(
+                crossAxisCount: 2,
+                padding: EdgeInsets.all(16),
+                mainAxisSpacing: 16,
+                crossAxisSpacing: 16,
+                children: lessonItems.map((LessonItem lessonItem) {
+                  return InkWell(
                     onTap: () => _gotoLessonItemPage(lessonItem),
+                    child: Column(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: Image(
+                            image: NetworkImage(lessonItem.thumbnailUrl),
+                          ),
+                        ),
+                        SizedBox(height: 8),
+                        Text(lessonItem.title),
+                      ],
+                    ),
                   );
-                },
+                }).toList(),
               );
             },
             orElse: () => Center(child: CircularProgressIndicator()),

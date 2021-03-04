@@ -137,9 +137,21 @@ class _$_LessonItem implements _LessonItem {
     return _url;
   }
 
+  bool _didthumbnailUrl = false;
+  dynamic _thumbnailUrl;
+
+  @override
+  dynamic get thumbnailUrl {
+    if (_didthumbnailUrl == false) {
+      _didthumbnailUrl = true;
+      _thumbnailUrl = 'https://img.youtube.com/vi/$youtubeId/hqdefault.jpg';
+    }
+    return _thumbnailUrl;
+  }
+
   @override
   String toString() {
-    return 'LessonItem(id: $id, title: $title, youtubeId: $youtubeId, url: $url)';
+    return 'LessonItem(id: $id, title: $title, youtubeId: $youtubeId, url: $url, thumbnailUrl: $thumbnailUrl)';
   }
 
   @override

@@ -58,6 +58,9 @@ class _LessonItemPageState extends State<LessonItemPage> {
                       itemBuilder: (context, index) {
                         final LessonItem lessonItem = otherLessonItems[index];
                         return ListTile(
+                          leading: Image(
+                            image: NetworkImage(lessonItem.thumbnailUrl),
+                          ),
                           title: Text(lessonItem.title ?? ''),
                         );
                       },

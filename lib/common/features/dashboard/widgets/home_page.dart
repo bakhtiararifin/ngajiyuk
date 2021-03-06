@@ -6,6 +6,7 @@ import 'package:ngajiyuk/lesson/blocs/lesson_items/lesson_items_bloc.dart';
 import 'package:ngajiyuk/lesson/blocs/lessons/lessons_bloc.dart';
 import 'package:ngajiyuk/lesson/features/lesson/lesson_page.dart';
 import 'package:ngajiyuk/lesson/model/lesson/lesson.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -61,12 +62,21 @@ class _Lesson extends StatelessWidget {
         children: [
           AspectRatio(
             aspectRatio: 6 / 4,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: Image(
-                image: NetworkImage(lesson.thumbnailUrl),
-                fit: BoxFit.cover,
-              ),
+            child: Stack(
+              alignment: Alignment.center,
+              children: <Widget>[
+                Center(child: CircularProgressIndicator()),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: FadeInImage.memoryNetwork(
+                    placeholder: kTransparentImage,
+                    image: lesson.thumbnailUrl,
+                    width: double.infinity,
+                    height: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ],
             ),
           ),
           SizedBox(height: 8),

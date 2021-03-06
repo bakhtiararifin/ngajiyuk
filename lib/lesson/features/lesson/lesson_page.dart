@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ngajiyuk/core/services/configure_injection.dart';
 import 'package:ngajiyuk/lesson/blocs/lesson_items/lesson_items_bloc.dart';
-import 'package:ngajiyuk/lesson/features/lesson_item/lesson_item_page.dart';
 import 'package:ngajiyuk/lesson/model/lesson/lesson.dart';
 import 'package:ngajiyuk/lesson/model/lesson_item/lesson_item.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LessonPage extends StatefulWidget {
   final Lesson lesson;
@@ -37,44 +37,25 @@ class _LessonPageState extends State<LessonPage> {
         builder: (context, state) {
           return state.maybeWhen(
             success: (List<LessonItem> lessonItems) {
-              return GridView.count(
-                crossAxisCount: 2,
-                padding: EdgeInsets.all(16),
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16,
-                children: lessonItems.map((LessonItem lessonItem) {
-                  return InkWell(
-                    onTap: () => _gotoLessonItemPage(lessonItem),
-                    child: Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(8.0),
-                          child: Image(
-                            image: NetworkImage(lessonItem.thumbnailUrl),
-                          ),
-                        ),
-                        SizedBox(height: 8),
-                        Text(lessonItem.title),
-                      ],
+              return ListView.builder(
+                padding: EdgeInsets.only(top: 16),
+                itemCount: lessonItems.length,
+                itemBuilder: (context, index) {
+                  final LessonItem lessonItem = lessonItems[index];
+                  return ListTile(
+                    contentPadding: EdgeInsets.fromLTRB(16, 0, 16, 16),
+                    leading: Image(
+                      image: NetworkImage(lessonItem.thumbnailUrl),
                     ),
+                    title: Text(lessonItem.title ?? ''),
+                    onTap: () => launch(lessonItem.url),
                   );
-                }).toList(),
+                },
               );
             },
             orElse: () => Center(child: CircularProgressIndicator()),
           );
         },
-      ),
-    );
-  }
-
-  void _gotoLessonItemPage(LessonItem lessonItem) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (_) => LessonItemPage(
-          lesson: widget.lesson,
-          lessonItem: lessonItem,
-        ),
       ),
     );
   }

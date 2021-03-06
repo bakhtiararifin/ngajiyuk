@@ -61,7 +61,7 @@ class _Lesson extends StatelessWidget {
       child: Column(
         children: [
           AspectRatio(
-            aspectRatio: 6 / 4,
+            aspectRatio: 4 / 3,
             child: Stack(
               alignment: Alignment.center,
               children: <Widget>[
@@ -79,10 +79,14 @@ class _Lesson extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 8),
-          Text(
-            lesson.title,
-            style: Theme.of(context).textTheme.bodyText1,
+          Expanded(
+            child: Center(
+              child: Text(
+                lesson.title,
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
+            ),
           ),
         ],
       ),

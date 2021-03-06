@@ -55,15 +55,26 @@ class _Lesson extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: InkWell(
-        onTap: () => _gotoLessonPage(context),
-        child: Center(
-          child: Text(
-            lesson.title,
-            style: TextStyle(fontSize: 24.0),
+    return InkWell(
+      onTap: () => _gotoLessonPage(context),
+      child: Column(
+        children: [
+          AspectRatio(
+            aspectRatio: 6 / 4,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Image(
+                image: NetworkImage(lesson.thumbnailUrl),
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
-        ),
+          SizedBox(height: 8),
+          Text(
+            lesson.title,
+            style: Theme.of(context).textTheme.bodyText1,
+          ),
+        ],
       ),
     );
   }

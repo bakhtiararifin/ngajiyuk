@@ -17,6 +17,7 @@ class LessonRepository {
         return Lesson(
           id: doc.id,
           title: data['title'],
+          thumbnailUrl: data['thumbnailUrl'],
         );
       }).toList();
     });

@@ -8,6 +8,7 @@ abstract class Lesson with _$Lesson {
   factory Lesson({
     String id,
     String title,
+    String thumbnailUrl,
   }) = _Lesson;
 
   factory Lesson.fromJson(Map<String, dynamic> json) => _$LessonFromJson(json);

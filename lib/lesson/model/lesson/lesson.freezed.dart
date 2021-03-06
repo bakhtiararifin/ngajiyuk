@@ -17,10 +17,11 @@ class _$LessonTearOff {
   const _$LessonTearOff();
 
 // ignore: unused_element
-  _Lesson call({String id, String title}) {
+  _Lesson call({String id, String title, String thumbnailUrl}) {
     return _Lesson(
       id: id,
       title: title,
+      thumbnailUrl: thumbnailUrl,
     );
   }
 
@@ -38,6 +39,7 @@ const $Lesson = _$LessonTearOff();
 mixin _$Lesson {
   String get id;
   String get title;
+  String get thumbnailUrl;
 
   Map<String, dynamic> toJson();
   @JsonKey(ignore: true)
@@ -48,7 +50,7 @@ mixin _$Lesson {
 abstract class $LessonCopyWith<$Res> {
   factory $LessonCopyWith(Lesson value, $Res Function(Lesson) then) =
       _$LessonCopyWithImpl<$Res>;
-  $Res call({String id, String title});
+  $Res call({String id, String title, String thumbnailUrl});
 }
 
 /// @nodoc
@@ -63,10 +65,14 @@ class _$LessonCopyWithImpl<$Res> implements $LessonCopyWith<$Res> {
   $Res call({
     Object id = freezed,
     Object title = freezed,
+    Object thumbnailUrl = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
       title: title == freezed ? _value.title : title as String,
+      thumbnailUrl: thumbnailUrl == freezed
+          ? _value.thumbnailUrl
+          : thumbnailUrl as String,
     ));
   }
 }
@@ -76,7 +82,7 @@ abstract class _$LessonCopyWith<$Res> implements $LessonCopyWith<$Res> {
   factory _$LessonCopyWith(_Lesson value, $Res Function(_Lesson) then) =
       __$LessonCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String title});
+  $Res call({String id, String title, String thumbnailUrl});
 }
 
 /// @nodoc
@@ -92,10 +98,14 @@ class __$LessonCopyWithImpl<$Res> extends _$LessonCopyWithImpl<$Res>
   $Res call({
     Object id = freezed,
     Object title = freezed,
+    Object thumbnailUrl = freezed,
   }) {
     return _then(_Lesson(
       id: id == freezed ? _value.id : id as String,
       title: title == freezed ? _value.title : title as String,
+      thumbnailUrl: thumbnailUrl == freezed
+          ? _value.thumbnailUrl
+          : thumbnailUrl as String,
     ));
   }
 }
@@ -104,7 +114,7 @@ class __$LessonCopyWithImpl<$Res> extends _$LessonCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_Lesson implements _Lesson {
-  _$_Lesson({this.id, this.title});
+  _$_Lesson({this.id, this.title, this.thumbnailUrl});
 
   factory _$_Lesson.fromJson(Map<String, dynamic> json) =>
       _$_$_LessonFromJson(json);
@@ -113,10 +123,12 @@ class _$_Lesson implements _Lesson {
   final String id;
   @override
   final String title;
+  @override
+  final String thumbnailUrl;
 
   @override
   String toString() {
-    return 'Lesson(id: $id, title: $title)';
+    return 'Lesson(id: $id, title: $title, thumbnailUrl: $thumbnailUrl)';
   }
 
   @override
@@ -126,14 +138,18 @@ class _$_Lesson implements _Lesson {
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)));
+                const DeepCollectionEquality().equals(other.title, title)) &&
+            (identical(other.thumbnailUrl, thumbnailUrl) ||
+                const DeepCollectionEquality()
+                    .equals(other.thumbnailUrl, thumbnailUrl)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(title);
+      const DeepCollectionEquality().hash(title) ^
+      const DeepCollectionEquality().hash(thumbnailUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -147,7 +163,7 @@ class _$_Lesson implements _Lesson {
 }
 
 abstract class _Lesson implements Lesson {
-  factory _Lesson({String id, String title}) = _$_Lesson;
+  factory _Lesson({String id, String title, String thumbnailUrl}) = _$_Lesson;
 
   factory _Lesson.fromJson(Map<String, dynamic> json) = _$_Lesson.fromJson;
 
@@ -155,6 +171,8 @@ abstract class _Lesson implements Lesson {
   String get id;
   @override
   String get title;
+  @override
+  String get thumbnailUrl;
   @override
   @JsonKey(ignore: true)
   _$LessonCopyWith<_Lesson> get copyWith;

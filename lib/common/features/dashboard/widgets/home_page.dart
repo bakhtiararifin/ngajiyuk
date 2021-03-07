@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,7 +7,6 @@ import 'package:ngajiyuk/lesson/blocs/lesson_items/lesson_items_bloc.dart';
 import 'package:ngajiyuk/lesson/blocs/lessons/lessons_bloc.dart';
 import 'package:ngajiyuk/lesson/features/lesson/lesson_page.dart';
 import 'package:ngajiyuk/lesson/model/lesson/lesson.dart';
-import 'package:transparent_image/transparent_image.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -62,21 +62,16 @@ class _Lesson extends StatelessWidget {
         children: [
           AspectRatio(
             aspectRatio: 4 / 3,
-            child: Stack(
-              alignment: Alignment.center,
-              children: <Widget>[
-                Center(child: CircularProgressIndicator()),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
-                  child: FadeInImage.memoryNetwork(
-                    placeholder: kTransparentImage,
-                    image: lesson.thumbnailUrl,
-                    width: double.infinity,
-                    height: double.infinity,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ],
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: CachedNetworkImage(
+                imageUrl: lesson.thumbnailUrl,
+                progressIndicatorBuilder: (context, url, downloadProgress) {
+                  return Center(child: CircularProgressIndicator());
+                },
+                errorWidget: (context, url, error) => Icon(Icons.error),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           Expanded(

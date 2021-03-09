@@ -10,7 +10,11 @@ class LessonRepository {
   LessonRepository(this._firestore);
 
   Stream<List<Lesson>> getLessons() {
-    final lessonsStream = _firestore.collection('lessons').snapshots();
+    final lessonsStream = _firestore
+        .collection('lessons')
+        .orderBy('title', descending: false)
+        .snapshots();
+
     return lessonsStream.map((QuerySnapshot snapshot) {
       return snapshot.docs.map((QueryDocumentSnapshot doc) {
         final data = doc.data();
@@ -28,6 +32,7 @@ class LessonRepository {
         .collection('lessons')
         .doc(lesson.id)
         .collection('lessonItems')
+        .orderBy('title', descending: false)
         .snapshots();
 
     return lessonItemsStream.map((QuerySnapshot snapshot) {

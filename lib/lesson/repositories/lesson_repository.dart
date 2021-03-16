@@ -36,14 +36,19 @@ class LessonRepository {
         .snapshots();
 
     return lessonItemsStream.map((QuerySnapshot snapshot) {
-      return snapshot.docs.map((QueryDocumentSnapshot doc) {
+      List<LessonItem> lessonItems = [];
+      for (final QueryDocumentSnapshot doc in snapshot.docs) {
         final data = doc.data();
-        return LessonItem(
+        if (data['youtubeId'] == null) continue;
+
+        lessonItems.add(LessonItem(
           id: doc.id,
           title: data['title'],
           youtubeId: data['youtubeId'],
-        );
-      }).toList();
+        ));
+      }
+
+      return lessonItems;
     });
   }
 }

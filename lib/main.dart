@@ -19,6 +19,7 @@ Future<void> main() async {
 
   return runZonedGuarded(() async {
     await SentryFlutter.init((options) {
+      options.environment = DotEnv.env['ENVIRONMENT'];
       options.dsn = DotEnv.env['SENTRY_DSN'];
     });
 
@@ -28,6 +29,8 @@ Future<void> main() async {
       ),
     );
   }, (error, stack) {
-    Sentry.captureException(error, stackTrace: stack);
+    if (DotEnv.env['ENVIRONMENT'] != 'development') {
+      Sentry.captureException(error, stackTrace: stack);
+    }
   });
 }

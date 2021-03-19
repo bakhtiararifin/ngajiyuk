@@ -62,6 +62,18 @@ android {
         }
     }
 
+    flavorDimensions "app"
+    productFlavors {
+        prod {
+            dimension "app"
+            applicationId "com.lenterastudio.ngajiyuk"
+        }
+        dev {
+            dimension "app"
+            applicationId "com.lenterastudio.ngajiyuk.development"
+        }
+    }
+
     buildTypes {
         release {
            signingConfig signingConfigs.release

@@ -1,10 +1,14 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ngajiyuk/core/services/configure_injection.dart';
+import 'package:ngajiyuk/core/theme/app_typography.dart';
+import 'package:ngajiyuk/core/theme/app_sizes.dart';
 import 'package:ngajiyuk/lesson/blocs/lesson_items/lesson_items_bloc.dart';
 import 'package:ngajiyuk/lesson/model/lesson/lesson.dart';
 import 'package:ngajiyuk/lesson/model/lesson_item/lesson_item.dart';
+import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 class LessonItemPage extends StatefulWidget {
   final Lesson lesson;
@@ -21,8 +25,25 @@ class LessonItemPage extends StatefulWidget {
 }
 
 class _LessonItemPageState extends State<LessonItemPage> {
+  YoutubePlayerController _controller;
+
   @override
   void initState() {
+    _controller = YoutubePlayerController(
+      initialVideoId: widget.lessonItem.youtubeId,
+      params: YoutubePlayerParams(
+        showControls: true,
+        showFullscreenButton: true,
+      ),
+    );
+
+    _controller.onEnterFullscreen = () {
+      SystemChrome.setPreferredOrientations([
+        DeviceOrientation.landscapeLeft,
+        DeviceOrientation.landscapeRight,
+      ]);
+    };
+
     getIt<FirebaseAnalytics>().logEvent(
       name: 'LessonItemPage',
       parameters: widget.lessonItem.toJson(),
@@ -32,15 +53,32 @@ class _LessonItemPageState extends State<LessonItemPage> {
   }
 
   @override
+  void dispose() {
+    _controller.close();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.lesson.title),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ListTile(
-            title: Text(widget.lessonItem.title),
+          YoutubePlayerControllerProvider(
+            controller: _controller,
+            child: YoutubePlayerIFrame(
+              aspectRatio: 16 / 9,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(AppSizes.paddingRegular),
+            child: Text(
+              'Video Lainnya',
+              style: AppTypography.body,
+            ),
           ),
           Expanded(
             child: BlocBuilder<LessonItemsBloc, LessonItemsState>(
@@ -62,6 +100,8 @@ class _LessonItemPageState extends State<LessonItemPage> {
                             image: NetworkImage(lessonItem.thumbnailUrl),
                           ),
                           title: Text(lessonItem.title ?? ''),
+                          onTap: () => _gotoLessonItemPage(lessonItem),
+                          contentPadding: EdgeInsets.fromLTRB(16, 0, 16, 16),
                         );
                       },
                     );
@@ -72,6 +112,17 @@ class _LessonItemPageState extends State<LessonItemPage> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  void _gotoLessonItemPage(LessonItem lessonItem) {
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
+        builder: (_) => LessonItemPage(
+          lesson: widget.lesson,
+          lessonItem: lessonItem,
+        ),
       ),
     );
   }

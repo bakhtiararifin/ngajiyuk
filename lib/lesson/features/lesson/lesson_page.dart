@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ngajiyuk/core/services/configure_injection.dart';
 import 'package:ngajiyuk/lesson/blocs/lesson_items/lesson_items_bloc.dart';
+import 'package:ngajiyuk/lesson/features/lesson_item/lesson_item_page.dart';
 import 'package:ngajiyuk/lesson/model/lesson/lesson.dart';
 import 'package:ngajiyuk/lesson/model/lesson_item/lesson_item.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class LessonPage extends StatefulWidget {
   final Lesson lesson;
@@ -48,7 +48,7 @@ class _LessonPageState extends State<LessonPage> {
                       image: NetworkImage(lessonItem.thumbnailUrl),
                     ),
                     title: Text(lessonItem.title ?? ''),
-                    onTap: () => launch(lessonItem.url),
+                    onTap: () => _gotoLessonItemPage(lessonItem),
                   );
                 },
               );
@@ -56,6 +56,17 @@ class _LessonPageState extends State<LessonPage> {
             orElse: () => Center(child: CircularProgressIndicator()),
           );
         },
+      ),
+    );
+  }
+
+  void _gotoLessonItemPage(LessonItem lessonItem) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => LessonItemPage(
+          lesson: widget.lesson,
+          lessonItem: lessonItem,
+        ),
       ),
     );
   }

@@ -24,8 +24,13 @@ class _$LaunchStateTearOff {
   }
 
 // ignore: unused_element
-  _Success success() {
-    return const _Success();
+  _Authenticated authenticated() {
+    return const _Authenticated();
+  }
+
+// ignore: unused_element
+  _NotAuthenticated notAuthenticated() {
+    return const _NotAuthenticated();
   }
 
 // ignore: unused_element
@@ -44,14 +49,16 @@ mixin _$LaunchState {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult loading(),
-    @required TResult success(),
+    @required TResult authenticated(),
+    @required TResult notAuthenticated(),
     @required TResult error(),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult loading(),
-    TResult success(),
+    TResult authenticated(),
+    TResult notAuthenticated(),
     TResult error(),
     @required TResult orElse(),
   });
@@ -59,14 +66,16 @@ mixin _$LaunchState {
   TResult map<TResult extends Object>({
     @required TResult initial(_Initial value),
     @required TResult loading(_Loading value),
-    @required TResult success(_Success value),
+    @required TResult authenticated(_Authenticated value),
+    @required TResult notAuthenticated(_NotAuthenticated value),
     @required TResult error(_Error value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
     TResult loading(_Loading value),
-    TResult success(_Success value),
+    TResult authenticated(_Authenticated value),
+    TResult notAuthenticated(_NotAuthenticated value),
     TResult error(_Error value),
     @required TResult orElse(),
   });
@@ -126,12 +135,14 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult loading(),
-    @required TResult success(),
+    @required TResult authenticated(),
+    @required TResult notAuthenticated(),
     @required TResult error(),
   }) {
     assert(initial != null);
     assert(loading != null);
-    assert(success != null);
+    assert(authenticated != null);
+    assert(notAuthenticated != null);
     assert(error != null);
     return initial();
   }
@@ -141,7 +152,8 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult loading(),
-    TResult success(),
+    TResult authenticated(),
+    TResult notAuthenticated(),
     TResult error(),
     @required TResult orElse(),
   }) {
@@ -157,12 +169,14 @@ class _$_Initial implements _Initial {
   TResult map<TResult extends Object>({
     @required TResult initial(_Initial value),
     @required TResult loading(_Loading value),
-    @required TResult success(_Success value),
+    @required TResult authenticated(_Authenticated value),
+    @required TResult notAuthenticated(_NotAuthenticated value),
     @required TResult error(_Error value),
   }) {
     assert(initial != null);
     assert(loading != null);
-    assert(success != null);
+    assert(authenticated != null);
+    assert(notAuthenticated != null);
     assert(error != null);
     return initial(this);
   }
@@ -172,7 +186,8 @@ class _$_Initial implements _Initial {
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
     TResult loading(_Loading value),
-    TResult success(_Success value),
+    TResult authenticated(_Authenticated value),
+    TResult notAuthenticated(_NotAuthenticated value),
     TResult error(_Error value),
     @required TResult orElse(),
   }) {
@@ -226,12 +241,14 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult loading(),
-    @required TResult success(),
+    @required TResult authenticated(),
+    @required TResult notAuthenticated(),
     @required TResult error(),
   }) {
     assert(initial != null);
     assert(loading != null);
-    assert(success != null);
+    assert(authenticated != null);
+    assert(notAuthenticated != null);
     assert(error != null);
     return loading();
   }
@@ -241,7 +258,8 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult loading(),
-    TResult success(),
+    TResult authenticated(),
+    TResult notAuthenticated(),
     TResult error(),
     @required TResult orElse(),
   }) {
@@ -257,12 +275,14 @@ class _$_Loading implements _Loading {
   TResult map<TResult extends Object>({
     @required TResult initial(_Initial value),
     @required TResult loading(_Loading value),
-    @required TResult success(_Success value),
+    @required TResult authenticated(_Authenticated value),
+    @required TResult notAuthenticated(_NotAuthenticated value),
     @required TResult error(_Error value),
   }) {
     assert(initial != null);
     assert(loading != null);
-    assert(success != null);
+    assert(authenticated != null);
+    assert(notAuthenticated != null);
     assert(error != null);
     return loading(this);
   }
@@ -272,7 +292,8 @@ class _$_Loading implements _Loading {
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
     TResult loading(_Loading value),
-    TResult success(_Success value),
+    TResult authenticated(_Authenticated value),
+    TResult notAuthenticated(_NotAuthenticated value),
     TResult error(_Error value),
     @required TResult orElse(),
   }) {
@@ -289,33 +310,35 @@ abstract class _Loading implements LaunchState {
 }
 
 /// @nodoc
-abstract class _$SuccessCopyWith<$Res> {
-  factory _$SuccessCopyWith(_Success value, $Res Function(_Success) then) =
-      __$SuccessCopyWithImpl<$Res>;
+abstract class _$AuthenticatedCopyWith<$Res> {
+  factory _$AuthenticatedCopyWith(
+          _Authenticated value, $Res Function(_Authenticated) then) =
+      __$AuthenticatedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$SuccessCopyWithImpl<$Res> extends _$LaunchStateCopyWithImpl<$Res>
-    implements _$SuccessCopyWith<$Res> {
-  __$SuccessCopyWithImpl(_Success _value, $Res Function(_Success) _then)
-      : super(_value, (v) => _then(v as _Success));
+class __$AuthenticatedCopyWithImpl<$Res> extends _$LaunchStateCopyWithImpl<$Res>
+    implements _$AuthenticatedCopyWith<$Res> {
+  __$AuthenticatedCopyWithImpl(
+      _Authenticated _value, $Res Function(_Authenticated) _then)
+      : super(_value, (v) => _then(v as _Authenticated));
 
   @override
-  _Success get _value => super._value as _Success;
+  _Authenticated get _value => super._value as _Authenticated;
 }
 
 /// @nodoc
-class _$_Success implements _Success {
-  const _$_Success();
+class _$_Authenticated implements _Authenticated {
+  const _$_Authenticated();
 
   @override
   String toString() {
-    return 'LaunchState.success()';
+    return 'LaunchState.authenticated()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Success);
+    return identical(this, other) || (other is _Authenticated);
   }
 
   @override
@@ -326,14 +349,16 @@ class _$_Success implements _Success {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult loading(),
-    @required TResult success(),
+    @required TResult authenticated(),
+    @required TResult notAuthenticated(),
     @required TResult error(),
   }) {
     assert(initial != null);
     assert(loading != null);
-    assert(success != null);
+    assert(authenticated != null);
+    assert(notAuthenticated != null);
     assert(error != null);
-    return success();
+    return authenticated();
   }
 
   @override
@@ -341,13 +366,14 @@ class _$_Success implements _Success {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult loading(),
-    TResult success(),
+    TResult authenticated(),
+    TResult notAuthenticated(),
     TResult error(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (success != null) {
-      return success();
+    if (authenticated != null) {
+      return authenticated();
     }
     return orElse();
   }
@@ -357,14 +383,16 @@ class _$_Success implements _Success {
   TResult map<TResult extends Object>({
     @required TResult initial(_Initial value),
     @required TResult loading(_Loading value),
-    @required TResult success(_Success value),
+    @required TResult authenticated(_Authenticated value),
+    @required TResult notAuthenticated(_NotAuthenticated value),
     @required TResult error(_Error value),
   }) {
     assert(initial != null);
     assert(loading != null);
-    assert(success != null);
+    assert(authenticated != null);
+    assert(notAuthenticated != null);
     assert(error != null);
-    return success(this);
+    return authenticated(this);
   }
 
   @override
@@ -372,20 +400,130 @@ class _$_Success implements _Success {
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
     TResult loading(_Loading value),
-    TResult success(_Success value),
+    TResult authenticated(_Authenticated value),
+    TResult notAuthenticated(_NotAuthenticated value),
     TResult error(_Error value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (success != null) {
-      return success(this);
+    if (authenticated != null) {
+      return authenticated(this);
     }
     return orElse();
   }
 }
 
-abstract class _Success implements LaunchState {
-  const factory _Success() = _$_Success;
+abstract class _Authenticated implements LaunchState {
+  const factory _Authenticated() = _$_Authenticated;
+}
+
+/// @nodoc
+abstract class _$NotAuthenticatedCopyWith<$Res> {
+  factory _$NotAuthenticatedCopyWith(
+          _NotAuthenticated value, $Res Function(_NotAuthenticated) then) =
+      __$NotAuthenticatedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$NotAuthenticatedCopyWithImpl<$Res>
+    extends _$LaunchStateCopyWithImpl<$Res>
+    implements _$NotAuthenticatedCopyWith<$Res> {
+  __$NotAuthenticatedCopyWithImpl(
+      _NotAuthenticated _value, $Res Function(_NotAuthenticated) _then)
+      : super(_value, (v) => _then(v as _NotAuthenticated));
+
+  @override
+  _NotAuthenticated get _value => super._value as _NotAuthenticated;
+}
+
+/// @nodoc
+class _$_NotAuthenticated implements _NotAuthenticated {
+  const _$_NotAuthenticated();
+
+  @override
+  String toString() {
+    return 'LaunchState.notAuthenticated()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _NotAuthenticated);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult loading(),
+    @required TResult authenticated(),
+    @required TResult notAuthenticated(),
+    @required TResult error(),
+  }) {
+    assert(initial != null);
+    assert(loading != null);
+    assert(authenticated != null);
+    assert(notAuthenticated != null);
+    assert(error != null);
+    return notAuthenticated();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult loading(),
+    TResult authenticated(),
+    TResult notAuthenticated(),
+    TResult error(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (notAuthenticated != null) {
+      return notAuthenticated();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult loading(_Loading value),
+    @required TResult authenticated(_Authenticated value),
+    @required TResult notAuthenticated(_NotAuthenticated value),
+    @required TResult error(_Error value),
+  }) {
+    assert(initial != null);
+    assert(loading != null);
+    assert(authenticated != null);
+    assert(notAuthenticated != null);
+    assert(error != null);
+    return notAuthenticated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult loading(_Loading value),
+    TResult authenticated(_Authenticated value),
+    TResult notAuthenticated(_NotAuthenticated value),
+    TResult error(_Error value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (notAuthenticated != null) {
+      return notAuthenticated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NotAuthenticated implements LaunchState {
+  const factory _NotAuthenticated() = _$_NotAuthenticated;
 }
 
 /// @nodoc
@@ -426,12 +564,14 @@ class _$_Error implements _Error {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult loading(),
-    @required TResult success(),
+    @required TResult authenticated(),
+    @required TResult notAuthenticated(),
     @required TResult error(),
   }) {
     assert(initial != null);
     assert(loading != null);
-    assert(success != null);
+    assert(authenticated != null);
+    assert(notAuthenticated != null);
     assert(error != null);
     return error();
   }
@@ -441,7 +581,8 @@ class _$_Error implements _Error {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult loading(),
-    TResult success(),
+    TResult authenticated(),
+    TResult notAuthenticated(),
     TResult error(),
     @required TResult orElse(),
   }) {
@@ -457,12 +598,14 @@ class _$_Error implements _Error {
   TResult map<TResult extends Object>({
     @required TResult initial(_Initial value),
     @required TResult loading(_Loading value),
-    @required TResult success(_Success value),
+    @required TResult authenticated(_Authenticated value),
+    @required TResult notAuthenticated(_NotAuthenticated value),
     @required TResult error(_Error value),
   }) {
     assert(initial != null);
     assert(loading != null);
-    assert(success != null);
+    assert(authenticated != null);
+    assert(notAuthenticated != null);
     assert(error != null);
     return error(this);
   }
@@ -472,7 +615,8 @@ class _$_Error implements _Error {
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
     TResult loading(_Loading value),
-    TResult success(_Success value),
+    TResult authenticated(_Authenticated value),
+    TResult notAuthenticated(_NotAuthenticated value),
     TResult error(_Error value),
     @required TResult orElse(),
   }) {

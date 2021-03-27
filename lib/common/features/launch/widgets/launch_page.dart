@@ -1,6 +1,9 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ngajiyuk/auth/blocs/logout/logout_bloc.dart';
+import 'package:ngajiyuk/auth/features/login/blocs/login/login_bloc.dart';
+import 'package:ngajiyuk/auth/features/login/widgets/login_page.dart';
 import 'package:ngajiyuk/common/features/dashboard/widgets/home_page.dart';
 import 'package:ngajiyuk/common/features/launch/blocs/launch/launch_bloc.dart';
 import 'package:ngajiyuk/core/services/configure_injection.dart';
@@ -23,7 +26,8 @@ class _LaunchPageState extends State<LaunchPage> {
     return BlocConsumer<LaunchBloc, LaunchState>(
       listener: (context, state) {
         state.maybeWhen(
-          success: () => _gotoHome(context),
+          authenticated: () => _gotoHome(context),
+          notAuthenticated: () => _gotoLogin(context),
           orElse: () {},
         );
       },
@@ -46,8 +50,24 @@ class _LaunchPageState extends State<LaunchPage> {
 
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
+        builder: (context) => MultiBlocProvider(
+          providers: [
+            BlocProvider<LogoutBloc>(create: (_) => getIt<LogoutBloc>()),
+          ],
+          child: HomePage(),
+        ),
+      ),
+    );
+  }
+
+  void _gotoLogin(BuildContext context) {
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
         builder: (context) {
-          return HomePage();
+          return BlocProvider<LoginBloc>(
+            create: (_) => getIt<LoginBloc>(),
+            child: LoginPage(),
+          );
         },
       ),
     );

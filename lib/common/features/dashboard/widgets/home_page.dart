@@ -1,12 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ngajiyuk/common/features/dashboard/widgets/account_tab.dart';
+import 'package:ngajiyuk/common/features/dashboard/widgets/home_tab.dart';
 import 'package:ngajiyuk/core/services/configure_injection.dart';
-import 'package:ngajiyuk/lesson/blocs/lesson_items/lesson_items_bloc.dart';
-import 'package:ngajiyuk/lesson/blocs/lessons/lessons_bloc.dart';
-import 'package:ngajiyuk/lesson/features/lesson/lesson_page.dart';
-import 'package:ngajiyuk/lesson/model/lesson/lesson.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -14,6 +10,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int _currentNavBarIndex = 0;
+
   @override
   void initState() {
     getIt<FirebaseAnalytics>().logEvent(name: 'HomePage');
@@ -26,77 +24,36 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text('Ngajiyuk'),
       ),
-      body: BlocBuilder<LessonsBloc, LessonsState>(
-        builder: (context, state) {
-          return state.maybeWhen(
-            success: (List<Lesson> lessons) {
-              return GridView.count(
-                crossAxisCount: 2,
-                padding: EdgeInsets.all(16),
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16,
-                children: lessons.map((lesson) => _Lesson(lesson)).toList(),
-              );
-            },
-            orElse: () => Center(child: CircularProgressIndicator()),
-          );
-        },
-      ),
-    );
-  }
-}
-
-class _Lesson extends StatelessWidget {
-  final Lesson lesson;
-
-  const _Lesson(
-    this.lesson, {
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => _gotoLessonPage(context),
-      child: Column(
-        children: [
-          AspectRatio(
-            aspectRatio: 4 / 3,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: CachedNetworkImage(
-                imageUrl: lesson.thumbnailUrl,
-                progressIndicatorBuilder: (context, url, downloadProgress) {
-                  return Center(child: CircularProgressIndicator());
-                },
-                errorWidget: (context, url, error) => Icon(Icons.error),
-                fit: BoxFit.cover,
-              ),
-            ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Beranda',
           ),
-          Expanded(
-            child: Center(
-              child: Text(
-                lesson.title,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyText1,
-              ),
-            ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Akun',
           ),
         ],
+        currentIndex: _currentNavBarIndex,
+        onTap: _onNavBarTap,
+        type: BottomNavigationBarType.fixed,
       ),
+      body: _buildBody(),
     );
   }
 
-  void _gotoLessonPage(BuildContext context) {
-    BlocProvider.of<LessonItemsBloc>(context).add(
-      LessonItemsEvent.getLessonItems(lesson),
-    );
+  void _onNavBarTap(int index) {
+    setState(() {
+      _currentNavBarIndex = index;
+    });
+  }
 
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (_) => LessonPage(lesson),
-      ),
-    );
+  Widget _buildBody() {
+    if (_currentNavBarIndex == 0) {
+      return HomeTab();
+    } else {
+      return AccountTab();
+    }
   }
 }

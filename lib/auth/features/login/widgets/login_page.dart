@@ -5,6 +5,7 @@ import 'package:ngajiyuk/auth/features/login/blocs/login/login_bloc.dart';
 import 'package:ngajiyuk/common/features/dashboard/widgets/home_page.dart';
 import 'package:ngajiyuk/core/services/configure_injection.dart';
 import 'package:ngajiyuk/core/theme/app_colors.dart';
+import 'package:ngajiyuk/core/theme/app_sizes.dart';
 import 'package:ngajiyuk/core/theme/app_typography.dart';
 import 'package:ngajiyuk/lesson/blocs/lessons/lessons_bloc.dart';
 
@@ -12,32 +13,35 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: ListView(
-          padding: EdgeInsets.all(32),
+      body: Padding(
+        padding: const EdgeInsets.all(AppSizes.paddingMedium),
+        child: Column(
           children: [
-            SizedBox(height: 80),
-            Align(
-              alignment: Alignment.center,
-              child: Container(
-                child: Image(
-                  image: AssetImage('assets/images/login_image.png'),
-                  width: 320,
-                ),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  AspectRatio(
+                    aspectRatio: 16 / 9,
+                    child: Image(
+                      image: AssetImage('assets/images/login_image.png'),
+                    ),
+                  ),
+                  SizedBox(height: AppSizes.paddingExtraLarge),
+                  Text(
+                    'Selamat Datang',
+                    textAlign: TextAlign.center,
+                    style: AppTypography.h1,
+                  ),
+                  SizedBox(height: AppSizes.paddingRegular),
+                  Text(
+                    'Semoga pengalaman belajar Islam kamu di sini jadi pengalaman belajar yang menyenangkan dan bermanfaat',
+                    textAlign: TextAlign.center,
+                    style: AppTypography.body,
+                  ),
+                ],
               ),
             ),
-            SizedBox(height: 80),
-            Text(
-              'Selamat Datang',
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headline4,
-            ),
-            SizedBox(height: 16),
-            Text(
-              'Semoga pengalaman belajar Islam kamu di platform kami jadi pengalaman belajar yang menyenangkan.',
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: 80),
             BlocConsumer<LoginBloc, LoginState>(
               listener: (context, state) {
                 state.maybeWhen(
@@ -46,17 +50,23 @@ class LoginPage extends StatelessWidget {
                 );
               },
               builder: (context, state) {
-                return ElevatedButton(
-                  child: Text('Masuk dengan Google'),
-                  onPressed: () => _login(context),
+                return SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    child: Text('Masuk dengan Google'),
+                    onPressed: () => _login(context),
+                  ),
                 );
               },
             ),
-            TextButton(
-              onPressed: () => _gotoHomePage(context),
-              child: Text(
-                'Nanti Saja',
-                style: AppTypography.small.copyWith(color: AppColors.grey),
+            SizedBox(
+              width: double.infinity,
+              child: TextButton(
+                onPressed: () => _gotoHomePage(context),
+                child: Text(
+                  'Nanti Saja',
+                  style: AppTypography.small.copyWith(color: AppColors.grey),
+                ),
               ),
             ),
           ],

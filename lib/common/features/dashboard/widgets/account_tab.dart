@@ -6,9 +6,81 @@ import 'package:ngajiyuk/auth/blocs/logout/logout_bloc.dart';
 import 'package:ngajiyuk/core/services/configure_injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ngajiyuk/core/theme/app_colors.dart';
 import 'package:ngajiyuk/core/theme/app_sizes.dart';
+import 'package:ngajiyuk/core/theme/app_typography.dart';
 
 class AccountTab extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<UserBloc, UserState>(
+      builder: (context, state) {
+        return state.maybeWhen(
+          success: (User user) => _LoggedInAccount(),
+          orElse: () => _NotLoggedInUser(),
+        );
+      },
+    );
+  }
+}
+
+class _NotLoggedInUser extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(AppSizes.paddingRegular),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          AspectRatio(
+            aspectRatio: 16 / 9,
+            child: Image(
+              image: AssetImage('assets/images/account_image.png'),
+            ),
+          ),
+          SizedBox(height: AppSizes.paddingRegular),
+          Text(
+            'Data akun kamu akan tampil disini',
+            textAlign: TextAlign.center,
+            style: AppTypography.body,
+          ),
+          SizedBox(height: AppSizes.paddingRegular),
+          SizedBox(
+            width: double.infinity,
+            child: TextButton(
+              child: Text(
+                'Login',
+                style: AppTypography.body.copyWith(
+                  color: AppColors.grey,
+                ),
+              ),
+              onPressed: () => _gotoLogin(context),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _gotoLogin(BuildContext context) {
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
+        builder: (context) {
+          return BlocProvider<LoginBloc>(
+            create: (_) => getIt<LoginBloc>(),
+            child: LoginPage(),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class _LoggedInAccount extends StatelessWidget {
+  const _LoggedInAccount({
+    Key key,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ListView(

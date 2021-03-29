@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ngajiyuk/common/features/dashboard/widgets/account_tab.dart';
 import 'package:ngajiyuk/common/features/dashboard/widgets/home_tab.dart';
 import 'package:ngajiyuk/core/services/configure_injection.dart';
+import 'package:ngajiyuk/core/theme/app_colors.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -38,6 +39,9 @@ class _HomePageState extends State<HomePage> {
         currentIndex: _currentNavBarIndex,
         onTap: _onNavBarTap,
         type: BottomNavigationBarType.fixed,
+        backgroundColor: Theme.of(context).primaryColor,
+        selectedItemColor: AppColors.white,
+        unselectedItemColor: AppColors.white.withAlpha(160),
       ),
       body: _buildBody(),
     );

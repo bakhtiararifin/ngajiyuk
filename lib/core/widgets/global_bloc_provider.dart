@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ngajiyuk/auth/blocs/user/user_bloc.dart';
 import 'package:ngajiyuk/core/services/configure_injection.dart';
 import 'package:ngajiyuk/lesson/blocs/lesson/lesson_bloc.dart';
+import 'package:ngajiyuk/lesson/blocs/lesson_item/lesson_item_bloc.dart';
 import 'package:ngajiyuk/lesson/blocs/lesson_items/lesson_items_bloc.dart';
 import 'package:ngajiyuk/lesson/blocs/lessons/lessons_bloc.dart';
 
@@ -29,6 +30,9 @@ class GlobalBlocProvider extends StatelessWidget {
         ),
         BlocProvider<LessonItemsBloc>(
           create: (_) => getIt<LessonItemsBloc>(),
+        ),
+        BlocProvider<LessonItemBloc>(
+          create: (_) => getIt<LessonItemBloc>(),
         ),
       ],
       child: child,

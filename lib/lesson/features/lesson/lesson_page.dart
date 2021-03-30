@@ -2,6 +2,7 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ngajiyuk/core/services/configure_injection.dart';
+import 'package:ngajiyuk/lesson/blocs/lesson_item/lesson_item_bloc.dart';
 import 'package:ngajiyuk/lesson/blocs/lesson_items/lesson_items_bloc.dart';
 import 'package:ngajiyuk/lesson/features/lesson_item/lesson_item_page.dart';
 import 'package:ngajiyuk/lesson/model/lesson/lesson.dart';
@@ -69,6 +70,10 @@ class _LessonPageState extends State<LessonPage> {
   }
 
   void _gotoLessonItemPage(LessonItem lessonItem) {
+    BlocProvider.of<LessonItemBloc>(context).add(
+      LessonItemEvent.setLessonItem(lessonItem),
+    );
+
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (_) => LessonItemPage(

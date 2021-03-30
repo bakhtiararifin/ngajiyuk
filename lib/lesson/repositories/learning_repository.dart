@@ -89,6 +89,7 @@ class LearningRepository {
       id: lessonItem.id,
       lessonItemId: lessonItem.id,
       lessonItemTitle: lessonItem.title,
+      youtubeId: lessonItem.youtubeId,
       watchCount: watchCount,
     );
 

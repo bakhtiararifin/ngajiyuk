@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ngajiyuk/core/services/configure_injection.dart';
 import 'package:ngajiyuk/core/theme/app_typography.dart';
 import 'package:ngajiyuk/core/theme/app_sizes.dart';
+import 'package:ngajiyuk/lesson/blocs/lesson_item/lesson_item_bloc.dart';
 import 'package:ngajiyuk/lesson/blocs/lesson_items/lesson_items_bloc.dart';
 import 'package:ngajiyuk/lesson/model/lesson/lesson.dart';
 import 'package:ngajiyuk/lesson/model/lesson_item/lesson_item.dart';
@@ -117,6 +118,10 @@ class _LessonItemPageState extends State<LessonItemPage> {
   }
 
   void _gotoLessonItemPage(LessonItem lessonItem) {
+    BlocProvider.of<LessonItemBloc>(context).add(
+      LessonItemEvent.setLessonItem(lessonItem),
+    );
+
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
         builder: (_) => LessonItemPage(

@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ngajiyuk/core/theme/app_colors.dart';
 import 'package:ngajiyuk/lesson/blocs/lesson/lesson_bloc.dart';
 import 'package:ngajiyuk/lesson/blocs/lessons/lessons_bloc.dart';
 import 'package:ngajiyuk/lesson/features/lesson/lesson_page.dart';
@@ -40,32 +41,40 @@ class _Lesson extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => _gotoLessonPage(context),
-      child: Column(
-        children: [
-          AspectRatio(
-            aspectRatio: 4 / 3,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: CachedNetworkImage(
-                imageUrl: lesson.thumbnailUrl,
-                progressIndicatorBuilder: (context, url, downloadProgress) {
-                  return Center(child: CircularProgressIndicator());
-                },
-                errorWidget: (context, url, error) => Icon(Icons.error),
-                fit: BoxFit.cover,
+      child: Container(
+        decoration: BoxDecoration(
+          color: lesson.watched
+              ? AppColors.grey.withAlpha(32)
+              : Colors.transparent,
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+        child: Column(
+          children: [
+            AspectRatio(
+              aspectRatio: 4 / 3,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8.0),
+                child: CachedNetworkImage(
+                  imageUrl: lesson.thumbnailUrl,
+                  progressIndicatorBuilder: (context, url, downloadProgress) {
+                    return Center(child: CircularProgressIndicator());
+                  },
+                  errorWidget: (context, url, error) => Icon(Icons.error),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
-          Expanded(
-            child: Center(
-              child: Text(
-                lesson.title,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyText1,
+            Expanded(
+              child: Center(
+                child: Text(
+                  lesson.title,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

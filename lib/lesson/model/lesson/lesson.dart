@@ -9,6 +9,7 @@ abstract class Lesson with _$Lesson {
     String id,
     String title,
     String thumbnailUrl,
+    @Default(false) bool watched,
   }) = _Lesson;
 
   factory Lesson.fromJson(Map<String, dynamic> json) => _$LessonFromJson(json);

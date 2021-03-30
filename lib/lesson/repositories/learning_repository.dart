@@ -16,7 +16,6 @@ class LearningRepository {
     final learningStream = _firestore
         .collection('learnings')
         .where('userId', isEqualTo: user.id)
-        .orderBy('title', descending: false)
         .snapshots();
 
     return learningStream.map((QuerySnapshot snapshot) {

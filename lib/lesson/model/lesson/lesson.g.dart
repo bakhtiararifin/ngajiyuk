@@ -11,6 +11,7 @@ _$_Lesson _$_$_LessonFromJson(Map<String, dynamic> json) {
     id: json['id'] as String,
     title: json['title'] as String,
     thumbnailUrl: json['thumbnailUrl'] as String,
+    watched: json['watched'] as bool ?? false,
   );
 }
 
@@ -18,4 +19,5 @@ Map<String, dynamic> _$_$_LessonToJson(_$_Lesson instance) => <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
       'thumbnailUrl': instance.thumbnailUrl,
+      'watched': instance.watched,
     };

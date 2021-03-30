@@ -17,11 +17,18 @@ class _$LearningItemTearOff {
   const _$LearningItemTearOff();
 
 // ignore: unused_element
-  _LearningItem call(String id, String lessonItemId, String lessonItemTitle) {
+  _LearningItem call(
+      {String id,
+      String lessonItemId,
+      String lessonItemTitle,
+      String youtubeId,
+      int watchCount}) {
     return _LearningItem(
-      id,
-      lessonItemId,
-      lessonItemTitle,
+      id: id,
+      lessonItemId: lessonItemId,
+      lessonItemTitle: lessonItemTitle,
+      youtubeId: youtubeId,
+      watchCount: watchCount,
     );
   }
 
@@ -40,6 +47,8 @@ mixin _$LearningItem {
   String get id;
   String get lessonItemId;
   String get lessonItemTitle;
+  String get youtubeId;
+  int get watchCount;
 
   Map<String, dynamic> toJson();
   @JsonKey(ignore: true)
@@ -51,7 +60,12 @@ abstract class $LearningItemCopyWith<$Res> {
   factory $LearningItemCopyWith(
           LearningItem value, $Res Function(LearningItem) then) =
       _$LearningItemCopyWithImpl<$Res>;
-  $Res call({String id, String lessonItemId, String lessonItemTitle});
+  $Res call(
+      {String id,
+      String lessonItemId,
+      String lessonItemTitle,
+      String youtubeId,
+      int watchCount});
 }
 
 /// @nodoc
@@ -67,6 +81,8 @@ class _$LearningItemCopyWithImpl<$Res> implements $LearningItemCopyWith<$Res> {
     Object id = freezed,
     Object lessonItemId = freezed,
     Object lessonItemTitle = freezed,
+    Object youtubeId = freezed,
+    Object watchCount = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
@@ -76,6 +92,8 @@ class _$LearningItemCopyWithImpl<$Res> implements $LearningItemCopyWith<$Res> {
       lessonItemTitle: lessonItemTitle == freezed
           ? _value.lessonItemTitle
           : lessonItemTitle as String,
+      youtubeId: youtubeId == freezed ? _value.youtubeId : youtubeId as String,
+      watchCount: watchCount == freezed ? _value.watchCount : watchCount as int,
     ));
   }
 }
@@ -87,7 +105,12 @@ abstract class _$LearningItemCopyWith<$Res>
           _LearningItem value, $Res Function(_LearningItem) then) =
       __$LearningItemCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String lessonItemId, String lessonItemTitle});
+  $Res call(
+      {String id,
+      String lessonItemId,
+      String lessonItemTitle,
+      String youtubeId,
+      int watchCount});
 }
 
 /// @nodoc
@@ -105,13 +128,19 @@ class __$LearningItemCopyWithImpl<$Res> extends _$LearningItemCopyWithImpl<$Res>
     Object id = freezed,
     Object lessonItemId = freezed,
     Object lessonItemTitle = freezed,
+    Object youtubeId = freezed,
+    Object watchCount = freezed,
   }) {
     return _then(_LearningItem(
-      id == freezed ? _value.id : id as String,
-      lessonItemId == freezed ? _value.lessonItemId : lessonItemId as String,
-      lessonItemTitle == freezed
+      id: id == freezed ? _value.id : id as String,
+      lessonItemId: lessonItemId == freezed
+          ? _value.lessonItemId
+          : lessonItemId as String,
+      lessonItemTitle: lessonItemTitle == freezed
           ? _value.lessonItemTitle
           : lessonItemTitle as String,
+      youtubeId: youtubeId == freezed ? _value.youtubeId : youtubeId as String,
+      watchCount: watchCount == freezed ? _value.watchCount : watchCount as int,
     ));
   }
 }
@@ -120,10 +149,12 @@ class __$LearningItemCopyWithImpl<$Res> extends _$LearningItemCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_LearningItem implements _LearningItem {
-  _$_LearningItem(this.id, this.lessonItemId, this.lessonItemTitle)
-      : assert(id != null),
-        assert(lessonItemId != null),
-        assert(lessonItemTitle != null);
+  _$_LearningItem(
+      {this.id,
+      this.lessonItemId,
+      this.lessonItemTitle,
+      this.youtubeId,
+      this.watchCount});
 
   factory _$_LearningItem.fromJson(Map<String, dynamic> json) =>
       _$_$_LearningItemFromJson(json);
@@ -134,10 +165,14 @@ class _$_LearningItem implements _LearningItem {
   final String lessonItemId;
   @override
   final String lessonItemTitle;
+  @override
+  final String youtubeId;
+  @override
+  final int watchCount;
 
   @override
   String toString() {
-    return 'LearningItem(id: $id, lessonItemId: $lessonItemId, lessonItemTitle: $lessonItemTitle)';
+    return 'LearningItem(id: $id, lessonItemId: $lessonItemId, lessonItemTitle: $lessonItemTitle, youtubeId: $youtubeId, watchCount: $watchCount)';
   }
 
   @override
@@ -151,7 +186,13 @@ class _$_LearningItem implements _LearningItem {
                     .equals(other.lessonItemId, lessonItemId)) &&
             (identical(other.lessonItemTitle, lessonItemTitle) ||
                 const DeepCollectionEquality()
-                    .equals(other.lessonItemTitle, lessonItemTitle)));
+                    .equals(other.lessonItemTitle, lessonItemTitle)) &&
+            (identical(other.youtubeId, youtubeId) ||
+                const DeepCollectionEquality()
+                    .equals(other.youtubeId, youtubeId)) &&
+            (identical(other.watchCount, watchCount) ||
+                const DeepCollectionEquality()
+                    .equals(other.watchCount, watchCount)));
   }
 
   @override
@@ -159,7 +200,9 @@ class _$_LearningItem implements _LearningItem {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(lessonItemId) ^
-      const DeepCollectionEquality().hash(lessonItemTitle);
+      const DeepCollectionEquality().hash(lessonItemTitle) ^
+      const DeepCollectionEquality().hash(youtubeId) ^
+      const DeepCollectionEquality().hash(watchCount);
 
   @JsonKey(ignore: true)
   @override
@@ -174,7 +217,11 @@ class _$_LearningItem implements _LearningItem {
 
 abstract class _LearningItem implements LearningItem {
   factory _LearningItem(
-      String id, String lessonItemId, String lessonItemTitle) = _$_LearningItem;
+      {String id,
+      String lessonItemId,
+      String lessonItemTitle,
+      String youtubeId,
+      int watchCount}) = _$_LearningItem;
 
   factory _LearningItem.fromJson(Map<String, dynamic> json) =
       _$_LearningItem.fromJson;
@@ -185,6 +232,10 @@ abstract class _LearningItem implements LearningItem {
   String get lessonItemId;
   @override
   String get lessonItemTitle;
+  @override
+  String get youtubeId;
+  @override
+  int get watchCount;
   @override
   @JsonKey(ignore: true)
   _$LearningItemCopyWith<_LearningItem> get copyWith;

@@ -1,0 +1,101 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:injectable/injectable.dart';
+import 'package:ngajiyuk/auth/models/user/user.dart';
+import 'package:ngajiyuk/lesson/model/learning/learning.dart';
+import 'package:ngajiyuk/lesson/model/learning_item/learning_item.dart';
+import 'package:ngajiyuk/lesson/model/lesson/lesson.dart';
+import 'package:ngajiyuk/lesson/model/lesson_item/lesson_item.dart';
+
+@lazySingleton
+class LearningRepository {
+  final FirebaseFirestore _firestore;
+
+  LearningRepository(this._firestore);
+
+  Stream<List<Learning>> getUserLearning(User user) {
+    final learningStream = _firestore
+        .collection('learnings')
+        .where('userId', isEqualTo: user.id)
+        .orderBy('title', descending: false)
+        .snapshots();
+
+    return learningStream.map((QuerySnapshot snapshot) {
+      return snapshot.docs.map((QueryDocumentSnapshot doc) {
+        final data = doc.data();
+        return Learning(
+          id: doc.id,
+          userId: data['userId'],
+          userName: data['userName'],
+          userEmail: data['userEmail'],
+          lessonId: data['lessonId'],
+          lessonTitle: data['lessonTitle'],
+        );
+      }).toList();
+    });
+  }
+
+  Stream<List<LearningItem>> getLearningItems(Learning learning) {
+    final learningItemsStream = _firestore
+        .collection('learnings')
+        .doc(learning.id)
+        .collection('learningItems')
+        .orderBy('title', descending: false)
+        .snapshots();
+
+    return learningItemsStream.map((QuerySnapshot snapshot) {
+      List<LearningItem> learningItems = [];
+      for (final QueryDocumentSnapshot doc in snapshot.docs) {
+        final data = doc.data();
+        if (data['youtubeId'] == null) continue;
+
+        learningItems.add(LearningItem(
+          id: doc.id,
+          lessonItemId: data['lessonItemId'],
+          lessonItemTitle: data['lessonItemTitle'],
+          youtubeId: data['youtubeId'],
+          watchCount: data['watchCount'],
+        ));
+      }
+
+      return learningItems;
+    });
+  }
+
+  Future<void> saveLearning(
+    User user,
+    Lesson lesson,
+  ) async {
+    final learning = Learning(
+      id: lesson.id,
+      userId: user.id,
+      userEmail: user.email,
+      lessonId: lesson.id,
+      lessonTitle: lesson.title,
+    );
+
+    await _firestore
+        .collection('learnings')
+        .doc(learning.id)
+        .set(learning.toJson().remove('id'));
+  }
+
+  Future<void> saveLearningItem(
+    Lesson lesson,
+    LessonItem lessonItem,
+    int watchCount,
+  ) async {
+    final learningItem = LearningItem(
+      id: lessonItem.id,
+      lessonItemId: lessonItem.id,
+      lessonItemTitle: lessonItem.title,
+      watchCount: watchCount,
+    );
+
+    await _firestore
+        .collection('learnings')
+        .doc(lesson.id)
+        .collection('learningItems')
+        .doc(lessonItem.id)
+        .set(learningItem.toJson().remove('id'));
+  }
+}

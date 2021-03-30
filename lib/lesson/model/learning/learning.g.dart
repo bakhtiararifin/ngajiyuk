@@ -8,12 +8,12 @@ part of 'learning.dart';
 
 _$_Learning _$_$_LearningFromJson(Map<String, dynamic> json) {
   return _$_Learning(
-    json['id'] as String,
-    json['userId'] as String,
-    json['userName'] as String,
-    json['userEmail'] as String,
-    json['lessonId'] as String,
-    json['lessonTitle'] as String,
+    id: json['id'] as String,
+    userId: json['userId'] as String,
+    userName: json['userName'] as String,
+    userEmail: json['userEmail'] as String,
+    lessonId: json['lessonId'] as String,
+    lessonTitle: json['lessonTitle'] as String,
   );
 }
 

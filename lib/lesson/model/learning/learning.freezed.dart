@@ -17,15 +17,20 @@ class _$LearningTearOff {
   const _$LearningTearOff();
 
 // ignore: unused_element
-  _Learning call(String id, String userId, String userName, String userEmail,
-      String lessonId, String lessonTitle) {
+  _Learning call(
+      {String id,
+      String userId,
+      String userName,
+      String userEmail,
+      String lessonId,
+      String lessonTitle}) {
     return _Learning(
-      id,
-      userId,
-      userName,
-      userEmail,
-      lessonId,
-      lessonTitle,
+      id: id,
+      userId: userId,
+      userName: userName,
+      userEmail: userEmail,
+      lessonId: lessonId,
+      lessonTitle: lessonTitle,
     );
   }
 
@@ -128,12 +133,13 @@ class __$LearningCopyWithImpl<$Res> extends _$LearningCopyWithImpl<$Res>
     Object lessonTitle = freezed,
   }) {
     return _then(_Learning(
-      id == freezed ? _value.id : id as String,
-      userId == freezed ? _value.userId : userId as String,
-      userName == freezed ? _value.userName : userName as String,
-      userEmail == freezed ? _value.userEmail : userEmail as String,
-      lessonId == freezed ? _value.lessonId : lessonId as String,
-      lessonTitle == freezed ? _value.lessonTitle : lessonTitle as String,
+      id: id == freezed ? _value.id : id as String,
+      userId: userId == freezed ? _value.userId : userId as String,
+      userName: userName == freezed ? _value.userName : userName as String,
+      userEmail: userEmail == freezed ? _value.userEmail : userEmail as String,
+      lessonId: lessonId == freezed ? _value.lessonId : lessonId as String,
+      lessonTitle:
+          lessonTitle == freezed ? _value.lessonTitle : lessonTitle as String,
     ));
   }
 }
@@ -142,14 +148,13 @@ class __$LearningCopyWithImpl<$Res> extends _$LearningCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_Learning implements _Learning {
-  _$_Learning(this.id, this.userId, this.userName, this.userEmail,
-      this.lessonId, this.lessonTitle)
-      : assert(id != null),
-        assert(userId != null),
-        assert(userName != null),
-        assert(userEmail != null),
-        assert(lessonId != null),
-        assert(lessonTitle != null);
+  _$_Learning(
+      {this.id,
+      this.userId,
+      this.userName,
+      this.userEmail,
+      this.lessonId,
+      this.lessonTitle});
 
   factory _$_Learning.fromJson(Map<String, dynamic> json) =>
       _$_$_LearningFromJson(json);
@@ -216,8 +221,13 @@ class _$_Learning implements _Learning {
 }
 
 abstract class _Learning implements Learning {
-  factory _Learning(String id, String userId, String userName, String userEmail,
-      String lessonId, String lessonTitle) = _$_Learning;
+  factory _Learning(
+      {String id,
+      String userId,
+      String userName,
+      String userEmail,
+      String lessonId,
+      String lessonTitle}) = _$_Learning;
 
   factory _Learning.fromJson(Map<String, dynamic> json) = _$_Learning.fromJson;
 

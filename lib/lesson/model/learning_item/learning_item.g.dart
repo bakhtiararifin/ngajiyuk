@@ -8,9 +8,11 @@ part of 'learning_item.dart';
 
 _$_LearningItem _$_$_LearningItemFromJson(Map<String, dynamic> json) {
   return _$_LearningItem(
-    json['id'] as String,
-    json['lessonItemId'] as String,
-    json['lessonItemTitle'] as String,
+    id: json['id'] as String,
+    lessonItemId: json['lessonItemId'] as String,
+    lessonItemTitle: json['lessonItemTitle'] as String,
+    youtubeId: json['youtubeId'] as String,
+    watchCount: json['watchCount'] as int,
   );
 }
 
@@ -19,4 +21,6 @@ Map<String, dynamic> _$_$_LearningItemToJson(_$_LearningItem instance) =>
       'id': instance.id,
       'lessonItemId': instance.lessonItemId,
       'lessonItemTitle': instance.lessonItemTitle,
+      'youtubeId': instance.youtubeId,
+      'watchCount': instance.watchCount,
     };

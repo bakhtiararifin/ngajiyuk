@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ngajiyuk/lesson/blocs/lesson_items/lesson_items_bloc.dart';
+import 'package:ngajiyuk/lesson/blocs/lesson/lesson_bloc.dart';
 import 'package:ngajiyuk/lesson/blocs/lessons/lessons_bloc.dart';
 import 'package:ngajiyuk/lesson/features/lesson/lesson_page.dart';
 import 'package:ngajiyuk/lesson/model/lesson/lesson.dart';
@@ -71,8 +71,8 @@ class _Lesson extends StatelessWidget {
   }
 
   void _gotoLessonPage(BuildContext context) {
-    BlocProvider.of<LessonItemsBloc>(context).add(
-      LessonItemsEvent.getLessonItems(lesson),
+    BlocProvider.of<LessonBloc>(context).add(
+      LessonEvent.setLesson(lesson),
     );
 
     Navigator.of(context).push(

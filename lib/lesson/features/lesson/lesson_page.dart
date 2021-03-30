@@ -28,6 +28,14 @@ class _LessonPageState extends State<LessonPage> {
   }
 
   @override
+  void didChangeDependencies() {
+    BlocProvider.of<LessonItemsBloc>(context).add(
+      LessonItemsEvent.getLessonItems(widget.lesson),
+    );
+    super.didChangeDependencies();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

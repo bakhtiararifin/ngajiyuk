@@ -68,15 +68,16 @@ class LearningRepository {
     final learning = Learning(
       id: lesson.id,
       userId: user.id,
+      userName: user.name,
       userEmail: user.email,
       lessonId: lesson.id,
       lessonTitle: lesson.title,
     );
 
-    await _firestore
-        .collection('learnings')
-        .doc(learning.id)
-        .set(learning.toJson().remove('id'));
+    final json = learning.toJson();
+    json.remove('id');
+
+    await _firestore.collection('learnings').doc(learning.id).set(json);
   }
 
   Future<void> saveLearningItem(
@@ -91,11 +92,14 @@ class LearningRepository {
       watchCount: watchCount,
     );
 
+    final json = learningItem.toJson();
+    json.remove('id');
+
     await _firestore
         .collection('learnings')
         .doc(lesson.id)
         .collection('learningItems')
         .doc(lessonItem.id)
-        .set(learningItem.toJson().remove('id'));
+        .set(json);
   }
 }

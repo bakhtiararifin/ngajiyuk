@@ -15,7 +15,12 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   Stream<UserState> mapEventToState(UserEvent gEvent) async* {
     yield* gEvent.when(
       setUser: _setUser,
+      clearUser: _clearUser,
     );
+  }
+
+  Stream<UserState> _clearUser() async* {
+    yield UserState.cleared();
   }
 
   Stream<UserState> _setUser(User user) async* {

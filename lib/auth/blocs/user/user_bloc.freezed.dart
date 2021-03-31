@@ -19,6 +19,11 @@ class _$UserEventTearOff {
       user,
     );
   }
+
+// ignore: unused_element
+  _ClearUser clearUser() {
+    return const _ClearUser();
+  }
 }
 
 /// @nodoc
@@ -27,38 +32,34 @@ const $UserEvent = _$UserEventTearOff();
 
 /// @nodoc
 mixin _$UserEvent {
-  User get user;
-
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult setUser(User user),
+    @required TResult clearUser(),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult setUser(User user),
+    TResult clearUser(),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult setUser(_SetUser value),
+    @required TResult clearUser(_ClearUser value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult setUser(_SetUser value),
+    TResult clearUser(_ClearUser value),
     @required TResult orElse(),
   });
-
-  @JsonKey(ignore: true)
-  $UserEventCopyWith<UserEvent> get copyWith;
 }
 
 /// @nodoc
 abstract class $UserEventCopyWith<$Res> {
   factory $UserEventCopyWith(UserEvent value, $Res Function(UserEvent) then) =
       _$UserEventCopyWithImpl<$Res>;
-  $Res call({User user});
-
-  $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -68,35 +69,14 @@ class _$UserEventCopyWithImpl<$Res> implements $UserEventCopyWith<$Res> {
   final UserEvent _value;
   // ignore: unused_field
   final $Res Function(UserEvent) _then;
-
-  @override
-  $Res call({
-    Object user = freezed,
-  }) {
-    return _then(_value.copyWith(
-      user: user == freezed ? _value.user : user as User,
-    ));
-  }
-
-  @override
-  $UserCopyWith<$Res> get user {
-    if (_value.user == null) {
-      return null;
-    }
-    return $UserCopyWith<$Res>(_value.user, (value) {
-      return _then(_value.copyWith(user: value));
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$SetUserCopyWith<$Res> implements $UserEventCopyWith<$Res> {
+abstract class _$SetUserCopyWith<$Res> {
   factory _$SetUserCopyWith(_SetUser value, $Res Function(_SetUser) then) =
       __$SetUserCopyWithImpl<$Res>;
-  @override
   $Res call({User user});
 
-  @override
   $UserCopyWith<$Res> get user;
 }
 
@@ -116,6 +96,16 @@ class __$SetUserCopyWithImpl<$Res> extends _$UserEventCopyWithImpl<$Res>
     return _then(_SetUser(
       user == freezed ? _value.user : user as User,
     ));
+  }
+
+  @override
+  $UserCopyWith<$Res> get user {
+    if (_value.user == null) {
+      return null;
+    }
+    return $UserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
   }
 }
 
@@ -152,8 +142,10 @@ class _$_SetUser implements _SetUser {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult setUser(User user),
+    @required TResult clearUser(),
   }) {
     assert(setUser != null);
+    assert(clearUser != null);
     return setUser(user);
   }
 
@@ -161,6 +153,7 @@ class _$_SetUser implements _SetUser {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult setUser(User user),
+    TResult clearUser(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -174,8 +167,10 @@ class _$_SetUser implements _SetUser {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult setUser(_SetUser value),
+    @required TResult clearUser(_ClearUser value),
   }) {
     assert(setUser != null);
+    assert(clearUser != null);
     return setUser(this);
   }
 
@@ -183,6 +178,7 @@ class _$_SetUser implements _SetUser {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult setUser(_SetUser value),
+    TResult clearUser(_ClearUser value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -196,11 +192,98 @@ class _$_SetUser implements _SetUser {
 abstract class _SetUser implements UserEvent {
   const factory _SetUser(User user) = _$_SetUser;
 
-  @override
   User get user;
-  @override
   @JsonKey(ignore: true)
   _$SetUserCopyWith<_SetUser> get copyWith;
+}
+
+/// @nodoc
+abstract class _$ClearUserCopyWith<$Res> {
+  factory _$ClearUserCopyWith(
+          _ClearUser value, $Res Function(_ClearUser) then) =
+      __$ClearUserCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$ClearUserCopyWithImpl<$Res> extends _$UserEventCopyWithImpl<$Res>
+    implements _$ClearUserCopyWith<$Res> {
+  __$ClearUserCopyWithImpl(_ClearUser _value, $Res Function(_ClearUser) _then)
+      : super(_value, (v) => _then(v as _ClearUser));
+
+  @override
+  _ClearUser get _value => super._value as _ClearUser;
+}
+
+/// @nodoc
+class _$_ClearUser implements _ClearUser {
+  const _$_ClearUser();
+
+  @override
+  String toString() {
+    return 'UserEvent.clearUser()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _ClearUser);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult setUser(User user),
+    @required TResult clearUser(),
+  }) {
+    assert(setUser != null);
+    assert(clearUser != null);
+    return clearUser();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult setUser(User user),
+    TResult clearUser(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (clearUser != null) {
+      return clearUser();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult setUser(_SetUser value),
+    @required TResult clearUser(_ClearUser value),
+  }) {
+    assert(setUser != null);
+    assert(clearUser != null);
+    return clearUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult setUser(_SetUser value),
+    TResult clearUser(_ClearUser value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (clearUser != null) {
+      return clearUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ClearUser implements UserEvent {
+  const factory _ClearUser() = _$_ClearUser;
 }
 
 /// @nodoc
@@ -225,6 +308,11 @@ class _$UserStateTearOff {
   }
 
 // ignore: unused_element
+  _Cleared cleared() {
+    return const _Cleared();
+  }
+
+// ignore: unused_element
   _Error error() {
     return const _Error();
   }
@@ -241,6 +329,7 @@ mixin _$UserState {
     @required TResult initial(),
     @required TResult loading(),
     @required TResult success(User user),
+    @required TResult cleared(),
     @required TResult error(),
   });
   @optionalTypeArgs
@@ -248,6 +337,7 @@ mixin _$UserState {
     TResult initial(),
     TResult loading(),
     TResult success(User user),
+    TResult cleared(),
     TResult error(),
     @required TResult orElse(),
   });
@@ -256,6 +346,7 @@ mixin _$UserState {
     @required TResult initial(_Initial value),
     @required TResult loading(_Loading value),
     @required TResult success(_Success value),
+    @required TResult cleared(_Cleared value),
     @required TResult error(_Error value),
   });
   @optionalTypeArgs
@@ -263,6 +354,7 @@ mixin _$UserState {
     TResult initial(_Initial value),
     TResult loading(_Loading value),
     TResult success(_Success value),
+    TResult cleared(_Cleared value),
     TResult error(_Error value),
     @required TResult orElse(),
   });
@@ -322,11 +414,13 @@ class _$_Initial implements _Initial {
     @required TResult initial(),
     @required TResult loading(),
     @required TResult success(User user),
+    @required TResult cleared(),
     @required TResult error(),
   }) {
     assert(initial != null);
     assert(loading != null);
     assert(success != null);
+    assert(cleared != null);
     assert(error != null);
     return initial();
   }
@@ -337,6 +431,7 @@ class _$_Initial implements _Initial {
     TResult initial(),
     TResult loading(),
     TResult success(User user),
+    TResult cleared(),
     TResult error(),
     @required TResult orElse(),
   }) {
@@ -353,11 +448,13 @@ class _$_Initial implements _Initial {
     @required TResult initial(_Initial value),
     @required TResult loading(_Loading value),
     @required TResult success(_Success value),
+    @required TResult cleared(_Cleared value),
     @required TResult error(_Error value),
   }) {
     assert(initial != null);
     assert(loading != null);
     assert(success != null);
+    assert(cleared != null);
     assert(error != null);
     return initial(this);
   }
@@ -368,6 +465,7 @@ class _$_Initial implements _Initial {
     TResult initial(_Initial value),
     TResult loading(_Loading value),
     TResult success(_Success value),
+    TResult cleared(_Cleared value),
     TResult error(_Error value),
     @required TResult orElse(),
   }) {
@@ -422,11 +520,13 @@ class _$_Loading implements _Loading {
     @required TResult initial(),
     @required TResult loading(),
     @required TResult success(User user),
+    @required TResult cleared(),
     @required TResult error(),
   }) {
     assert(initial != null);
     assert(loading != null);
     assert(success != null);
+    assert(cleared != null);
     assert(error != null);
     return loading();
   }
@@ -437,6 +537,7 @@ class _$_Loading implements _Loading {
     TResult initial(),
     TResult loading(),
     TResult success(User user),
+    TResult cleared(),
     TResult error(),
     @required TResult orElse(),
   }) {
@@ -453,11 +554,13 @@ class _$_Loading implements _Loading {
     @required TResult initial(_Initial value),
     @required TResult loading(_Loading value),
     @required TResult success(_Success value),
+    @required TResult cleared(_Cleared value),
     @required TResult error(_Error value),
   }) {
     assert(initial != null);
     assert(loading != null);
     assert(success != null);
+    assert(cleared != null);
     assert(error != null);
     return loading(this);
   }
@@ -468,6 +571,7 @@ class _$_Loading implements _Loading {
     TResult initial(_Initial value),
     TResult loading(_Loading value),
     TResult success(_Success value),
+    TResult cleared(_Cleared value),
     TResult error(_Error value),
     @required TResult orElse(),
   }) {
@@ -556,11 +660,13 @@ class _$_Success implements _Success {
     @required TResult initial(),
     @required TResult loading(),
     @required TResult success(User user),
+    @required TResult cleared(),
     @required TResult error(),
   }) {
     assert(initial != null);
     assert(loading != null);
     assert(success != null);
+    assert(cleared != null);
     assert(error != null);
     return success(user);
   }
@@ -571,6 +677,7 @@ class _$_Success implements _Success {
     TResult initial(),
     TResult loading(),
     TResult success(User user),
+    TResult cleared(),
     TResult error(),
     @required TResult orElse(),
   }) {
@@ -587,11 +694,13 @@ class _$_Success implements _Success {
     @required TResult initial(_Initial value),
     @required TResult loading(_Loading value),
     @required TResult success(_Success value),
+    @required TResult cleared(_Cleared value),
     @required TResult error(_Error value),
   }) {
     assert(initial != null);
     assert(loading != null);
     assert(success != null);
+    assert(cleared != null);
     assert(error != null);
     return success(this);
   }
@@ -602,6 +711,7 @@ class _$_Success implements _Success {
     TResult initial(_Initial value),
     TResult loading(_Loading value),
     TResult success(_Success value),
+    TResult cleared(_Cleared value),
     TResult error(_Error value),
     @required TResult orElse(),
   }) {
@@ -619,6 +729,112 @@ abstract class _Success implements UserState {
   User get user;
   @JsonKey(ignore: true)
   _$SuccessCopyWith<_Success> get copyWith;
+}
+
+/// @nodoc
+abstract class _$ClearedCopyWith<$Res> {
+  factory _$ClearedCopyWith(_Cleared value, $Res Function(_Cleared) then) =
+      __$ClearedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$ClearedCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
+    implements _$ClearedCopyWith<$Res> {
+  __$ClearedCopyWithImpl(_Cleared _value, $Res Function(_Cleared) _then)
+      : super(_value, (v) => _then(v as _Cleared));
+
+  @override
+  _Cleared get _value => super._value as _Cleared;
+}
+
+/// @nodoc
+class _$_Cleared implements _Cleared {
+  const _$_Cleared();
+
+  @override
+  String toString() {
+    return 'UserState.cleared()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _Cleared);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult loading(),
+    @required TResult success(User user),
+    @required TResult cleared(),
+    @required TResult error(),
+  }) {
+    assert(initial != null);
+    assert(loading != null);
+    assert(success != null);
+    assert(cleared != null);
+    assert(error != null);
+    return cleared();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult loading(),
+    TResult success(User user),
+    TResult cleared(),
+    TResult error(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (cleared != null) {
+      return cleared();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult loading(_Loading value),
+    @required TResult success(_Success value),
+    @required TResult cleared(_Cleared value),
+    @required TResult error(_Error value),
+  }) {
+    assert(initial != null);
+    assert(loading != null);
+    assert(success != null);
+    assert(cleared != null);
+    assert(error != null);
+    return cleared(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult loading(_Loading value),
+    TResult success(_Success value),
+    TResult cleared(_Cleared value),
+    TResult error(_Error value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (cleared != null) {
+      return cleared(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Cleared implements UserState {
+  const factory _Cleared() = _$_Cleared;
 }
 
 /// @nodoc
@@ -660,11 +876,13 @@ class _$_Error implements _Error {
     @required TResult initial(),
     @required TResult loading(),
     @required TResult success(User user),
+    @required TResult cleared(),
     @required TResult error(),
   }) {
     assert(initial != null);
     assert(loading != null);
     assert(success != null);
+    assert(cleared != null);
     assert(error != null);
     return error();
   }
@@ -675,6 +893,7 @@ class _$_Error implements _Error {
     TResult initial(),
     TResult loading(),
     TResult success(User user),
+    TResult cleared(),
     TResult error(),
     @required TResult orElse(),
   }) {
@@ -691,11 +910,13 @@ class _$_Error implements _Error {
     @required TResult initial(_Initial value),
     @required TResult loading(_Loading value),
     @required TResult success(_Success value),
+    @required TResult cleared(_Cleared value),
     @required TResult error(_Error value),
   }) {
     assert(initial != null);
     assert(loading != null);
     assert(success != null);
+    assert(cleared != null);
     assert(error != null);
     return error(this);
   }
@@ -706,6 +927,7 @@ class _$_Error implements _Error {
     TResult initial(_Initial value),
     TResult loading(_Loading value),
     TResult success(_Success value),
+    TResult cleared(_Cleared value),
     TResult error(_Error value),
     @required TResult orElse(),
   }) {

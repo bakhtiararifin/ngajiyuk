@@ -57,7 +57,8 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       get<_i9.UserBloc>()));
   gh.factory<_i16.LoginBloc>(
       () => _i16.LoginBloc(get<_i10.AuthService>(), get<_i9.UserBloc>()));
-  gh.factory<_i17.LogoutBloc>(() => _i17.LogoutBloc(get<_i10.AuthService>()));
+  gh.factory<_i17.LogoutBloc>(
+      () => _i17.LogoutBloc(get<_i10.AuthService>(), get<_i9.UserBloc>()));
   return get;
 }
 

@@ -6,21 +6,14 @@ import 'package:ngajiyuk/core/services/configure_injection.dart';
 import 'package:ngajiyuk/core/theme/app_colors.dart';
 import 'package:ngajiyuk/core/theme/app_typography.dart';
 import 'package:ngajiyuk/core/theme/app_sizes.dart';
+import 'package:ngajiyuk/lesson/blocs/lesson/lesson_bloc.dart';
 import 'package:ngajiyuk/lesson/blocs/lesson_item/lesson_item_bloc.dart';
 import 'package:ngajiyuk/lesson/blocs/lesson_items/lesson_items_bloc.dart';
-import 'package:ngajiyuk/lesson/model/lesson/lesson.dart';
 import 'package:ngajiyuk/lesson/model/lesson_item/lesson_item.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 class LessonItemPage extends StatefulWidget {
-  final Lesson lesson;
-  final LessonItem lessonItem;
-
-  const LessonItemPage({
-    Key key,
-    @required this.lesson,
-    @required this.lessonItem,
-  }) : super(key: key);
+  const LessonItemPage({Key key}) : super(key: key);
 
   @override
   _LessonItemPageState createState() => _LessonItemPageState();
@@ -30,9 +23,15 @@ class _LessonItemPageState extends State<LessonItemPage> {
   YoutubePlayerController _controller;
 
   @override
-  void initState() {
+  void didChangeDependencies() {
+    final lessonItemBloc = BlocProvider.of<LessonItemBloc>(context);
+    final LessonItem lessonItem = lessonItemBloc.state.maybeWhen(
+      success: (lessonItem) => lessonItem,
+      orElse: () => null,
+    );
+
     _controller = YoutubePlayerController(
-      initialVideoId: widget.lessonItem.youtubeId,
+      initialVideoId: lessonItem.youtubeId,
       params: YoutubePlayerParams(
         showControls: true,
         showFullscreenButton: true,
@@ -48,10 +47,10 @@ class _LessonItemPageState extends State<LessonItemPage> {
 
     getIt<FirebaseAnalytics>().logEvent(
       name: 'LessonItemPage',
-      parameters: widget.lessonItem.toJson(),
+      parameters: lessonItem.toJson(),
     );
 
-    super.initState();
+    super.didChangeDependencies();
   }
 
   @override
@@ -64,7 +63,14 @@ class _LessonItemPageState extends State<LessonItemPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.lesson.title),
+        title: BlocBuilder<LessonBloc, LessonState>(
+          builder: (context, state) {
+            return state.maybeWhen(
+              success: (lesson) => Text(lesson.title),
+              orElse: () => Container(),
+            );
+          },
+        ),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,58 +89,82 @@ class _LessonItemPageState extends State<LessonItemPage> {
             ),
           ),
           Expanded(
-            child: BlocBuilder<LessonItemsBloc, LessonItemsState>(
-              builder: (context, state) {
-                return state.maybeWhen(
-                  success: (List<LessonItem> lessonItems) {
-                    final otherLessonItems = lessonItems
-                        .where(
-                          (lessonItem) => lessonItem.id != widget.lessonItem.id,
-                        )
-                        .toList();
-
-                    return ListView.builder(
-                      itemCount: otherLessonItems.length,
-                      itemBuilder: (context, index) {
-                        final LessonItem lessonItem = otherLessonItems[index];
-
-                        return Container(
-                          color: lessonItem.watched
-                              ? AppColors.grey.withAlpha(80)
-                              : Colors.transparent,
-                          child: ListTile(
-                            contentPadding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-                            leading: Image(
-                              image: NetworkImage(lessonItem.thumbnailUrl),
-                            ),
-                            title: Text(lessonItem.title ?? ''),
-                            onTap: () => _gotoLessonItemPage(lessonItem),
-                          ),
-                        );
-                      },
-                    );
-                  },
-                  orElse: () => Center(child: CircularProgressIndicator()),
-                );
-              },
-            ),
+            child: _OtherLessonItems(),
           ),
         ],
       ),
     );
   }
+}
 
-  void _gotoLessonItemPage(LessonItem lessonItem) {
+class _OtherLessonItems extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<LessonItemBloc, LessonItemState>(
+      builder: (context, state) {
+        return state.maybeWhen(
+          success: (LessonItem lessonItem) {
+            return _buildLessonItemsBloc(lessonItem);
+          },
+          orElse: () => Center(child: CircularProgressIndicator()),
+        );
+      },
+    );
+  }
+
+  Widget _buildLessonItemsBloc(LessonItem lessonItem) {
+    return BlocBuilder<LessonItemsBloc, LessonItemsState>(
+      builder: (context, state) {
+        return state.maybeWhen(
+          success: (List<LessonItem> lessonItems) {
+            return _buildOtherLessonItems(lessonItem, lessonItems);
+          },
+          orElse: () => Center(child: CircularProgressIndicator()),
+        );
+      },
+    );
+  }
+
+  Widget _buildOtherLessonItems(
+    LessonItem lessonItem,
+    List<LessonItem> lessonItems,
+  ) {
+    final otherLessonItems =
+        lessonItems.where((e) => e.id != lessonItem.id).toList();
+
+    return ListView.builder(
+      itemCount: otherLessonItems.length,
+      itemBuilder: (context, index) {
+        final LessonItem lessonItem = otherLessonItems[index];
+
+        return Container(
+          color: lessonItem.watched
+              ? AppColors.grey.withAlpha(80)
+              : Colors.transparent,
+          child: ListTile(
+            contentPadding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+            leading: Image(
+              image: NetworkImage(lessonItem.thumbnailUrl),
+            ),
+            title: Text(lessonItem.title ?? ''),
+            onTap: () => _gotoLessonItemPage(context, lessonItem),
+          ),
+        );
+      },
+    );
+  }
+
+  void _gotoLessonItemPage(
+    BuildContext context,
+    LessonItem lessonItem,
+  ) {
     BlocProvider.of<LessonItemBloc>(context).add(
       LessonItemEvent.setLessonItem(lessonItem),
     );
 
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
-        builder: (_) => LessonItemPage(
-          lesson: widget.lesson,
-          lessonItem: lessonItem,
-        ),
+        builder: (_) => LessonItemPage(),
       ),
     );
   }

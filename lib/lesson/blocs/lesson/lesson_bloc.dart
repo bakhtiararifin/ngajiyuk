@@ -32,12 +32,14 @@ class LessonBloc extends Bloc<LessonEvent, LessonState> {
   }
 
   Stream<LessonState> _setLesson(Lesson lesson) async* {
-    _userBloc.state.maybeWhen(
-      success: (User user) {
-        _learningRepository.saveLearning(user, lesson);
-      },
-      orElse: () {},
+    final User user = _userBloc.state.maybeWhen(
+      success: (User user) => user,
+      orElse: () => null,
     );
+
+    if (user != null && !lesson.watched) {
+      _learningRepository.saveLearning(user, lesson);
+    }
 
     yield LessonState.success(lesson);
   }

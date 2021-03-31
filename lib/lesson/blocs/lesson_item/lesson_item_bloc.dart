@@ -45,7 +45,9 @@ class LessonItemBloc extends Bloc<LessonItemEvent, LessonItemState> {
       orElse: () => null,
     );
 
-    _learningRepository.saveLearningItem(user, lesson, lessonItem);
+    if (user != null && !lessonItem.watched) {
+      _learningRepository.saveLearningItem(user, lesson, lessonItem);
+    }
 
     yield LessonItemState.success(lessonItem);
   }

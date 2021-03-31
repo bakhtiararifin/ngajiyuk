@@ -83,10 +83,7 @@ class _LessonPageState extends State<LessonPage> {
 
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (_) => LessonItemPage(
-          lesson: widget.lesson,
-          lessonItem: lessonItem,
-        ),
+        builder: (_) => LessonItemPage(),
       ),
     );
   }

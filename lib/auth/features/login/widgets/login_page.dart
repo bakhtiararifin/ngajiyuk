@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ngajiyuk/auth/blocs/logout/logout_bloc.dart';
 import 'package:ngajiyuk/auth/features/login/blocs/login/login_bloc.dart';
 import 'package:ngajiyuk/common/features/dashboard/widgets/home_page.dart';
+import 'package:ngajiyuk/common/widgets/loading_button.dart';
 import 'package:ngajiyuk/core/services/configure_injection.dart';
 import 'package:ngajiyuk/core/theme/app_colors.dart';
 import 'package:ngajiyuk/core/theme/app_sizes.dart';
@@ -51,12 +52,22 @@ class LoginPage extends StatelessWidget {
                 );
               },
               builder: (context, state) {
-                return SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    child: Text('Masuk dengan Google'),
-                    onPressed: () => _login(context),
-                  ),
+                return state.maybeWhen(
+                  loading: () {
+                    return SizedBox(
+                      width: double.infinity,
+                      child: LoadingButton(),
+                    );
+                  },
+                  orElse: () {
+                    return SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        child: Text('Masuk dengan Google'),
+                        onPressed: () => _login(context),
+                      ),
+                    );
+                  },
                 );
               },
             ),

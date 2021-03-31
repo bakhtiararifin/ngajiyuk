@@ -33,10 +33,13 @@ class LearningRepository {
     });
   }
 
-  Stream<List<LearningItem>> getLearningItems(Lesson lesson) {
+  Stream<List<LearningItem>> getLearningItems(
+    User user,
+    Lesson lesson,
+  ) {
     final learningItemsStream = _firestore
         .collection('learnings')
-        .doc(lesson.id)
+        .doc(getLearningId(user, lesson))
         .collection('learningItems')
         .snapshots();
 
@@ -63,7 +66,7 @@ class LearningRepository {
     Lesson lesson,
   ) async {
     final learning = Learning(
-      id: lesson.id,
+      id: getLearningId(user, lesson),
       userId: user.id,
       userName: user.name,
       userEmail: user.email,
@@ -78,6 +81,7 @@ class LearningRepository {
   }
 
   Future<void> saveLearningItem(
+    User user,
     Lesson lesson,
     LessonItem lessonItem,
   ) async {
@@ -93,9 +97,13 @@ class LearningRepository {
 
     await _firestore
         .collection('learnings')
-        .doc(lesson.id)
+        .doc(getLearningId(user, lesson))
         .collection('learningItems')
         .doc(lessonItem.id)
         .set(json);
+  }
+
+  String getLearningId(User user, Lesson lesson) {
+    return '${user.id}${lesson.id}';
   }
 }

@@ -66,7 +66,10 @@ class LessonItemsBloc extends Bloc<LessonItemsEvent, LessonItemsState> {
       );
     } else {
       final lessonItemsStream = _lessonRepository.getLessonItems(lesson);
-      final learningItemsStream = _learningRepository.getLearningItems(lesson);
+      final learningItemsStream = _learningRepository.getLearningItems(
+        user,
+        lesson,
+      );
 
       _lessonItemsListener?.cancel();
 

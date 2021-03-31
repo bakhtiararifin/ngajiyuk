@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:ngajiyuk/auth/blocs/user/user_bloc.dart';
+import 'package:ngajiyuk/auth/models/user/user.dart';
 import 'package:ngajiyuk/lesson/blocs/lesson/lesson_bloc.dart';
 import 'package:ngajiyuk/lesson/model/lesson/lesson.dart';
 import 'package:ngajiyuk/lesson/model/lesson_item/lesson_item.dart';
@@ -15,10 +17,12 @@ part 'lesson_item_bloc.freezed.dart';
 @lazySingleton
 class LessonItemBloc extends Bloc<LessonItemEvent, LessonItemState> {
   final LearningRepository _learningRepository;
+  final UserBloc _userBloc;
   final LessonBloc _lessonBloc;
 
   LessonItemBloc(
     this._learningRepository,
+    this._userBloc,
     this._lessonBloc,
   ) : super(_Initial());
 
@@ -32,12 +36,16 @@ class LessonItemBloc extends Bloc<LessonItemEvent, LessonItemState> {
   }
 
   Stream<LessonItemState> _setLessonItem(LessonItem lessonItem) async* {
-    _lessonBloc.state.maybeWhen(
-      success: (Lesson lesson) {
-        _learningRepository.saveLearningItem(lesson, lessonItem);
-      },
-      orElse: () {},
+    final User user = _userBloc.state.maybeWhen(
+      success: (User user) => user,
+      orElse: () => null,
     );
+    final Lesson lesson = _lessonBloc.state.maybeWhen(
+      success: (Lesson lesson) => lesson,
+      orElse: () => null,
+    );
+
+    _learningRepository.saveLearningItem(user, lesson, lessonItem);
 
     yield LessonItemState.success(lessonItem);
   }

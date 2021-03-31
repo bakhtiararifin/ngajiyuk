@@ -44,7 +44,7 @@ class _Lesson extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: lesson.watched
-              ? AppColors.grey.withAlpha(32)
+              ? AppColors.grey.withAlpha(80)
               : Colors.transparent,
           borderRadius: BorderRadius.circular(8.0),
         ),

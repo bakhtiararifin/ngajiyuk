@@ -32,7 +32,7 @@ class LessonRepository {
         .collection('lessons')
         .doc(lesson.id)
         .collection('lessonItems')
-        .orderBy('title', descending: false)
+        .orderBy('index', descending: false)
         .snapshots();
 
     return lessonItemsStream.map((QuerySnapshot snapshot) {

@@ -5,6 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:ngajiyuk/auth/blocs/user/user_bloc.dart';
 import 'package:ngajiyuk/auth/models/user/user.dart';
+import 'package:ngajiyuk/lesson/blocs/lesson/lesson_bloc.dart';
 import 'package:ngajiyuk/lesson/model/learning_item/learning_item.dart';
 import 'package:ngajiyuk/lesson/model/lesson/lesson.dart';
 import 'package:ngajiyuk/lesson/model/lesson_item/lesson_item.dart';
@@ -21,14 +22,13 @@ class LessonItemsBloc extends Bloc<LessonItemsEvent, LessonItemsState> {
   final LessonRepository _lessonRepository;
   final LearningRepository _learningRepository;
   final UserBloc _userBloc;
+  final LessonBloc _lessonBloc;
 
   StreamSubscription _lessonItemsListener;
 
-  LessonItemsBloc(
-    this._lessonRepository,
-    this._learningRepository,
-    this._userBloc,
-  ) : super(_Initial());
+  LessonItemsBloc(this._lessonRepository, this._learningRepository,
+      this._userBloc, this._lessonBloc)
+      : super(_Initial());
 
   @override
   Stream<LessonItemsState> mapEventToState(
@@ -46,11 +46,16 @@ class LessonItemsBloc extends Bloc<LessonItemsEvent, LessonItemsState> {
     yield LessonItemsState.success(lessonItems);
   }
 
-  Stream<LessonItemsState> _getLessonItems(Lesson lesson) async* {
+  Stream<LessonItemsState> _getLessonItems() async* {
     yield LessonItemsState.loading();
 
     final User user = _userBloc.state.maybeWhen(
       success: (user) => user,
+      orElse: () => null,
+    );
+
+    final Lesson lesson = _lessonBloc.state.maybeWhen(
+      success: (lesson) => lesson,
       orElse: () => null,
     );
 

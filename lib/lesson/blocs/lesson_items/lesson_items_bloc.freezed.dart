@@ -14,10 +14,8 @@ class _$LessonItemsEventTearOff {
   const _$LessonItemsEventTearOff();
 
 // ignore: unused_element
-  _GetLessonItems getLessonItems(Lesson lesson) {
-    return _GetLessonItems(
-      lesson,
-    );
+  _GetLessonItems getLessonItems() {
+    return const _GetLessonItems();
   }
 
 // ignore: unused_element
@@ -36,12 +34,12 @@ const $LessonItemsEvent = _$LessonItemsEventTearOff();
 mixin _$LessonItemsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult getLessonItems(Lesson lesson),
+    @required TResult getLessonItems(),
     @required TResult setLessonItems(List<LessonItem> lessonItems),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult getLessonItems(Lesson lesson),
+    TResult getLessonItems(),
     TResult setLessonItems(List<LessonItem> lessonItems),
     @required TResult orElse(),
   });
@@ -80,9 +78,6 @@ abstract class _$GetLessonItemsCopyWith<$Res> {
   factory _$GetLessonItemsCopyWith(
           _GetLessonItems value, $Res Function(_GetLessonItems) then) =
       __$GetLessonItemsCopyWithImpl<$Res>;
-  $Res call({Lesson lesson});
-
-  $LessonCopyWith<$Res> get lesson;
 }
 
 /// @nodoc
@@ -95,77 +90,46 @@ class __$GetLessonItemsCopyWithImpl<$Res>
 
   @override
   _GetLessonItems get _value => super._value as _GetLessonItems;
-
-  @override
-  $Res call({
-    Object lesson = freezed,
-  }) {
-    return _then(_GetLessonItems(
-      lesson == freezed ? _value.lesson : lesson as Lesson,
-    ));
-  }
-
-  @override
-  $LessonCopyWith<$Res> get lesson {
-    if (_value.lesson == null) {
-      return null;
-    }
-    return $LessonCopyWith<$Res>(_value.lesson, (value) {
-      return _then(_value.copyWith(lesson: value));
-    });
-  }
 }
 
 /// @nodoc
 class _$_GetLessonItems implements _GetLessonItems {
-  const _$_GetLessonItems(this.lesson) : assert(lesson != null);
-
-  @override
-  final Lesson lesson;
+  const _$_GetLessonItems();
 
   @override
   String toString() {
-    return 'LessonItemsEvent.getLessonItems(lesson: $lesson)';
+    return 'LessonItemsEvent.getLessonItems()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is _GetLessonItems &&
-            (identical(other.lesson, lesson) ||
-                const DeepCollectionEquality().equals(other.lesson, lesson)));
+    return identical(this, other) || (other is _GetLessonItems);
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(lesson);
-
-  @JsonKey(ignore: true)
-  @override
-  _$GetLessonItemsCopyWith<_GetLessonItems> get copyWith =>
-      __$GetLessonItemsCopyWithImpl<_GetLessonItems>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult getLessonItems(Lesson lesson),
+    @required TResult getLessonItems(),
     @required TResult setLessonItems(List<LessonItem> lessonItems),
   }) {
     assert(getLessonItems != null);
     assert(setLessonItems != null);
-    return getLessonItems(lesson);
+    return getLessonItems();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult getLessonItems(Lesson lesson),
+    TResult getLessonItems(),
     TResult setLessonItems(List<LessonItem> lessonItems),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (getLessonItems != null) {
-      return getLessonItems(lesson);
+      return getLessonItems();
     }
     return orElse();
   }
@@ -197,11 +161,7 @@ class _$_GetLessonItems implements _GetLessonItems {
 }
 
 abstract class _GetLessonItems implements LessonItemsEvent {
-  const factory _GetLessonItems(Lesson lesson) = _$_GetLessonItems;
-
-  Lesson get lesson;
-  @JsonKey(ignore: true)
-  _$GetLessonItemsCopyWith<_GetLessonItems> get copyWith;
+  const factory _GetLessonItems() = _$_GetLessonItems;
 }
 
 /// @nodoc
@@ -268,7 +228,7 @@ class _$_SetLessonItems implements _SetLessonItems {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult getLessonItems(Lesson lesson),
+    @required TResult getLessonItems(),
     @required TResult setLessonItems(List<LessonItem> lessonItems),
   }) {
     assert(getLessonItems != null);
@@ -279,7 +239,7 @@ class _$_SetLessonItems implements _SetLessonItems {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult getLessonItems(Lesson lesson),
+    TResult getLessonItems(),
     TResult setLessonItems(List<LessonItem> lessonItems),
     @required TResult orElse(),
   }) {

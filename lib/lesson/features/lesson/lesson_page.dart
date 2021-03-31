@@ -32,7 +32,7 @@ class _LessonPageState extends State<LessonPage> {
   @override
   void didChangeDependencies() {
     BlocProvider.of<LessonItemsBloc>(context).add(
-      LessonItemsEvent.getLessonItems(widget.lesson),
+      LessonItemsEvent.getLessonItems(),
     );
     super.didChangeDependencies();
   }

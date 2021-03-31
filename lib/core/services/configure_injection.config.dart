@@ -52,7 +52,8 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
   gh.lazySingleton<_i14.LessonItemsBloc>(() => _i14.LessonItemsBloc(
       get<_i8.LessonRepository>(),
       get<_i7.LearningRepository>(),
-      get<_i9.UserBloc>()));
+      get<_i9.UserBloc>(),
+      get<_i12.LessonBloc>()));
   gh.lazySingleton<_i15.LessonsBloc>(() => _i15.LessonsBloc(
       get<_i8.LessonRepository>(),
       get<_i7.LearningRepository>(),

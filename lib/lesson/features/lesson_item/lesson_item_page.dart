@@ -63,14 +63,7 @@ class _LessonItemPageState extends State<LessonItemPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: BlocBuilder<LessonBloc, LessonState>(
-          builder: (context, state) {
-            return state.maybeWhen(
-              success: (lesson) => Text(lesson.title),
-              orElse: () => Container(),
-            );
-          },
-        ),
+        title: _buildAppBarTitle(),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,6 +86,17 @@ class _LessonItemPageState extends State<LessonItemPage> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildAppBarTitle() {
+    return BlocBuilder<LessonBloc, LessonState>(
+      builder: (context, state) {
+        return state.maybeWhen(
+          success: (lesson) => Text(lesson.title),
+          orElse: () => Container(),
+        );
+      },
     );
   }
 }
@@ -163,9 +167,7 @@ class _OtherLessonItems extends StatelessWidget {
     );
 
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(
-        builder: (_) => LessonItemPage(),
-      ),
+      MaterialPageRoute(builder: (_) => LessonItemPage()),
     );
   }
 }

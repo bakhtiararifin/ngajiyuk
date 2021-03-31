@@ -85,9 +85,7 @@ class _Lesson extends StatelessWidget {
     );
 
     Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (_) => LessonPage(lesson),
-      ),
+      MaterialPageRoute(builder: (_) => LessonPage()),
     );
   }
 }

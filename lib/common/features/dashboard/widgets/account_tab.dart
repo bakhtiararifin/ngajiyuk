@@ -9,15 +9,41 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ngajiyuk/core/theme/app_colors.dart';
 import 'package:ngajiyuk/core/theme/app_sizes.dart';
 import 'package:ngajiyuk/core/theme/app_typography.dart';
+import 'package:package_info/package_info.dart';
 
-class AccountTab extends StatelessWidget {
+class AccountTab extends StatefulWidget {
+  @override
+  _AccountTabState createState() => _AccountTabState();
+}
+
+class _AccountTabState extends State<AccountTab> {
+  PackageInfo _packageInfo = PackageInfo(
+    appName: 'Unknown',
+    packageName: 'Unknown',
+    version: 'Unknown',
+    buildNumber: 'Unknown',
+  );
+
+  @override
+  void initState() {
+    super.initState();
+    _initPackageInfo();
+  }
+
+  Future<void> _initPackageInfo() async {
+    final PackageInfo info = await PackageInfo.fromPlatform();
+    setState(() {
+      _packageInfo = info;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<UserBloc, UserState>(
       builder: (context, state) {
         return state.maybeWhen(
-          success: (User user) => _LoggedInAccount(),
-          orElse: () => _NotLoggedInUser(),
+          success: (User user) => _LoggedInAccount(packageInfo: _packageInfo),
+          orElse: () => _NotLoggedInUser(packageInfo: _packageInfo),
         );
       },
     );
@@ -25,6 +51,10 @@ class AccountTab extends StatelessWidget {
 }
 
 class _NotLoggedInUser extends StatelessWidget {
+  final PackageInfo packageInfo;
+
+  const _NotLoggedInUser({Key key, this.packageInfo}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -57,6 +87,12 @@ class _NotLoggedInUser extends StatelessWidget {
               onPressed: () => _gotoLogin(context),
             ),
           ),
+          SizedBox(height: AppSizes.paddingLarge),
+          Text(
+            'ngajiyuk v${packageInfo.version}',
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.overline,
+          ),
         ],
       ),
     );
@@ -77,8 +113,11 @@ class _NotLoggedInUser extends StatelessWidget {
 }
 
 class _LoggedInAccount extends StatelessWidget {
+  final PackageInfo packageInfo;
+
   const _LoggedInAccount({
     Key key,
+    this.packageInfo,
   }) : super(key: key);
 
   @override
@@ -91,7 +130,7 @@ class _LoggedInAccount extends StatelessWidget {
         _LogoutButton(),
         SizedBox(height: AppSizes.paddingLarge),
         Text(
-          'ngajiyuk v1.0.1',
+          'ngajiyuk v${packageInfo.version}',
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.overline,
         ),

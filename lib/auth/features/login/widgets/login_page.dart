@@ -46,6 +46,7 @@ class LoginPage extends StatelessWidget {
               listener: (context, state) {
                 state.maybeWhen(
                   success: () => _gotoHomePage(context),
+                  error: () => _showError(context),
                   orElse: () {},
                 );
               },
@@ -92,5 +93,12 @@ class LoginPage extends StatelessWidget {
 
   void _login(BuildContext context) async {
     BlocProvider.of<LoginBloc>(context).add(LoginEvent.login());
+  }
+
+  void _showError(BuildContext context) {
+    Scaffold.of(context).showSnackBar(SnackBar(
+      backgroundColor: Theme.of(context).errorColor,
+      content: Text('Login gagal. Silahkan coba beberapa saat lagi.'),
+    ));
   }
 }

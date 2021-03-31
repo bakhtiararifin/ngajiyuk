@@ -25,10 +25,14 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       login: () async* {
         yield LoginState.loading();
 
-        final user = await _authService.loginWithGoogle();
-        _userBloc.add(UserEvent.setUser(user));
+        try {
+          final user = await _authService.loginWithGoogle();
+          _userBloc.add(UserEvent.setUser(user));
 
-        yield LoginState.success();
+          yield LoginState.success();
+        } catch (e) {
+          yield LoginState.error();
+        }
       },
     );
   }

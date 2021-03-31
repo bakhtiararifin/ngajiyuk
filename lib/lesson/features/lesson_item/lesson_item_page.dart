@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ngajiyuk/core/services/configure_injection.dart';
+import 'package:ngajiyuk/core/theme/app_colors.dart';
 import 'package:ngajiyuk/core/theme/app_typography.dart';
 import 'package:ngajiyuk/core/theme/app_sizes.dart';
 import 'package:ngajiyuk/lesson/blocs/lesson_item/lesson_item_bloc.dart';
@@ -96,13 +97,19 @@ class _LessonItemPageState extends State<LessonItemPage> {
                       itemCount: otherLessonItems.length,
                       itemBuilder: (context, index) {
                         final LessonItem lessonItem = otherLessonItems[index];
-                        return ListTile(
-                          leading: Image(
-                            image: NetworkImage(lessonItem.thumbnailUrl),
+
+                        return Container(
+                          color: lessonItem.watched
+                              ? AppColors.grey.withAlpha(80)
+                              : Colors.transparent,
+                          child: ListTile(
+                            contentPadding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+                            leading: Image(
+                              image: NetworkImage(lessonItem.thumbnailUrl),
+                            ),
+                            title: Text(lessonItem.title ?? ''),
+                            onTap: () => _gotoLessonItemPage(lessonItem),
                           ),
-                          title: Text(lessonItem.title ?? ''),
-                          onTap: () => _gotoLessonItemPage(lessonItem),
-                          contentPadding: EdgeInsets.fromLTRB(16, 0, 16, 16),
                         );
                       },
                     );

@@ -12,7 +12,6 @@ _$_LearningItem _$_$_LearningItemFromJson(Map<String, dynamic> json) {
     lessonItemId: json['lessonItemId'] as String,
     lessonItemTitle: json['lessonItemTitle'] as String,
     youtubeId: json['youtubeId'] as String,
-    watchCount: json['watchCount'] as int,
   );
 }
 
@@ -22,5 +21,4 @@ Map<String, dynamic> _$_$_LearningItemToJson(_$_LearningItem instance) =>
       'lessonItemId': instance.lessonItemId,
       'lessonItemTitle': instance.lessonItemTitle,
       'youtubeId': instance.youtubeId,
-      'watchCount': instance.watchCount,
     };

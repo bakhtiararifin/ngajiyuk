@@ -10,7 +10,6 @@ abstract class LearningItem with _$LearningItem {
     String lessonItemId,
     String lessonItemTitle,
     String youtubeId,
-    int watchCount,
   }) = _LearningItem;
 
   factory LearningItem.fromJson(Map<String, dynamic> json) =>

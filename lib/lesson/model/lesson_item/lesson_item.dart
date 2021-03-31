@@ -9,6 +9,7 @@ abstract class LessonItem with _$LessonItem {
     String id,
     String title,
     String youtubeId,
+    @Default(false) bool watched,
   }) = _LessonItem;
 
   factory LessonItem.fromJson(Map<String, dynamic> json) =>

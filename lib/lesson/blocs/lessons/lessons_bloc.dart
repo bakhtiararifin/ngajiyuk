@@ -20,7 +20,8 @@ class LessonsBloc extends Bloc<LessonsEvent, LessonsState> {
   final LessonRepository _lessonRepository;
   final LearningRepository _learningRepository;
   final UserBloc _userBloc;
-  StreamSubscription _lessonListener;
+
+  StreamSubscription _lessonsListener;
 
   LessonsBloc(
     this._lessonRepository,
@@ -50,30 +51,44 @@ class LessonsBloc extends Bloc<LessonsEvent, LessonsState> {
       orElse: () => null,
     );
 
-    final lessonsStream = _lessonRepository.getLessons();
-    final learningsStream = _learningRepository.getUserLearning(user);
+    if (user == null) {
+      final lessonsStream = _lessonRepository.getLessons();
 
-    _lessonListener = Rx.combineLatest2(
-      lessonsStream,
-      learningsStream,
-      (List<Lesson> rawLessons, List<Learning> learnings) {
-        final List<Lesson> lessons = rawLessons.map((Lesson lesson) {
-          final learning = learnings.firstWhere(
-            (learning) => learning.lessonId == lesson.id,
-            orElse: () => null,
-          );
+      _lessonsListener?.cancel();
 
-          return lesson.copyWith(watched: learning != null);
-        }).toList();
+      _lessonsListener = lessonsStream.listen(
+        (List<Lesson> lessons) => add(LessonsEvent.setLessons(lessons)),
+      );
+    } else {
+      final lessonsStream = _lessonRepository.getLessons();
+      final learningsStream = _learningRepository.getUserLearning(user);
 
-        return lessons;
-      },
-    ).listen((List<Lesson> lessons) => add(LessonsEvent.setLessons(lessons)));
+      _lessonsListener?.cancel();
+
+      _lessonsListener = Rx.combineLatest2(
+        lessonsStream,
+        learningsStream,
+        (List<Lesson> rawLessons, List<Learning> learnings) {
+          final List<Lesson> lessons = rawLessons.map((Lesson lesson) {
+            final learning = learnings.firstWhere(
+              (learning) => learning.lessonId == lesson.id,
+              orElse: () => null,
+            );
+
+            return lesson.copyWith(watched: learning != null);
+          }).toList();
+
+          return lessons;
+        },
+      ).listen(
+        (List<Lesson> lessons) => add(LessonsEvent.setLessons(lessons)),
+      );
+    }
   }
 
   @override
   Future<void> close() {
-    _lessonListener.cancel();
+    _lessonsListener.cancel();
     return super.close();
   }
 }

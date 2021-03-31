@@ -34,7 +34,7 @@ class LessonItemBloc extends Bloc<LessonItemEvent, LessonItemState> {
   Stream<LessonItemState> _setLessonItem(LessonItem lessonItem) async* {
     _lessonBloc.state.maybeWhen(
       success: (Lesson lesson) {
-        _learningRepository.saveLearningItem(lesson, lessonItem, 1);
+        _learningRepository.saveLearningItem(lesson, lessonItem);
       },
       orElse: () {},
     );

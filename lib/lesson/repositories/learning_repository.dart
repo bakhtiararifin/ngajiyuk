@@ -33,12 +33,11 @@ class LearningRepository {
     });
   }
 
-  Stream<List<LearningItem>> getLearningItems(Learning learning) {
+  Stream<List<LearningItem>> getLearningItems(Lesson lesson) {
     final learningItemsStream = _firestore
         .collection('learnings')
-        .doc(learning.id)
+        .doc(lesson.id)
         .collection('learningItems')
-        .orderBy('title', descending: false)
         .snapshots();
 
     return learningItemsStream.map((QuerySnapshot snapshot) {
@@ -52,7 +51,6 @@ class LearningRepository {
           lessonItemId: data['lessonItemId'],
           lessonItemTitle: data['lessonItemTitle'],
           youtubeId: data['youtubeId'],
-          watchCount: data['watchCount'],
         ));
       }
 
@@ -82,14 +80,12 @@ class LearningRepository {
   Future<void> saveLearningItem(
     Lesson lesson,
     LessonItem lessonItem,
-    int watchCount,
   ) async {
     final learningItem = LearningItem(
       id: lessonItem.id,
       lessonItemId: lessonItem.id,
       lessonItemTitle: lessonItem.title,
       youtubeId: lessonItem.youtubeId,
-      watchCount: watchCount,
     );
 
     final json = learningItem.toJson();

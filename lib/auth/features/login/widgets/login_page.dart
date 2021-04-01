@@ -63,7 +63,7 @@ class LoginPage extends StatelessWidget {
                     return SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        child: Text('Masuk dengan Google'),
+                        child: Text('Login dengan Google'),
                         onPressed: () => _login(context),
                       ),
                     );

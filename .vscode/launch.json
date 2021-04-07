@@ -5,12 +5,21 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "ngajiyuk",
+      "name": "ngajiyuk dev",
       "request": "launch",
       "type": "dart",
       "args": [
         "--flavor",
         "dev"
+      ]
+    },
+    {
+      "name": "ngajiyuk prod",
+      "request": "launch",
+      "type": "dart",
+      "args": [
+        "--flavor",
+        "prod"
       ]
     }
   ]

@@ -107,7 +107,7 @@ class LoginPage extends StatelessWidget {
   }
 
   void _showError(BuildContext context) {
-    Scaffold.of(context).showSnackBar(SnackBar(
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       backgroundColor: Theme.of(context).errorColor,
       content: Text('Login gagal. Silahkan coba beberapa saat lagi.'),
     ));

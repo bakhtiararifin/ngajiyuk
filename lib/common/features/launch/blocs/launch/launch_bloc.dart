@@ -28,7 +28,7 @@ class LaunchBloc extends Bloc<LaunchEvent, LaunchState> {
         yield LaunchState.loading();
 
         await Future.delayed(Duration(seconds: 3));
-        final User user = _authService.getCurrentUser();
+        final User? user = _authService.getCurrentUser();
 
         if (user != null) {
           _userBloc.add(UserEvent.setUser(user));

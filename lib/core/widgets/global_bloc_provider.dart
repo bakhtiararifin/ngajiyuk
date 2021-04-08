@@ -11,8 +11,8 @@ class GlobalBlocProvider extends StatelessWidget {
   final Widget child;
 
   const GlobalBlocProvider({
-    Key key,
-    @required this.child,
+    Key? key,
+    required this.child,
   }) : super(key: key);
 
   @override

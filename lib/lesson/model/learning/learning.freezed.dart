@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'learning.dart';
 
@@ -8,6 +8,10 @@ part of 'learning.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 Learning _$LearningFromJson(Map<String, dynamic> json) {
   return _Learning.fromJson(json);
 }
@@ -16,14 +20,13 @@ Learning _$LearningFromJson(Map<String, dynamic> json) {
 class _$LearningTearOff {
   const _$LearningTearOff();
 
-// ignore: unused_element
   _Learning call(
-      {String id,
-      String userId,
-      String userName,
-      String userEmail,
-      String lessonId,
-      String lessonTitle}) {
+      {String? id,
+      String? userId,
+      String? userName,
+      String? userEmail,
+      String? lessonId,
+      String? lessonTitle}) {
     return _Learning(
       id: id,
       userId: userId,
@@ -34,28 +37,27 @@ class _$LearningTearOff {
     );
   }
 
-// ignore: unused_element
   Learning fromJson(Map<String, Object> json) {
     return Learning.fromJson(json);
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $Learning = _$LearningTearOff();
 
 /// @nodoc
 mixin _$Learning {
-  String get id;
-  String get userId;
-  String get userName;
-  String get userEmail;
-  String get lessonId;
-  String get lessonTitle;
+  String? get id => throw _privateConstructorUsedError;
+  String? get userId => throw _privateConstructorUsedError;
+  String? get userName => throw _privateConstructorUsedError;
+  String? get userEmail => throw _privateConstructorUsedError;
+  String? get lessonId => throw _privateConstructorUsedError;
+  String? get lessonTitle => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson();
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $LearningCopyWith<Learning> get copyWith;
+  $LearningCopyWith<Learning> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -63,12 +65,12 @@ abstract class $LearningCopyWith<$Res> {
   factory $LearningCopyWith(Learning value, $Res Function(Learning) then) =
       _$LearningCopyWithImpl<$Res>;
   $Res call(
-      {String id,
-      String userId,
-      String userName,
-      String userEmail,
-      String lessonId,
-      String lessonTitle});
+      {String? id,
+      String? userId,
+      String? userName,
+      String? userEmail,
+      String? lessonId,
+      String? lessonTitle});
 }
 
 /// @nodoc
@@ -81,21 +83,38 @@ class _$LearningCopyWithImpl<$Res> implements $LearningCopyWith<$Res> {
 
   @override
   $Res call({
-    Object id = freezed,
-    Object userId = freezed,
-    Object userName = freezed,
-    Object userEmail = freezed,
-    Object lessonId = freezed,
-    Object lessonTitle = freezed,
+    Object? id = freezed,
+    Object? userId = freezed,
+    Object? userName = freezed,
+    Object? userEmail = freezed,
+    Object? lessonId = freezed,
+    Object? lessonTitle = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed ? _value.id : id as String,
-      userId: userId == freezed ? _value.userId : userId as String,
-      userName: userName == freezed ? _value.userName : userName as String,
-      userEmail: userEmail == freezed ? _value.userEmail : userEmail as String,
-      lessonId: lessonId == freezed ? _value.lessonId : lessonId as String,
-      lessonTitle:
-          lessonTitle == freezed ? _value.lessonTitle : lessonTitle as String,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userId: userId == freezed
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userName: userName == freezed
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userEmail: userEmail == freezed
+          ? _value.userEmail
+          : userEmail // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lessonId: lessonId == freezed
+          ? _value.lessonId
+          : lessonId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lessonTitle: lessonTitle == freezed
+          ? _value.lessonTitle
+          : lessonTitle // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -106,12 +125,12 @@ abstract class _$LearningCopyWith<$Res> implements $LearningCopyWith<$Res> {
       __$LearningCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String id,
-      String userId,
-      String userName,
-      String userEmail,
-      String lessonId,
-      String lessonTitle});
+      {String? id,
+      String? userId,
+      String? userName,
+      String? userEmail,
+      String? lessonId,
+      String? lessonTitle});
 }
 
 /// @nodoc
@@ -125,21 +144,38 @@ class __$LearningCopyWithImpl<$Res> extends _$LearningCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
-    Object userId = freezed,
-    Object userName = freezed,
-    Object userEmail = freezed,
-    Object lessonId = freezed,
-    Object lessonTitle = freezed,
+    Object? id = freezed,
+    Object? userId = freezed,
+    Object? userName = freezed,
+    Object? userEmail = freezed,
+    Object? lessonId = freezed,
+    Object? lessonTitle = freezed,
   }) {
     return _then(_Learning(
-      id: id == freezed ? _value.id : id as String,
-      userId: userId == freezed ? _value.userId : userId as String,
-      userName: userName == freezed ? _value.userName : userName as String,
-      userEmail: userEmail == freezed ? _value.userEmail : userEmail as String,
-      lessonId: lessonId == freezed ? _value.lessonId : lessonId as String,
-      lessonTitle:
-          lessonTitle == freezed ? _value.lessonTitle : lessonTitle as String,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userId: userId == freezed
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userName: userName == freezed
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userEmail: userEmail == freezed
+          ? _value.userEmail
+          : userEmail // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lessonId: lessonId == freezed
+          ? _value.lessonId
+          : lessonId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lessonTitle: lessonTitle == freezed
+          ? _value.lessonTitle
+          : lessonTitle // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -160,17 +196,17 @@ class _$_Learning implements _Learning {
       _$_$_LearningFromJson(json);
 
   @override
-  final String id;
+  final String? id;
   @override
-  final String userId;
+  final String? userId;
   @override
-  final String userName;
+  final String? userName;
   @override
-  final String userEmail;
+  final String? userEmail;
   @override
-  final String lessonId;
+  final String? lessonId;
   @override
-  final String lessonTitle;
+  final String? lessonTitle;
 
   @override
   String toString() {
@@ -222,28 +258,29 @@ class _$_Learning implements _Learning {
 
 abstract class _Learning implements Learning {
   factory _Learning(
-      {String id,
-      String userId,
-      String userName,
-      String userEmail,
-      String lessonId,
-      String lessonTitle}) = _$_Learning;
+      {String? id,
+      String? userId,
+      String? userName,
+      String? userEmail,
+      String? lessonId,
+      String? lessonTitle}) = _$_Learning;
 
   factory _Learning.fromJson(Map<String, dynamic> json) = _$_Learning.fromJson;
 
   @override
-  String get id;
+  String? get id => throw _privateConstructorUsedError;
   @override
-  String get userId;
+  String? get userId => throw _privateConstructorUsedError;
   @override
-  String get userName;
+  String? get userName => throw _privateConstructorUsedError;
   @override
-  String get userEmail;
+  String? get userEmail => throw _privateConstructorUsedError;
   @override
-  String get lessonId;
+  String? get lessonId => throw _privateConstructorUsedError;
   @override
-  String get lessonTitle;
+  String? get lessonTitle => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$LearningCopyWith<_Learning> get copyWith;
+  _$LearningCopyWith<_Learning> get copyWith =>
+      throw _privateConstructorUsedError;
 }

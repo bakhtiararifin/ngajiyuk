@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'user_bloc.dart';
 
@@ -9,51 +9,55 @@ part of 'user_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$UserEventTearOff {
   const _$UserEventTearOff();
 
-// ignore: unused_element
   _SetUser setUser(User user) {
     return _SetUser(
       user,
     );
   }
 
-// ignore: unused_element
   _ClearUser clearUser() {
     return const _ClearUser();
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $UserEvent = _$UserEventTearOff();
 
 /// @nodoc
 mixin _$UserEvent {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult setUser(User user),
-    @required TResult clearUser(),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function(User user) setUser,
+    required TResult Function() clearUser,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult setUser(User user),
-    TResult clearUser(),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(User user)? setUser,
+    TResult Function()? clearUser,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult setUser(_SetUser value),
-    @required TResult clearUser(_ClearUser value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SetUser value) setUser,
+    required TResult Function(_ClearUser value) clearUser,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult setUser(_SetUser value),
-    TResult clearUser(_ClearUser value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SetUser value)? setUser,
+    TResult Function(_ClearUser value)? clearUser,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -91,18 +95,18 @@ class __$SetUserCopyWithImpl<$Res> extends _$UserEventCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object user = freezed,
+    Object? user = freezed,
   }) {
     return _then(_SetUser(
-      user == freezed ? _value.user : user as User,
+      user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
     ));
   }
 
   @override
   $UserCopyWith<$Res> get user {
-    if (_value.user == null) {
-      return null;
-    }
     return $UserCopyWith<$Res>(_value.user, (value) {
       return _then(_value.copyWith(user: value));
     });
@@ -111,7 +115,7 @@ class __$SetUserCopyWithImpl<$Res> extends _$UserEventCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_SetUser implements _SetUser {
-  const _$_SetUser(this.user) : assert(user != null);
+  const _$_SetUser(this.user);
 
   @override
   final User user;
@@ -140,23 +144,20 @@ class _$_SetUser implements _SetUser {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult setUser(User user),
-    @required TResult clearUser(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(User user) setUser,
+    required TResult Function() clearUser,
   }) {
-    assert(setUser != null);
-    assert(clearUser != null);
     return setUser(user);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult setUser(User user),
-    TResult clearUser(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(User user)? setUser,
+    TResult Function()? clearUser,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (setUser != null) {
       return setUser(user);
     }
@@ -165,23 +166,20 @@ class _$_SetUser implements _SetUser {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult setUser(_SetUser value),
-    @required TResult clearUser(_ClearUser value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SetUser value) setUser,
+    required TResult Function(_ClearUser value) clearUser,
   }) {
-    assert(setUser != null);
-    assert(clearUser != null);
     return setUser(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult setUser(_SetUser value),
-    TResult clearUser(_ClearUser value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SetUser value)? setUser,
+    TResult Function(_ClearUser value)? clearUser,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (setUser != null) {
       return setUser(this);
     }
@@ -192,9 +190,10 @@ class _$_SetUser implements _SetUser {
 abstract class _SetUser implements UserEvent {
   const factory _SetUser(User user) = _$_SetUser;
 
-  User get user;
+  User get user => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$SetUserCopyWith<_SetUser> get copyWith;
+  _$SetUserCopyWith<_SetUser> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -233,23 +232,20 @@ class _$_ClearUser implements _ClearUser {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult setUser(User user),
-    @required TResult clearUser(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(User user) setUser,
+    required TResult Function() clearUser,
   }) {
-    assert(setUser != null);
-    assert(clearUser != null);
     return clearUser();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult setUser(User user),
-    TResult clearUser(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(User user)? setUser,
+    TResult Function()? clearUser,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (clearUser != null) {
       return clearUser();
     }
@@ -258,23 +254,20 @@ class _$_ClearUser implements _ClearUser {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult setUser(_SetUser value),
-    @required TResult clearUser(_ClearUser value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SetUser value) setUser,
+    required TResult Function(_ClearUser value) clearUser,
   }) {
-    assert(setUser != null);
-    assert(clearUser != null);
     return clearUser(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult setUser(_SetUser value),
-    TResult clearUser(_ClearUser value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SetUser value)? setUser,
+    TResult Function(_ClearUser value)? clearUser,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (clearUser != null) {
       return clearUser(this);
     }
@@ -290,74 +283,72 @@ abstract class _ClearUser implements UserEvent {
 class _$UserStateTearOff {
   const _$UserStateTearOff();
 
-// ignore: unused_element
   _Initial initial() {
     return const _Initial();
   }
 
-// ignore: unused_element
   _Loading loading() {
     return const _Loading();
   }
 
-// ignore: unused_element
   _Success success(User user) {
     return _Success(
       user,
     );
   }
 
-// ignore: unused_element
   _Cleared cleared() {
     return const _Cleared();
   }
 
-// ignore: unused_element
   _Error error() {
     return const _Error();
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $UserState = _$UserStateTearOff();
 
 /// @nodoc
 mixin _$UserState {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult loading(),
-    @required TResult success(User user),
-    @required TResult cleared(),
-    @required TResult error(),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(User user) success,
+    required TResult Function() cleared,
+    required TResult Function() error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult loading(),
-    TResult success(User user),
-    TResult cleared(),
-    TResult error(),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(User user)? success,
+    TResult Function()? cleared,
+    TResult Function()? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult loading(_Loading value),
-    @required TResult success(_Success value),
-    @required TResult cleared(_Cleared value),
-    @required TResult error(_Error value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Cleared value) cleared,
+    required TResult Function(_Error value) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult loading(_Loading value),
-    TResult success(_Success value),
-    TResult cleared(_Cleared value),
-    TResult error(_Error value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Cleared value)? cleared,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -410,32 +401,26 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult loading(),
-    @required TResult success(User user),
-    @required TResult cleared(),
-    @required TResult error(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(User user) success,
+    required TResult Function() cleared,
+    required TResult Function() error,
   }) {
-    assert(initial != null);
-    assert(loading != null);
-    assert(success != null);
-    assert(cleared != null);
-    assert(error != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult loading(),
-    TResult success(User user),
-    TResult cleared(),
-    TResult error(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(User user)? success,
+    TResult Function()? cleared,
+    TResult Function()? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -444,32 +429,26 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult loading(_Loading value),
-    @required TResult success(_Success value),
-    @required TResult cleared(_Cleared value),
-    @required TResult error(_Error value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Cleared value) cleared,
+    required TResult Function(_Error value) error,
   }) {
-    assert(initial != null);
-    assert(loading != null);
-    assert(success != null);
-    assert(cleared != null);
-    assert(error != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult loading(_Loading value),
-    TResult success(_Success value),
-    TResult cleared(_Cleared value),
-    TResult error(_Error value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Cleared value)? cleared,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -516,32 +495,26 @@ class _$_Loading implements _Loading {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult loading(),
-    @required TResult success(User user),
-    @required TResult cleared(),
-    @required TResult error(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(User user) success,
+    required TResult Function() cleared,
+    required TResult Function() error,
   }) {
-    assert(initial != null);
-    assert(loading != null);
-    assert(success != null);
-    assert(cleared != null);
-    assert(error != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult loading(),
-    TResult success(User user),
-    TResult cleared(),
-    TResult error(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(User user)? success,
+    TResult Function()? cleared,
+    TResult Function()? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -550,32 +523,26 @@ class _$_Loading implements _Loading {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult loading(_Loading value),
-    @required TResult success(_Success value),
-    @required TResult cleared(_Cleared value),
-    @required TResult error(_Error value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Cleared value) cleared,
+    required TResult Function(_Error value) error,
   }) {
-    assert(initial != null);
-    assert(loading != null);
-    assert(success != null);
-    assert(cleared != null);
-    assert(error != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult loading(_Loading value),
-    TResult success(_Success value),
-    TResult cleared(_Cleared value),
-    TResult error(_Error value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Cleared value)? cleared,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }
@@ -607,18 +574,18 @@ class __$SuccessCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object user = freezed,
+    Object? user = freezed,
   }) {
     return _then(_Success(
-      user == freezed ? _value.user : user as User,
+      user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
     ));
   }
 
   @override
   $UserCopyWith<$Res> get user {
-    if (_value.user == null) {
-      return null;
-    }
     return $UserCopyWith<$Res>(_value.user, (value) {
       return _then(_value.copyWith(user: value));
     });
@@ -627,7 +594,7 @@ class __$SuccessCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_Success implements _Success {
-  const _$_Success(this.user) : assert(user != null);
+  const _$_Success(this.user);
 
   @override
   final User user;
@@ -656,32 +623,26 @@ class _$_Success implements _Success {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult loading(),
-    @required TResult success(User user),
-    @required TResult cleared(),
-    @required TResult error(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(User user) success,
+    required TResult Function() cleared,
+    required TResult Function() error,
   }) {
-    assert(initial != null);
-    assert(loading != null);
-    assert(success != null);
-    assert(cleared != null);
-    assert(error != null);
     return success(user);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult loading(),
-    TResult success(User user),
-    TResult cleared(),
-    TResult error(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(User user)? success,
+    TResult Function()? cleared,
+    TResult Function()? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (success != null) {
       return success(user);
     }
@@ -690,32 +651,26 @@ class _$_Success implements _Success {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult loading(_Loading value),
-    @required TResult success(_Success value),
-    @required TResult cleared(_Cleared value),
-    @required TResult error(_Error value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Cleared value) cleared,
+    required TResult Function(_Error value) error,
   }) {
-    assert(initial != null);
-    assert(loading != null);
-    assert(success != null);
-    assert(cleared != null);
-    assert(error != null);
     return success(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult loading(_Loading value),
-    TResult success(_Success value),
-    TResult cleared(_Cleared value),
-    TResult error(_Error value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Cleared value)? cleared,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (success != null) {
       return success(this);
     }
@@ -726,9 +681,10 @@ class _$_Success implements _Success {
 abstract class _Success implements UserState {
   const factory _Success(User user) = _$_Success;
 
-  User get user;
+  User get user => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$SuccessCopyWith<_Success> get copyWith;
+  _$SuccessCopyWith<_Success> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -766,32 +722,26 @@ class _$_Cleared implements _Cleared {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult loading(),
-    @required TResult success(User user),
-    @required TResult cleared(),
-    @required TResult error(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(User user) success,
+    required TResult Function() cleared,
+    required TResult Function() error,
   }) {
-    assert(initial != null);
-    assert(loading != null);
-    assert(success != null);
-    assert(cleared != null);
-    assert(error != null);
     return cleared();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult loading(),
-    TResult success(User user),
-    TResult cleared(),
-    TResult error(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(User user)? success,
+    TResult Function()? cleared,
+    TResult Function()? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (cleared != null) {
       return cleared();
     }
@@ -800,32 +750,26 @@ class _$_Cleared implements _Cleared {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult loading(_Loading value),
-    @required TResult success(_Success value),
-    @required TResult cleared(_Cleared value),
-    @required TResult error(_Error value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Cleared value) cleared,
+    required TResult Function(_Error value) error,
   }) {
-    assert(initial != null);
-    assert(loading != null);
-    assert(success != null);
-    assert(cleared != null);
-    assert(error != null);
     return cleared(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult loading(_Loading value),
-    TResult success(_Success value),
-    TResult cleared(_Cleared value),
-    TResult error(_Error value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Cleared value)? cleared,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (cleared != null) {
       return cleared(this);
     }
@@ -872,32 +816,26 @@ class _$_Error implements _Error {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult loading(),
-    @required TResult success(User user),
-    @required TResult cleared(),
-    @required TResult error(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(User user) success,
+    required TResult Function() cleared,
+    required TResult Function() error,
   }) {
-    assert(initial != null);
-    assert(loading != null);
-    assert(success != null);
-    assert(cleared != null);
-    assert(error != null);
     return error();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult loading(),
-    TResult success(User user),
-    TResult cleared(),
-    TResult error(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(User user)? success,
+    TResult Function()? cleared,
+    TResult Function()? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error();
     }
@@ -906,32 +844,26 @@ class _$_Error implements _Error {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult loading(_Loading value),
-    @required TResult success(_Success value),
-    @required TResult cleared(_Cleared value),
-    @required TResult error(_Error value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Cleared value) cleared,
+    required TResult Function(_Error value) error,
   }) {
-    assert(initial != null);
-    assert(loading != null);
-    assert(success != null);
-    assert(cleared != null);
-    assert(error != null);
     return error(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult loading(_Loading value),
-    TResult success(_Success value),
-    TResult cleared(_Cleared value),
-    TResult error(_Error value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Cleared value)? cleared,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this);
     }

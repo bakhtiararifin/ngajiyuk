@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'lessons_bloc.dart';
 
@@ -9,16 +9,17 @@ part of 'lessons_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$LessonsEventTearOff {
   const _$LessonsEventTearOff();
 
-// ignore: unused_element
   _SetLessons getLessons() {
     return const _SetLessons();
   }
 
-// ignore: unused_element
   _GetLessons setLessons(List<Lesson> lessons) {
     return _GetLessons(
       lessons,
@@ -27,33 +28,36 @@ class _$LessonsEventTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $LessonsEvent = _$LessonsEventTearOff();
 
 /// @nodoc
 mixin _$LessonsEvent {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult getLessons(),
-    @required TResult setLessons(List<Lesson> lessons),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function() getLessons,
+    required TResult Function(List<Lesson> lessons) setLessons,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult getLessons(),
-    TResult setLessons(List<Lesson> lessons),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getLessons,
+    TResult Function(List<Lesson> lessons)? setLessons,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult getLessons(_SetLessons value),
-    @required TResult setLessons(_GetLessons value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SetLessons value) getLessons,
+    required TResult Function(_GetLessons value) setLessons,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult getLessons(_SetLessons value),
-    TResult setLessons(_GetLessons value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SetLessons value)? getLessons,
+    TResult Function(_GetLessons value)? setLessons,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -109,23 +113,20 @@ class _$_SetLessons implements _SetLessons {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult getLessons(),
-    @required TResult setLessons(List<Lesson> lessons),
+  TResult when<TResult extends Object?>({
+    required TResult Function() getLessons,
+    required TResult Function(List<Lesson> lessons) setLessons,
   }) {
-    assert(getLessons != null);
-    assert(setLessons != null);
     return getLessons();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult getLessons(),
-    TResult setLessons(List<Lesson> lessons),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getLessons,
+    TResult Function(List<Lesson> lessons)? setLessons,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (getLessons != null) {
       return getLessons();
     }
@@ -134,23 +135,20 @@ class _$_SetLessons implements _SetLessons {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult getLessons(_SetLessons value),
-    @required TResult setLessons(_GetLessons value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SetLessons value) getLessons,
+    required TResult Function(_GetLessons value) setLessons,
   }) {
-    assert(getLessons != null);
-    assert(setLessons != null);
     return getLessons(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult getLessons(_SetLessons value),
-    TResult setLessons(_GetLessons value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SetLessons value)? getLessons,
+    TResult Function(_GetLessons value)? setLessons,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (getLessons != null) {
       return getLessons(this);
     }
@@ -182,17 +180,20 @@ class __$GetLessonsCopyWithImpl<$Res> extends _$LessonsEventCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object lessons = freezed,
+    Object? lessons = freezed,
   }) {
     return _then(_GetLessons(
-      lessons == freezed ? _value.lessons : lessons as List<Lesson>,
+      lessons == freezed
+          ? _value.lessons
+          : lessons // ignore: cast_nullable_to_non_nullable
+              as List<Lesson>,
     ));
   }
 }
 
 /// @nodoc
 class _$_GetLessons implements _GetLessons {
-  const _$_GetLessons(this.lessons) : assert(lessons != null);
+  const _$_GetLessons(this.lessons);
 
   @override
   final List<Lesson> lessons;
@@ -221,23 +222,20 @@ class _$_GetLessons implements _GetLessons {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult getLessons(),
-    @required TResult setLessons(List<Lesson> lessons),
+  TResult when<TResult extends Object?>({
+    required TResult Function() getLessons,
+    required TResult Function(List<Lesson> lessons) setLessons,
   }) {
-    assert(getLessons != null);
-    assert(setLessons != null);
     return setLessons(lessons);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult getLessons(),
-    TResult setLessons(List<Lesson> lessons),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getLessons,
+    TResult Function(List<Lesson> lessons)? setLessons,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (setLessons != null) {
       return setLessons(lessons);
     }
@@ -246,23 +244,20 @@ class _$_GetLessons implements _GetLessons {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult getLessons(_SetLessons value),
-    @required TResult setLessons(_GetLessons value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SetLessons value) getLessons,
+    required TResult Function(_GetLessons value) setLessons,
   }) {
-    assert(getLessons != null);
-    assert(setLessons != null);
     return setLessons(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult getLessons(_SetLessons value),
-    TResult setLessons(_GetLessons value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SetLessons value)? getLessons,
+    TResult Function(_GetLessons value)? setLessons,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (setLessons != null) {
       return setLessons(this);
     }
@@ -273,74 +268,74 @@ class _$_GetLessons implements _GetLessons {
 abstract class _GetLessons implements LessonsEvent {
   const factory _GetLessons(List<Lesson> lessons) = _$_GetLessons;
 
-  List<Lesson> get lessons;
+  List<Lesson> get lessons => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$GetLessonsCopyWith<_GetLessons> get copyWith;
+  _$GetLessonsCopyWith<_GetLessons> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 class _$LessonsStateTearOff {
   const _$LessonsStateTearOff();
 
-// ignore: unused_element
   _Initial initial() {
     return const _Initial();
   }
 
-// ignore: unused_element
   _Loading loading() {
     return const _Loading();
   }
 
-// ignore: unused_element
   _Success success(List<Lesson> lessons) {
     return _Success(
       lessons,
     );
   }
 
-// ignore: unused_element
   _Error error() {
     return const _Error();
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $LessonsState = _$LessonsStateTearOff();
 
 /// @nodoc
 mixin _$LessonsState {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult loading(),
-    @required TResult success(List<Lesson> lessons),
-    @required TResult error(),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Lesson> lessons) success,
+    required TResult Function() error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult loading(),
-    TResult success(List<Lesson> lessons),
-    TResult error(),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Lesson> lessons)? success,
+    TResult Function()? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult loading(_Loading value),
-    @required TResult success(_Success value),
-    @required TResult error(_Error value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult loading(_Loading value),
-    TResult success(_Success value),
-    TResult error(_Error value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -394,29 +389,24 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult loading(),
-    @required TResult success(List<Lesson> lessons),
-    @required TResult error(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Lesson> lessons) success,
+    required TResult Function() error,
   }) {
-    assert(initial != null);
-    assert(loading != null);
-    assert(success != null);
-    assert(error != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult loading(),
-    TResult success(List<Lesson> lessons),
-    TResult error(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Lesson> lessons)? success,
+    TResult Function()? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -425,29 +415,24 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult loading(_Loading value),
-    @required TResult success(_Success value),
-    @required TResult error(_Error value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
   }) {
-    assert(initial != null);
-    assert(loading != null);
-    assert(success != null);
-    assert(error != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult loading(_Loading value),
-    TResult success(_Success value),
-    TResult error(_Error value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -494,29 +479,24 @@ class _$_Loading implements _Loading {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult loading(),
-    @required TResult success(List<Lesson> lessons),
-    @required TResult error(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Lesson> lessons) success,
+    required TResult Function() error,
   }) {
-    assert(initial != null);
-    assert(loading != null);
-    assert(success != null);
-    assert(error != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult loading(),
-    TResult success(List<Lesson> lessons),
-    TResult error(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Lesson> lessons)? success,
+    TResult Function()? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -525,29 +505,24 @@ class _$_Loading implements _Loading {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult loading(_Loading value),
-    @required TResult success(_Success value),
-    @required TResult error(_Error value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
   }) {
-    assert(initial != null);
-    assert(loading != null);
-    assert(success != null);
-    assert(error != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult loading(_Loading value),
-    TResult success(_Success value),
-    TResult error(_Error value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }
@@ -577,17 +552,20 @@ class __$SuccessCopyWithImpl<$Res> extends _$LessonsStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object lessons = freezed,
+    Object? lessons = freezed,
   }) {
     return _then(_Success(
-      lessons == freezed ? _value.lessons : lessons as List<Lesson>,
+      lessons == freezed
+          ? _value.lessons
+          : lessons // ignore: cast_nullable_to_non_nullable
+              as List<Lesson>,
     ));
   }
 }
 
 /// @nodoc
 class _$_Success implements _Success {
-  const _$_Success(this.lessons) : assert(lessons != null);
+  const _$_Success(this.lessons);
 
   @override
   final List<Lesson> lessons;
@@ -616,29 +594,24 @@ class _$_Success implements _Success {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult loading(),
-    @required TResult success(List<Lesson> lessons),
-    @required TResult error(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Lesson> lessons) success,
+    required TResult Function() error,
   }) {
-    assert(initial != null);
-    assert(loading != null);
-    assert(success != null);
-    assert(error != null);
     return success(lessons);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult loading(),
-    TResult success(List<Lesson> lessons),
-    TResult error(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Lesson> lessons)? success,
+    TResult Function()? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (success != null) {
       return success(lessons);
     }
@@ -647,29 +620,24 @@ class _$_Success implements _Success {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult loading(_Loading value),
-    @required TResult success(_Success value),
-    @required TResult error(_Error value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
   }) {
-    assert(initial != null);
-    assert(loading != null);
-    assert(success != null);
-    assert(error != null);
     return success(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult loading(_Loading value),
-    TResult success(_Success value),
-    TResult error(_Error value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (success != null) {
       return success(this);
     }
@@ -680,9 +648,10 @@ class _$_Success implements _Success {
 abstract class _Success implements LessonsState {
   const factory _Success(List<Lesson> lessons) = _$_Success;
 
-  List<Lesson> get lessons;
+  List<Lesson> get lessons => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$SuccessCopyWith<_Success> get copyWith;
+  _$SuccessCopyWith<_Success> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -720,29 +689,24 @@ class _$_Error implements _Error {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult loading(),
-    @required TResult success(List<Lesson> lessons),
-    @required TResult error(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Lesson> lessons) success,
+    required TResult Function() error,
   }) {
-    assert(initial != null);
-    assert(loading != null);
-    assert(success != null);
-    assert(error != null);
     return error();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult loading(),
-    TResult success(List<Lesson> lessons),
-    TResult error(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Lesson> lessons)? success,
+    TResult Function()? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error();
     }
@@ -751,29 +715,24 @@ class _$_Error implements _Error {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult loading(_Loading value),
-    @required TResult success(_Success value),
-    @required TResult error(_Error value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
   }) {
-    assert(initial != null);
-    assert(loading != null);
-    assert(success != null);
-    assert(error != null);
     return error(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult loading(_Loading value),
-    TResult success(_Success value),
-    TResult error(_Error value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this);
     }

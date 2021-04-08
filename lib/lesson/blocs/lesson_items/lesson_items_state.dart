@@ -1,7 +1,7 @@
 part of 'lesson_items_bloc.dart';
 
 @freezed
-abstract class LessonItemsState with _$LessonItemsState {
+class LessonItemsState with _$LessonItemsState {
   const factory LessonItemsState.initial() = _Initial;
   const factory LessonItemsState.loading() = _Loading;
   const factory LessonItemsState.success(

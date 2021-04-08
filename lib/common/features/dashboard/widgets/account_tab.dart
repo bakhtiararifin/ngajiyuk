@@ -53,7 +53,10 @@ class _AccountTabState extends State<AccountTab> {
 class _NotLoggedInUser extends StatelessWidget {
   final PackageInfo packageInfo;
 
-  const _NotLoggedInUser({Key key, this.packageInfo}) : super(key: key);
+  const _NotLoggedInUser({
+    Key? key,
+    required this.packageInfo,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -116,8 +119,8 @@ class _LoggedInAccount extends StatelessWidget {
   final PackageInfo packageInfo;
 
   const _LoggedInAccount({
-    Key key,
-    this.packageInfo,
+    Key? key,
+    required this.packageInfo,
   }) : super(key: key);
 
   @override
@@ -141,9 +144,7 @@ class _LoggedInAccount extends StatelessWidget {
 }
 
 class _UserProfile extends StatelessWidget {
-  const _UserProfile({
-    Key key,
-  }) : super(key: key);
+  const _UserProfile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

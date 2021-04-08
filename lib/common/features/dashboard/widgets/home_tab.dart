@@ -34,7 +34,7 @@ class _Lesson extends StatelessWidget {
 
   const _Lesson(
     this.lesson, {
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

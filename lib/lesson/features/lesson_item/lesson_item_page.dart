@@ -13,32 +13,32 @@ import 'package:ngajiyuk/lesson/model/lesson_item/lesson_item.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 class LessonItemPage extends StatefulWidget {
-  const LessonItemPage({Key key}) : super(key: key);
+  const LessonItemPage({Key? key}) : super(key: key);
 
   @override
   _LessonItemPageState createState() => _LessonItemPageState();
 }
 
 class _LessonItemPageState extends State<LessonItemPage> {
-  YoutubePlayerController _controller;
+  YoutubePlayerController? _controller;
 
   @override
   void didChangeDependencies() {
     final lessonItemBloc = BlocProvider.of<LessonItemBloc>(context);
-    final LessonItem lessonItem = lessonItemBloc.state.maybeWhen(
+    final LessonItem? lessonItem = lessonItemBloc.state.maybeWhen(
       success: (lessonItem) => lessonItem,
       orElse: () => null,
     );
 
     _controller = YoutubePlayerController(
-      initialVideoId: lessonItem.youtubeId,
+      initialVideoId: lessonItem?.youtubeId ?? '',
       params: YoutubePlayerParams(
         showControls: true,
         showFullscreenButton: true,
       ),
     );
 
-    _controller.onEnterFullscreen = () {
+    _controller?.onEnterFullscreen = () {
       SystemChrome.setPreferredOrientations([
         DeviceOrientation.landscapeLeft,
         DeviceOrientation.landscapeRight,
@@ -47,7 +47,7 @@ class _LessonItemPageState extends State<LessonItemPage> {
 
     getIt<FirebaseAnalytics>().logEvent(
       name: 'LessonItemPage',
-      parameters: lessonItem.toJson(),
+      parameters: lessonItem?.toJson(),
     );
 
     super.didChangeDependencies();
@@ -55,7 +55,7 @@ class _LessonItemPageState extends State<LessonItemPage> {
 
   @override
   void dispose() {
-    _controller.close();
+    _controller?.close();
     super.dispose();
   }
 
@@ -69,7 +69,8 @@ class _LessonItemPageState extends State<LessonItemPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           YoutubePlayerControllerProvider(
-            controller: _controller,
+            controller:
+                _controller ?? YoutubePlayerController(initialVideoId: ''),
             child: YoutubePlayerIFrame(
               aspectRatio: 16 / 9,
             ),

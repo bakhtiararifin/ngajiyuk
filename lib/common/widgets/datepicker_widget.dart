@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class DatePickerWidget extends StatelessWidget {
   final String label;
   final DateTime date;
-  final void Function(DateTime date) onChanged;
+  final void Function(DateTime? date) onChanged;
 
   const DatePickerWidget({
-    Key key,
-    @required this.label,
-    @required this.date,
-    @required this.onChanged,
+    Key? key,
+    required this.label,
+    required this.date,
+    required this.onChanged,
   }) : super(key: key);
 
   @override
@@ -36,9 +36,9 @@ class DatePickerWidget extends StatelessWidget {
       ),
       onTap: () async {
         final now = DateTime.now();
-        final DateTime date = await showDatePicker(
+        final DateTime? date = await showDatePicker(
           context: context,
-          initialDate: now,
+          initialDate: DateTime.now(),
           firstDate: DateTime(now.year - 50),
           lastDate: DateTime(now.year + 50),
         );

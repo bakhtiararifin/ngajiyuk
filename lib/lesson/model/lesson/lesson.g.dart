@@ -8,10 +8,10 @@ part of 'lesson.dart';
 
 _$_Lesson _$_$_LessonFromJson(Map<String, dynamic> json) {
   return _$_Lesson(
-    id: json['id'] as String,
+    id: json['id'] as String?,
     title: json['title'] as String,
     thumbnailUrl: json['thumbnailUrl'] as String,
-    watched: json['watched'] as bool ?? false,
+    watched: json['watched'] as bool? ?? false,
   );
 }
 

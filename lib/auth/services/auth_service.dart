@@ -1,3 +1,4 @@
+import 'package:ngajiyuk/auth/exceptions/auth_exception.dart';
 import 'package:ngajiyuk/auth/models/user/user.dart' as UserModel;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -11,34 +12,42 @@ class AuthService {
   AuthService(this._firebaseAuth, this._googleSignIn);
 
   Future<UserModel.User> loginWithGoogle() async {
-    final googleUser = await _googleSignIn.signIn();
-    final googleAuth = await googleUser.authentication;
+    try {
+      final googleUser = await _googleSignIn.signIn();
+      final googleAuth = await googleUser?.authentication;
+      if (googleAuth == null) throw AuthException();
 
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
-    );
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
 
-    final userCredential = await _firebaseAuth.signInWithCredential(credential);
-    final firebaseUser = userCredential.user;
+      final userCredential = await _firebaseAuth.signInWithCredential(
+        credential,
+      );
+      final firebaseUser = userCredential.user;
+      if (firebaseUser == null) throw AuthException();
 
-    return UserModel.User(
-      id: firebaseUser.uid,
-      name: firebaseUser.displayName,
-      email: firebaseUser.email,
-      photoUrl: firebaseUser.photoURL,
-    );
+      return UserModel.User(
+        id: firebaseUser.uid,
+        name: firebaseUser.displayName ?? '',
+        email: firebaseUser.email ?? '',
+        photoUrl: firebaseUser.photoURL ?? '',
+      );
+    } catch (e) {
+      throw AuthException();
+    }
   }
 
-  UserModel.User getCurrentUser() {
+  UserModel.User? getCurrentUser() {
     final firebaseUser = _firebaseAuth.currentUser;
     if (firebaseUser == null) return null;
 
     return UserModel.User(
       id: firebaseUser.uid,
-      name: firebaseUser.displayName,
-      email: firebaseUser.email,
-      photoUrl: firebaseUser.photoURL,
+      name: firebaseUser.displayName ?? '',
+      email: firebaseUser.email ?? '',
+      photoUrl: firebaseUser.photoURL ?? '',
     );
   }
 

@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:ngajiyuk/auth/blocs/user/user_bloc.dart';
+import 'package:ngajiyuk/auth/exceptions/auth_exception.dart';
 import 'package:ngajiyuk/auth/services/auth_service.dart';
 
 part 'login_bloc.freezed.dart';
@@ -30,7 +31,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           _userBloc.add(UserEvent.setUser(user));
 
           yield LoginState.success();
-        } catch (e) {
+        } on AuthException catch (_) {
           yield LoginState.error();
         }
       },

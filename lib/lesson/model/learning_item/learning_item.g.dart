@@ -8,10 +8,10 @@ part of 'learning_item.dart';
 
 _$_LearningItem _$_$_LearningItemFromJson(Map<String, dynamic> json) {
   return _$_LearningItem(
-    id: json['id'] as String,
-    lessonItemId: json['lessonItemId'] as String,
-    lessonItemTitle: json['lessonItemTitle'] as String,
-    youtubeId: json['youtubeId'] as String,
+    id: json['id'] as String?,
+    lessonItemId: json['lessonItemId'] as String?,
+    lessonItemTitle: json['lessonItemTitle'] as String?,
+    youtubeId: json['youtubeId'] as String?,
   );
 }
 

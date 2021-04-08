@@ -36,16 +36,16 @@ class LessonItemBloc extends Bloc<LessonItemEvent, LessonItemState> {
   }
 
   Stream<LessonItemState> _setLessonItem(LessonItem lessonItem) async* {
-    final User user = _userBloc.state.maybeWhen(
+    final User? user = _userBloc.state.maybeWhen(
       success: (User user) => user,
       orElse: () => null,
     );
-    final Lesson lesson = _lessonBloc.state.maybeWhen(
+    final Lesson? lesson = _lessonBloc.state.maybeWhen(
       success: (Lesson lesson) => lesson,
       orElse: () => null,
     );
 
-    if (user != null && !lessonItem.watched) {
+    if (user != null && lesson != null && !lessonItem.watched) {
       _learningRepository.saveLearningItem(user, lesson, lessonItem);
     }
 

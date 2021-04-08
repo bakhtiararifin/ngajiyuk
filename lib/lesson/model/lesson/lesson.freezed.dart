@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'lesson.dart';
 
@@ -8,6 +8,10 @@ part of 'lesson.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 Lesson _$LessonFromJson(Map<String, dynamic> json) {
   return _Lesson.fromJson(json);
 }
@@ -16,9 +20,11 @@ Lesson _$LessonFromJson(Map<String, dynamic> json) {
 class _$LessonTearOff {
   const _$LessonTearOff();
 
-// ignore: unused_element
   _Lesson call(
-      {String id, String title, String thumbnailUrl, bool watched = false}) {
+      {String? id,
+      required String title,
+      required String thumbnailUrl,
+      bool watched = false}) {
     return _Lesson(
       id: id,
       title: title,
@@ -27,33 +33,31 @@ class _$LessonTearOff {
     );
   }
 
-// ignore: unused_element
   Lesson fromJson(Map<String, Object> json) {
     return Lesson.fromJson(json);
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $Lesson = _$LessonTearOff();
 
 /// @nodoc
 mixin _$Lesson {
-  String get id;
-  String get title;
-  String get thumbnailUrl;
-  bool get watched;
+  String? get id => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  String get thumbnailUrl => throw _privateConstructorUsedError;
+  bool get watched => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson();
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $LessonCopyWith<Lesson> get copyWith;
+  $LessonCopyWith<Lesson> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $LessonCopyWith<$Res> {
   factory $LessonCopyWith(Lesson value, $Res Function(Lesson) then) =
       _$LessonCopyWithImpl<$Res>;
-  $Res call({String id, String title, String thumbnailUrl, bool watched});
+  $Res call({String? id, String title, String thumbnailUrl, bool watched});
 }
 
 /// @nodoc
@@ -66,18 +70,28 @@ class _$LessonCopyWithImpl<$Res> implements $LessonCopyWith<$Res> {
 
   @override
   $Res call({
-    Object id = freezed,
-    Object title = freezed,
-    Object thumbnailUrl = freezed,
-    Object watched = freezed,
+    Object? id = freezed,
+    Object? title = freezed,
+    Object? thumbnailUrl = freezed,
+    Object? watched = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed ? _value.id : id as String,
-      title: title == freezed ? _value.title : title as String,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
       thumbnailUrl: thumbnailUrl == freezed
           ? _value.thumbnailUrl
-          : thumbnailUrl as String,
-      watched: watched == freezed ? _value.watched : watched as bool,
+          : thumbnailUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      watched: watched == freezed
+          ? _value.watched
+          : watched // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -87,7 +101,7 @@ abstract class _$LessonCopyWith<$Res> implements $LessonCopyWith<$Res> {
   factory _$LessonCopyWith(_Lesson value, $Res Function(_Lesson) then) =
       __$LessonCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String title, String thumbnailUrl, bool watched});
+  $Res call({String? id, String title, String thumbnailUrl, bool watched});
 }
 
 /// @nodoc
@@ -101,18 +115,28 @@ class __$LessonCopyWithImpl<$Res> extends _$LessonCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
-    Object title = freezed,
-    Object thumbnailUrl = freezed,
-    Object watched = freezed,
+    Object? id = freezed,
+    Object? title = freezed,
+    Object? thumbnailUrl = freezed,
+    Object? watched = freezed,
   }) {
     return _then(_Lesson(
-      id: id == freezed ? _value.id : id as String,
-      title: title == freezed ? _value.title : title as String,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
       thumbnailUrl: thumbnailUrl == freezed
           ? _value.thumbnailUrl
-          : thumbnailUrl as String,
-      watched: watched == freezed ? _value.watched : watched as bool,
+          : thumbnailUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      watched: watched == freezed
+          ? _value.watched
+          : watched // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -121,14 +145,17 @@ class __$LessonCopyWithImpl<$Res> extends _$LessonCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_Lesson implements _Lesson {
-  _$_Lesson({this.id, this.title, this.thumbnailUrl, this.watched = false})
-      : assert(watched != null);
+  _$_Lesson(
+      {this.id,
+      required this.title,
+      required this.thumbnailUrl,
+      this.watched = false});
 
   factory _$_Lesson.fromJson(Map<String, dynamic> json) =>
       _$_$_LessonFromJson(json);
 
   @override
-  final String id;
+  final String? id;
   @override
   final String title;
   @override
@@ -178,19 +205,22 @@ class _$_Lesson implements _Lesson {
 
 abstract class _Lesson implements Lesson {
   factory _Lesson(
-      {String id, String title, String thumbnailUrl, bool watched}) = _$_Lesson;
+      {String? id,
+      required String title,
+      required String thumbnailUrl,
+      bool watched}) = _$_Lesson;
 
   factory _Lesson.fromJson(Map<String, dynamic> json) = _$_Lesson.fromJson;
 
   @override
-  String get id;
+  String? get id => throw _privateConstructorUsedError;
   @override
-  String get title;
+  String get title => throw _privateConstructorUsedError;
   @override
-  String get thumbnailUrl;
+  String get thumbnailUrl => throw _privateConstructorUsedError;
   @override
-  bool get watched;
+  bool get watched => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$LessonCopyWith<_Lesson> get copyWith;
+  _$LessonCopyWith<_Lesson> get copyWith => throw _privateConstructorUsedError;
 }

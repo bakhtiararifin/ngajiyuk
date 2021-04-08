@@ -4,14 +4,14 @@ class SelectBoxWidget<T> extends StatelessWidget {
   final String label;
   final T value;
   final List<SelectBoxWidgetItem<T>> items;
-  final void Function(T) onChanged;
+  final void Function(T?)? onChanged;
 
   const SelectBoxWidget({
-    Key key,
-    @required this.label,
-    @required this.value,
-    @required this.items,
-    @required this.onChanged,
+    Key? key,
+    required this.label,
+    required this.value,
+    required this.items,
+    required this.onChanged,
   }) : super(key: key);
 
   @override
@@ -56,7 +56,7 @@ class SelectBoxWidgetItem<T> {
   final T value;
 
   SelectBoxWidgetItem({
-    @required this.label,
-    @required this.value,
+    required this.label,
+    required this.value,
   });
 }

@@ -32,7 +32,7 @@ class LessonBloc extends Bloc<LessonEvent, LessonState> {
   }
 
   Stream<LessonState> _setLesson(Lesson lesson) async* {
-    final User user = _userBloc.state.maybeWhen(
+    final User? user = _userBloc.state.maybeWhen(
       success: (User user) => user,
       orElse: () => null,
     );

@@ -24,7 +24,7 @@ class LessonItemsBloc extends Bloc<LessonItemsEvent, LessonItemsState> {
   final UserBloc _userBloc;
   final LessonBloc _lessonBloc;
 
-  StreamSubscription _lessonItemsListener;
+  StreamSubscription? _lessonItemsListener;
 
   LessonItemsBloc(this._lessonRepository, this._learningRepository,
       this._userBloc, this._lessonBloc)
@@ -49,15 +49,17 @@ class LessonItemsBloc extends Bloc<LessonItemsEvent, LessonItemsState> {
   Stream<LessonItemsState> _getLessonItems() async* {
     yield LessonItemsState.loading();
 
-    final User user = _userBloc.state.maybeWhen(
+    final User? user = _userBloc.state.maybeWhen(
       success: (user) => user,
       orElse: () => null,
     );
 
-    final Lesson lesson = _lessonBloc.state.maybeWhen(
+    final Lesson? lesson = _lessonBloc.state.maybeWhen(
       success: (lesson) => lesson,
       orElse: () => null,
     );
+
+    if (lesson == null) return;
 
     if (user == null) {
       final lessonItemsStream = _lessonRepository.getLessonItems(lesson);
@@ -81,12 +83,12 @@ class LessonItemsBloc extends Bloc<LessonItemsEvent, LessonItemsState> {
       _lessonItemsListener = Rx.combineLatest2(
         lessonItemsStream,
         learningItemsStream,
-        (List<LessonItem> rawLessonItems, List<LearningItem> learningItems) {
+        (List<LessonItem> rawLessonItems, List<LearningItem?> learningItems) {
           final List<LessonItem> lessonItems = rawLessonItems.map((
             LessonItem lessonItem,
           ) {
             final learningItem = learningItems.firstWhere(
-              (learningItem) => learningItem.lessonItemId == lessonItem.id,
+              (learningItem) => learningItem?.lessonItemId == lessonItem.id,
               orElse: () => null,
             );
 

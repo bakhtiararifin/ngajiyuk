@@ -11,7 +11,7 @@ import 'package:ngajiyuk/lesson/model/lesson/lesson.dart';
 import 'package:ngajiyuk/lesson/model/lesson_item/lesson_item.dart';
 
 class LessonPage extends StatefulWidget {
-  const LessonPage({Key key}) : super(key: key);
+  const LessonPage({Key? key}) : super(key: key);
 
   @override
   _LessonPageState createState() => _LessonPageState();
@@ -25,14 +25,14 @@ class _LessonPageState extends State<LessonPage> {
     );
 
     final lessonBloc = BlocProvider.of<LessonBloc>(context);
-    final Lesson lesson = lessonBloc.state.maybeWhen(
+    final Lesson? lesson = lessonBloc.state.maybeWhen(
       success: (lesson) => lesson,
       orElse: () => null,
     );
 
     getIt<FirebaseAnalytics>().logEvent(
       name: 'LessonPage',
-      parameters: lesson.toJson(),
+      parameters: lesson?.toJson(),
     );
 
     super.didChangeDependencies();

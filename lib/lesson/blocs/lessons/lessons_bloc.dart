@@ -21,7 +21,7 @@ class LessonsBloc extends Bloc<LessonsEvent, LessonsState> {
   final LearningRepository _learningRepository;
   final UserBloc _userBloc;
 
-  StreamSubscription _lessonsListener;
+  StreamSubscription? _lessonsListener;
 
   LessonsBloc(
     this._lessonRepository,
@@ -46,7 +46,7 @@ class LessonsBloc extends Bloc<LessonsEvent, LessonsState> {
   Stream<LessonsState> _getLessons() async* {
     yield LessonsState.loading();
 
-    final User user = _userBloc.state.maybeWhen(
+    final User? user = _userBloc.state.maybeWhen(
       success: (user) => user,
       orElse: () => null,
     );
@@ -68,10 +68,10 @@ class LessonsBloc extends Bloc<LessonsEvent, LessonsState> {
       _lessonsListener = Rx.combineLatest2(
         lessonsStream,
         learningsStream,
-        (List<Lesson> rawLessons, List<Learning> learnings) {
+        (List<Lesson> rawLessons, List<Learning?> learnings) {
           final List<Lesson> lessons = rawLessons.map((Lesson lesson) {
             final learning = learnings.firstWhere(
-              (learning) => learning.lessonId == lesson.id,
+              (learning) => learning?.lessonId == lesson.id,
               orElse: () => null,
             );
 
@@ -88,7 +88,7 @@ class LessonsBloc extends Bloc<LessonsEvent, LessonsState> {
 
   @override
   Future<void> close() {
-    _lessonsListener.cancel();
+    _lessonsListener?.cancel();
     return super.close();
   }
 }

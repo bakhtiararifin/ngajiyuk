@@ -4,11 +4,11 @@ part 'lesson.freezed.dart';
 part 'lesson.g.dart';
 
 @freezed
-abstract class Lesson with _$Lesson {
+class Lesson with _$Lesson {
   factory Lesson({
-    String id,
-    String title,
-    String thumbnailUrl,
+    String? id,
+    required String title,
+    required String thumbnailUrl,
     @Default(false) bool watched,
   }) = _Lesson;
 

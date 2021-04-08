@@ -4,11 +4,13 @@ part 'lesson_item.freezed.dart';
 part 'lesson_item.g.dart';
 
 @freezed
-abstract class LessonItem with _$LessonItem {
+class LessonItem with _$LessonItem {
+  const LessonItem._();
+
   factory LessonItem({
-    String id,
-    String title,
-    String youtubeId,
+    String? id,
+    String? title,
+    String? youtubeId,
     @Default(false) bool watched,
   }) = _LessonItem;
 

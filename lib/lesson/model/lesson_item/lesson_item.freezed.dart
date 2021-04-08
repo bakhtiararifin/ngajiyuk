@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'lesson_item.dart';
 
@@ -8,6 +8,10 @@ part of 'lesson_item.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 LessonItem _$LessonItemFromJson(Map<String, dynamic> json) {
   return _LessonItem.fromJson(json);
 }
@@ -16,9 +20,8 @@ LessonItem _$LessonItemFromJson(Map<String, dynamic> json) {
 class _$LessonItemTearOff {
   const _$LessonItemTearOff();
 
-// ignore: unused_element
   _LessonItem call(
-      {String id, String title, String youtubeId, bool watched = false}) {
+      {String? id, String? title, String? youtubeId, bool watched = false}) {
     return _LessonItem(
       id: id,
       title: title,
@@ -27,26 +30,25 @@ class _$LessonItemTearOff {
     );
   }
 
-// ignore: unused_element
   LessonItem fromJson(Map<String, Object> json) {
     return LessonItem.fromJson(json);
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $LessonItem = _$LessonItemTearOff();
 
 /// @nodoc
 mixin _$LessonItem {
-  String get id;
-  String get title;
-  String get youtubeId;
-  bool get watched;
+  String? get id => throw _privateConstructorUsedError;
+  String? get title => throw _privateConstructorUsedError;
+  String? get youtubeId => throw _privateConstructorUsedError;
+  bool get watched => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson();
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $LessonItemCopyWith<LessonItem> get copyWith;
+  $LessonItemCopyWith<LessonItem> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -54,7 +56,7 @@ abstract class $LessonItemCopyWith<$Res> {
   factory $LessonItemCopyWith(
           LessonItem value, $Res Function(LessonItem) then) =
       _$LessonItemCopyWithImpl<$Res>;
-  $Res call({String id, String title, String youtubeId, bool watched});
+  $Res call({String? id, String? title, String? youtubeId, bool watched});
 }
 
 /// @nodoc
@@ -67,16 +69,28 @@ class _$LessonItemCopyWithImpl<$Res> implements $LessonItemCopyWith<$Res> {
 
   @override
   $Res call({
-    Object id = freezed,
-    Object title = freezed,
-    Object youtubeId = freezed,
-    Object watched = freezed,
+    Object? id = freezed,
+    Object? title = freezed,
+    Object? youtubeId = freezed,
+    Object? watched = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed ? _value.id : id as String,
-      title: title == freezed ? _value.title : title as String,
-      youtubeId: youtubeId == freezed ? _value.youtubeId : youtubeId as String,
-      watched: watched == freezed ? _value.watched : watched as bool,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      youtubeId: youtubeId == freezed
+          ? _value.youtubeId
+          : youtubeId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      watched: watched == freezed
+          ? _value.watched
+          : watched // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -87,7 +101,7 @@ abstract class _$LessonItemCopyWith<$Res> implements $LessonItemCopyWith<$Res> {
           _LessonItem value, $Res Function(_LessonItem) then) =
       __$LessonItemCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String title, String youtubeId, bool watched});
+  $Res call({String? id, String? title, String? youtubeId, bool watched});
 }
 
 /// @nodoc
@@ -102,16 +116,28 @@ class __$LessonItemCopyWithImpl<$Res> extends _$LessonItemCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
-    Object title = freezed,
-    Object youtubeId = freezed,
-    Object watched = freezed,
+    Object? id = freezed,
+    Object? title = freezed,
+    Object? youtubeId = freezed,
+    Object? watched = freezed,
   }) {
     return _then(_LessonItem(
-      id: id == freezed ? _value.id : id as String,
-      title: title == freezed ? _value.title : title as String,
-      youtubeId: youtubeId == freezed ? _value.youtubeId : youtubeId as String,
-      watched: watched == freezed ? _value.watched : watched as bool,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      youtubeId: youtubeId == freezed
+          ? _value.youtubeId
+          : youtubeId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      watched: watched == freezed
+          ? _value.watched
+          : watched // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -119,50 +145,26 @@ class __$LessonItemCopyWithImpl<$Res> extends _$LessonItemCopyWithImpl<$Res>
 @JsonSerializable()
 
 /// @nodoc
-class _$_LessonItem implements _LessonItem {
+class _$_LessonItem extends _LessonItem {
   _$_LessonItem({this.id, this.title, this.youtubeId, this.watched = false})
-      : assert(watched != null);
+      : super._();
 
   factory _$_LessonItem.fromJson(Map<String, dynamic> json) =>
       _$_$_LessonItemFromJson(json);
 
   @override
-  final String id;
+  final String? id;
   @override
-  final String title;
+  final String? title;
   @override
-  final String youtubeId;
+  final String? youtubeId;
   @JsonKey(defaultValue: false)
   @override
   final bool watched;
 
-  bool _didurl = false;
-  dynamic _url;
-
-  @override
-  dynamic get url {
-    if (_didurl == false) {
-      _didurl = true;
-      _url = 'https://www.youtube.com/watch?v=$youtubeId';
-    }
-    return _url;
-  }
-
-  bool _didthumbnailUrl = false;
-  dynamic _thumbnailUrl;
-
-  @override
-  dynamic get thumbnailUrl {
-    if (_didthumbnailUrl == false) {
-      _didthumbnailUrl = true;
-      _thumbnailUrl = 'https://img.youtube.com/vi/$youtubeId/hqdefault.jpg';
-    }
-    return _thumbnailUrl;
-  }
-
   @override
   String toString() {
-    return 'LessonItem(id: $id, title: $title, youtubeId: $youtubeId, watched: $watched, url: $url, thumbnailUrl: $thumbnailUrl)';
+    return 'LessonItem(id: $id, title: $title, youtubeId: $youtubeId, watched: $watched)';
   }
 
   @override
@@ -199,25 +201,27 @@ class _$_LessonItem implements _LessonItem {
   }
 }
 
-abstract class _LessonItem implements LessonItem {
+abstract class _LessonItem extends LessonItem {
   factory _LessonItem(
-      {String id,
-      String title,
-      String youtubeId,
+      {String? id,
+      String? title,
+      String? youtubeId,
       bool watched}) = _$_LessonItem;
+  _LessonItem._() : super._();
 
   factory _LessonItem.fromJson(Map<String, dynamic> json) =
       _$_LessonItem.fromJson;
 
   @override
-  String get id;
+  String? get id => throw _privateConstructorUsedError;
   @override
-  String get title;
+  String? get title => throw _privateConstructorUsedError;
   @override
-  String get youtubeId;
+  String? get youtubeId => throw _privateConstructorUsedError;
   @override
-  bool get watched;
+  bool get watched => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$LessonItemCopyWith<_LessonItem> get copyWith;
+  _$LessonItemCopyWith<_LessonItem> get copyWith =>
+      throw _privateConstructorUsedError;
 }

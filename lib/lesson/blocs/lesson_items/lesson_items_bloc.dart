@@ -62,47 +62,59 @@ class LessonItemsBloc extends Bloc<LessonItemsEvent, LessonItemsState> {
     if (lesson == null) return;
 
     if (user == null) {
-      final lessonItemsStream = _lessonRepository.getLessonItems(lesson);
-
-      _lessonItemsListener?.cancel();
-
-      _lessonItemsListener = lessonItemsStream.listen(
-        (List<LessonItem> lessonItems) {
-          add(LessonItemsEvent.setLessonItems(lessonItems));
-        },
-      );
+      _getLessonItemsUserNotLoggedIn(lesson);
     } else {
-      final lessonItemsStream = _lessonRepository.getLessonItems(lesson);
-      final learningItemsStream = _learningRepository.getLearningItems(
-        user,
-        lesson,
-      );
-
-      _lessonItemsListener?.cancel();
-
-      _lessonItemsListener = Rx.combineLatest2(
-        lessonItemsStream,
-        learningItemsStream,
-        (List<LessonItem> rawLessonItems, List<LearningItem?> learningItems) {
-          final List<LessonItem> lessonItems = rawLessonItems.map((
-            LessonItem lessonItem,
-          ) {
-            final learningItem = learningItems.firstWhere(
-              (learningItem) => learningItem?.lessonItemId == lessonItem.id,
-              orElse: () => null,
-            );
-
-            return lessonItem.copyWith(watched: learningItem != null);
-          }).toList();
-
-          return lessonItems;
-        },
-      ).listen(
-        (List<LessonItem> lessonItems) {
-          add(LessonItemsEvent.setLessonItems(lessonItems));
-        },
-      );
+      _getLessonItemsUserLoggedIn(user, lesson);
     }
+  }
+
+  void _getLessonItemsUserNotLoggedIn(Lesson lesson) {
+    final lessonItemsStream = _lessonRepository.getLessonItems(lesson);
+
+    _lessonItemsListener?.cancel();
+
+    _lessonItemsListener = lessonItemsStream.listen(
+      (List<LessonItem> lessonItems) {
+        add(LessonItemsEvent.setLessonItems(lessonItems));
+      },
+    );
+  }
+
+  void _getLessonItemsUserLoggedIn(User user, Lesson lesson) {
+    final lessonItemsStream = _lessonRepository.getLessonItems(lesson);
+    final learningItemsStream = _learningRepository.getLearningItems(
+      user,
+      lesson,
+    );
+
+    _lessonItemsListener?.cancel();
+
+    _lessonItemsListener = Rx.combineLatest2(
+      lessonItemsStream,
+      learningItemsStream,
+      _combineStreams,
+    ).listen(
+      (List<LessonItem> lessonItems) {
+        add(LessonItemsEvent.setLessonItems(lessonItems));
+      },
+    );
+  }
+
+  List<LessonItem> _combineStreams(
+    List<LessonItem> rawLessonItems,
+    List<LearningItem> rawLearningItems,
+  ) {
+    final List<LessonItem> lessonItems = rawLessonItems.map((
+      LessonItem lessonItem,
+    ) {
+      final Iterable<LearningItem> learningItems = rawLearningItems.where(
+        (learningItem) => learningItem.lessonItemId == lessonItem.id,
+      );
+
+      return lessonItem.copyWith(watched: learningItems.length > 0);
+    }).toList();
+
+    return lessonItems;
   }
 
   @override

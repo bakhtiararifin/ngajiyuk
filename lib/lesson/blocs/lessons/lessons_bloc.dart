@@ -52,38 +52,50 @@ class LessonsBloc extends Bloc<LessonsEvent, LessonsState> {
     );
 
     if (user == null) {
-      final lessonsStream = _lessonRepository.getLessons();
-
-      _lessonsListener?.cancel();
-
-      _lessonsListener = lessonsStream.listen(
-        (List<Lesson> lessons) => add(LessonsEvent.setLessons(lessons)),
-      );
+      _getLessonsUserNotLogedIn();
     } else {
-      final lessonsStream = _lessonRepository.getLessons();
-      final learningsStream = _learningRepository.getUserLearning(user);
-
-      _lessonsListener?.cancel();
-
-      _lessonsListener = Rx.combineLatest2(
-        lessonsStream,
-        learningsStream,
-        (List<Lesson> rawLessons, List<Learning?> learnings) {
-          final List<Lesson> lessons = rawLessons.map((Lesson lesson) {
-            final learning = learnings.firstWhere(
-              (learning) => learning?.lessonId == lesson.id,
-              orElse: () => null,
-            );
-
-            return lesson.copyWith(watched: learning != null);
-          }).toList();
-
-          return lessons;
-        },
-      ).listen(
-        (List<Lesson> lessons) => add(LessonsEvent.setLessons(lessons)),
-      );
+      _getLessonsUserLogedIn(user);
     }
+  }
+
+  void _getLessonsUserNotLogedIn() {
+    final lessonsStream = _lessonRepository.getLessons();
+
+    _lessonsListener?.cancel();
+
+    _lessonsListener = lessonsStream.listen(
+      (List<Lesson> lessons) => add(LessonsEvent.setLessons(lessons)),
+    );
+  }
+
+  void _getLessonsUserLogedIn(User user) {
+    final lessonsStream = _lessonRepository.getLessons();
+    final learningsStream = _learningRepository.getUserLearning(user);
+
+    _lessonsListener?.cancel();
+
+    _lessonsListener = Rx.combineLatest2(
+      lessonsStream,
+      learningsStream,
+      _combineStreams,
+    ).listen(
+      (List<Lesson> lessons) => add(LessonsEvent.setLessons(lessons)),
+    );
+  }
+
+  List<Lesson> _combineStreams(
+    List<Lesson> rawLessons,
+    List<Learning> rawLearnings,
+  ) {
+    final List<Lesson> lessons = rawLessons.map((Lesson lesson) {
+      final Iterable<Learning> learnings = rawLearnings.where(
+        (learning) => learning.lessonId == lesson.id,
+      );
+
+      return lesson.copyWith(watched: learnings.length > 0);
+    }).toList();
+
+    return lessons;
   }
 
   @override

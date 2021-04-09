@@ -40,13 +40,20 @@ class LessonItemBloc extends Bloc<LessonItemEvent, LessonItemState> {
       success: (User user) => user,
       orElse: () => null,
     );
+
     final Lesson? lesson = _lessonBloc.state.maybeWhen(
       success: (Lesson lesson) => lesson,
       orElse: () => null,
     );
 
-    if (user != null && lesson != null && !lessonItem.watched) {
-      _learningRepository.saveLearningItem(user, lesson, lessonItem);
+    if (user != null && lesson != null) {
+      if (!lesson.watched) {
+        _learningRepository.saveLearning(user, lesson);
+      }
+
+      if (!lessonItem.watched) {
+        _learningRepository.saveLearningItem(user, lesson, lessonItem);
+      }
     }
 
     yield LessonItemState.success(lessonItem);

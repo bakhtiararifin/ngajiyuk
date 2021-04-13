@@ -39,7 +39,6 @@ class LessonRepository {
       List<LessonItem> lessonItems = [];
       for (final QueryDocumentSnapshot doc in snapshot.docs) {
         final data = doc.data();
-        if (data['youtubeId'] == null) continue;
 
         lessonItems.add(LessonItem(
           id: doc.id,

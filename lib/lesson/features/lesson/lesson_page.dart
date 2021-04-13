@@ -70,14 +70,31 @@ class _LessonPageState extends State<LessonPage> {
               : Colors.transparent,
           child: ListTile(
             contentPadding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-            leading: Image(
-              image: NetworkImage(lessonItem.thumbnailUrl),
-            ),
+            leading: _buildLeading(lessonItem),
             title: Text(lessonItem.title ?? ''),
             onTap: () => _gotoLessonItemPage(lessonItem),
           ),
         );
       },
+    );
+  }
+
+  Widget _buildLeading(LessonItem lessonItem) {
+    if (lessonItem.youtubeId == null) {
+      return Container(
+        height: 32,
+        width: 32,
+        alignment: Alignment.center,
+        child: Text('1'),
+        decoration: BoxDecoration(
+          color: AppColors.grey.withAlpha(64),
+          borderRadius: BorderRadius.circular(16),
+        ),
+      );
+    }
+
+    return Image(
+      image: NetworkImage(lessonItem.thumbnailUrl),
     );
   }
 

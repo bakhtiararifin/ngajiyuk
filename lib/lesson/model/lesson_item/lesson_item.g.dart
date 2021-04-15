@@ -11,6 +11,7 @@ _$_LessonItem _$_$_LessonItemFromJson(Map<String, dynamic> json) {
     id: json['id'] as String?,
     title: json['title'] as String?,
     youtubeId: json['youtubeId'] as String?,
+    videoUrl: json['videoUrl'] as String?,
     watched: json['watched'] as bool? ?? false,
   );
 }
@@ -20,5 +21,6 @@ Map<String, dynamic> _$_$_LessonItemToJson(_$_LessonItem instance) =>
       'id': instance.id,
       'title': instance.title,
       'youtubeId': instance.youtubeId,
+      'videoUrl': instance.videoUrl,
       'watched': instance.watched,
     };

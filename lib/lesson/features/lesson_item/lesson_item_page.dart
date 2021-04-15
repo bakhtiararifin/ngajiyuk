@@ -58,7 +58,7 @@ class _LessonItemPageState extends State<LessonItemPage> {
                 children: [
                   if (lessonItem.youtubeId != null)
                     YoutubePlayer(lessonItem: lessonItem),
-                  if (lessonItem.youtubeId == null)
+                  if (lessonItem.videoUrl != null)
                     VideoPlayer(lessonItem: lessonItem),
                   Padding(
                     padding: const EdgeInsets.all(AppSizes.paddingRegular),

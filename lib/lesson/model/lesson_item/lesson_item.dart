@@ -11,6 +11,7 @@ class LessonItem with _$LessonItem {
     String? id,
     String? title,
     String? youtubeId,
+    String? videoUrl,
     @Default(false) bool watched,
   }) = _LessonItem;
 

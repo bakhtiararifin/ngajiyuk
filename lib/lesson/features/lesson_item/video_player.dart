@@ -27,7 +27,7 @@ class _VideoPlayerState extends State<VideoPlayer> {
 
   Future<void> _initializePlayer() async {
     _videoPlayerController = VideoPlayerController.network(
-      'https://firebasestorage.googleapis.com/v0/b/ngajiyukdev.appspot.com/o/small.mp4?alt=media&token=9c7de012-d375-451c-a7a8-52792ad1920b',
+      widget.lessonItem.videoUrl ?? '',
     );
     await _videoPlayerController.initialize();
     _chewieController = ChewieController(

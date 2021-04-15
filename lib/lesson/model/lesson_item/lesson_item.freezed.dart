@@ -21,11 +21,16 @@ class _$LessonItemTearOff {
   const _$LessonItemTearOff();
 
   _LessonItem call(
-      {String? id, String? title, String? youtubeId, bool watched = false}) {
+      {String? id,
+      String? title,
+      String? youtubeId,
+      String? videoUrl,
+      bool watched = false}) {
     return _LessonItem(
       id: id,
       title: title,
       youtubeId: youtubeId,
+      videoUrl: videoUrl,
       watched: watched,
     );
   }
@@ -43,6 +48,7 @@ mixin _$LessonItem {
   String? get id => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
   String? get youtubeId => throw _privateConstructorUsedError;
+  String? get videoUrl => throw _privateConstructorUsedError;
   bool get watched => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -56,7 +62,12 @@ abstract class $LessonItemCopyWith<$Res> {
   factory $LessonItemCopyWith(
           LessonItem value, $Res Function(LessonItem) then) =
       _$LessonItemCopyWithImpl<$Res>;
-  $Res call({String? id, String? title, String? youtubeId, bool watched});
+  $Res call(
+      {String? id,
+      String? title,
+      String? youtubeId,
+      String? videoUrl,
+      bool watched});
 }
 
 /// @nodoc
@@ -72,6 +83,7 @@ class _$LessonItemCopyWithImpl<$Res> implements $LessonItemCopyWith<$Res> {
     Object? id = freezed,
     Object? title = freezed,
     Object? youtubeId = freezed,
+    Object? videoUrl = freezed,
     Object? watched = freezed,
   }) {
     return _then(_value.copyWith(
@@ -87,6 +99,10 @@ class _$LessonItemCopyWithImpl<$Res> implements $LessonItemCopyWith<$Res> {
           ? _value.youtubeId
           : youtubeId // ignore: cast_nullable_to_non_nullable
               as String?,
+      videoUrl: videoUrl == freezed
+          ? _value.videoUrl
+          : videoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       watched: watched == freezed
           ? _value.watched
           : watched // ignore: cast_nullable_to_non_nullable
@@ -101,7 +117,12 @@ abstract class _$LessonItemCopyWith<$Res> implements $LessonItemCopyWith<$Res> {
           _LessonItem value, $Res Function(_LessonItem) then) =
       __$LessonItemCopyWithImpl<$Res>;
   @override
-  $Res call({String? id, String? title, String? youtubeId, bool watched});
+  $Res call(
+      {String? id,
+      String? title,
+      String? youtubeId,
+      String? videoUrl,
+      bool watched});
 }
 
 /// @nodoc
@@ -119,6 +140,7 @@ class __$LessonItemCopyWithImpl<$Res> extends _$LessonItemCopyWithImpl<$Res>
     Object? id = freezed,
     Object? title = freezed,
     Object? youtubeId = freezed,
+    Object? videoUrl = freezed,
     Object? watched = freezed,
   }) {
     return _then(_LessonItem(
@@ -134,6 +156,10 @@ class __$LessonItemCopyWithImpl<$Res> extends _$LessonItemCopyWithImpl<$Res>
           ? _value.youtubeId
           : youtubeId // ignore: cast_nullable_to_non_nullable
               as String?,
+      videoUrl: videoUrl == freezed
+          ? _value.videoUrl
+          : videoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       watched: watched == freezed
           ? _value.watched
           : watched // ignore: cast_nullable_to_non_nullable
@@ -146,7 +172,12 @@ class __$LessonItemCopyWithImpl<$Res> extends _$LessonItemCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_LessonItem extends _LessonItem {
-  _$_LessonItem({this.id, this.title, this.youtubeId, this.watched = false})
+  _$_LessonItem(
+      {this.id,
+      this.title,
+      this.youtubeId,
+      this.videoUrl,
+      this.watched = false})
       : super._();
 
   factory _$_LessonItem.fromJson(Map<String, dynamic> json) =>
@@ -158,13 +189,15 @@ class _$_LessonItem extends _LessonItem {
   final String? title;
   @override
   final String? youtubeId;
+  @override
+  final String? videoUrl;
   @JsonKey(defaultValue: false)
   @override
   final bool watched;
 
   @override
   String toString() {
-    return 'LessonItem(id: $id, title: $title, youtubeId: $youtubeId, watched: $watched)';
+    return 'LessonItem(id: $id, title: $title, youtubeId: $youtubeId, videoUrl: $videoUrl, watched: $watched)';
   }
 
   @override
@@ -178,6 +211,9 @@ class _$_LessonItem extends _LessonItem {
             (identical(other.youtubeId, youtubeId) ||
                 const DeepCollectionEquality()
                     .equals(other.youtubeId, youtubeId)) &&
+            (identical(other.videoUrl, videoUrl) ||
+                const DeepCollectionEquality()
+                    .equals(other.videoUrl, videoUrl)) &&
             (identical(other.watched, watched) ||
                 const DeepCollectionEquality().equals(other.watched, watched)));
   }
@@ -188,6 +224,7 @@ class _$_LessonItem extends _LessonItem {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(youtubeId) ^
+      const DeepCollectionEquality().hash(videoUrl) ^
       const DeepCollectionEquality().hash(watched);
 
   @JsonKey(ignore: true)
@@ -206,6 +243,7 @@ abstract class _LessonItem extends LessonItem {
       {String? id,
       String? title,
       String? youtubeId,
+      String? videoUrl,
       bool watched}) = _$_LessonItem;
   _LessonItem._() : super._();
 
@@ -218,6 +256,8 @@ abstract class _LessonItem extends LessonItem {
   String? get title => throw _privateConstructorUsedError;
   @override
   String? get youtubeId => throw _privateConstructorUsedError;
+  @override
+  String? get videoUrl => throw _privateConstructorUsedError;
   @override
   bool get watched => throw _privateConstructorUsedError;
   @override

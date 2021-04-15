@@ -44,6 +44,7 @@ class LessonRepository {
           id: doc.id,
           title: data['title'],
           youtubeId: data['youtubeId'],
+          videoUrl: data['videoUrl'],
         ));
       }
 

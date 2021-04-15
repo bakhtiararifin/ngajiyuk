@@ -22,12 +22,14 @@ class _$LessonItemTearOff {
 
   _LessonItem call(
       {String? id,
-      String? title,
+      required int index,
+      required String title,
       String? youtubeId,
       String? videoUrl,
       bool watched = false}) {
     return _LessonItem(
       id: id,
+      index: index,
       title: title,
       youtubeId: youtubeId,
       videoUrl: videoUrl,
@@ -46,7 +48,8 @@ const $LessonItem = _$LessonItemTearOff();
 /// @nodoc
 mixin _$LessonItem {
   String? get id => throw _privateConstructorUsedError;
-  String? get title => throw _privateConstructorUsedError;
+  int get index => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
   String? get youtubeId => throw _privateConstructorUsedError;
   String? get videoUrl => throw _privateConstructorUsedError;
   bool get watched => throw _privateConstructorUsedError;
@@ -64,7 +67,8 @@ abstract class $LessonItemCopyWith<$Res> {
       _$LessonItemCopyWithImpl<$Res>;
   $Res call(
       {String? id,
-      String? title,
+      int index,
+      String title,
       String? youtubeId,
       String? videoUrl,
       bool watched});
@@ -81,6 +85,7 @@ class _$LessonItemCopyWithImpl<$Res> implements $LessonItemCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
+    Object? index = freezed,
     Object? title = freezed,
     Object? youtubeId = freezed,
     Object? videoUrl = freezed,
@@ -91,10 +96,14 @@ class _$LessonItemCopyWithImpl<$Res> implements $LessonItemCopyWith<$Res> {
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
+      index: index == freezed
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       youtubeId: youtubeId == freezed
           ? _value.youtubeId
           : youtubeId // ignore: cast_nullable_to_non_nullable
@@ -119,7 +128,8 @@ abstract class _$LessonItemCopyWith<$Res> implements $LessonItemCopyWith<$Res> {
   @override
   $Res call(
       {String? id,
-      String? title,
+      int index,
+      String title,
       String? youtubeId,
       String? videoUrl,
       bool watched});
@@ -138,6 +148,7 @@ class __$LessonItemCopyWithImpl<$Res> extends _$LessonItemCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? index = freezed,
     Object? title = freezed,
     Object? youtubeId = freezed,
     Object? videoUrl = freezed,
@@ -148,10 +159,14 @@ class __$LessonItemCopyWithImpl<$Res> extends _$LessonItemCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
+      index: index == freezed
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       youtubeId: youtubeId == freezed
           ? _value.youtubeId
           : youtubeId // ignore: cast_nullable_to_non_nullable
@@ -174,7 +189,8 @@ class __$LessonItemCopyWithImpl<$Res> extends _$LessonItemCopyWithImpl<$Res>
 class _$_LessonItem extends _LessonItem {
   _$_LessonItem(
       {this.id,
-      this.title,
+      required this.index,
+      required this.title,
       this.youtubeId,
       this.videoUrl,
       this.watched = false})
@@ -186,7 +202,9 @@ class _$_LessonItem extends _LessonItem {
   @override
   final String? id;
   @override
-  final String? title;
+  final int index;
+  @override
+  final String title;
   @override
   final String? youtubeId;
   @override
@@ -197,7 +215,7 @@ class _$_LessonItem extends _LessonItem {
 
   @override
   String toString() {
-    return 'LessonItem(id: $id, title: $title, youtubeId: $youtubeId, videoUrl: $videoUrl, watched: $watched)';
+    return 'LessonItem(id: $id, index: $index, title: $title, youtubeId: $youtubeId, videoUrl: $videoUrl, watched: $watched)';
   }
 
   @override
@@ -206,6 +224,8 @@ class _$_LessonItem extends _LessonItem {
         (other is _LessonItem &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.index, index) ||
+                const DeepCollectionEquality().equals(other.index, index)) &&
             (identical(other.title, title) ||
                 const DeepCollectionEquality().equals(other.title, title)) &&
             (identical(other.youtubeId, youtubeId) ||
@@ -222,6 +242,7 @@ class _$_LessonItem extends _LessonItem {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(index) ^
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(youtubeId) ^
       const DeepCollectionEquality().hash(videoUrl) ^
@@ -241,7 +262,8 @@ class _$_LessonItem extends _LessonItem {
 abstract class _LessonItem extends LessonItem {
   factory _LessonItem(
       {String? id,
-      String? title,
+      required int index,
+      required String title,
       String? youtubeId,
       String? videoUrl,
       bool watched}) = _$_LessonItem;
@@ -253,7 +275,9 @@ abstract class _LessonItem extends LessonItem {
   @override
   String? get id => throw _privateConstructorUsedError;
   @override
-  String? get title => throw _privateConstructorUsedError;
+  int get index => throw _privateConstructorUsedError;
+  @override
+  String get title => throw _privateConstructorUsedError;
   @override
   String? get youtubeId => throw _privateConstructorUsedError;
   @override

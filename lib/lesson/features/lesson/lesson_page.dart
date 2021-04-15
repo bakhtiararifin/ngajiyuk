@@ -71,7 +71,7 @@ class _LessonPageState extends State<LessonPage> {
           child: ListTile(
             contentPadding: EdgeInsets.fromLTRB(16, 8, 16, 8),
             leading: _buildLeading(lessonItem),
-            title: Text(lessonItem.title ?? ''),
+            title: Text(lessonItem.title),
             onTap: () => _gotoLessonItemPage(lessonItem),
           ),
         );
@@ -80,21 +80,21 @@ class _LessonPageState extends State<LessonPage> {
   }
 
   Widget _buildLeading(LessonItem lessonItem) {
-    if (lessonItem.youtubeId == null) {
-      return Container(
-        height: 32,
-        width: 32,
-        alignment: Alignment.center,
-        child: Text('1'),
-        decoration: BoxDecoration(
-          color: AppColors.grey.withAlpha(64),
-          borderRadius: BorderRadius.circular(16),
-        ),
+    if (lessonItem.youtubeId != null) {
+      return Image(
+        image: NetworkImage(lessonItem.thumbnailUrl),
       );
     }
 
-    return Image(
-      image: NetworkImage(lessonItem.thumbnailUrl),
+    return Container(
+      height: 32,
+      width: 32,
+      alignment: Alignment.center,
+      child: Text(lessonItem.index.toString()),
+      decoration: BoxDecoration(
+        color: AppColors.grey.withAlpha(64),
+        borderRadius: BorderRadius.circular(16),
+      ),
     );
   }
 

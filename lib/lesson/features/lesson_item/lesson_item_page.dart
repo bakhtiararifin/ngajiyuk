@@ -63,12 +63,12 @@ class _LessonItemPageState extends State<LessonItemPage> {
                   Padding(
                     padding: const EdgeInsets.all(AppSizes.paddingRegular),
                     child: Text(
-                      'Video Lainnya',
+                      'Daftar Video',
                       style: AppTypography.body,
                     ),
                   ),
                   Expanded(
-                    child: _OtherLessonItems(),
+                    child: _LessonItems(currentLessonItem: lessonItem),
                   ),
                 ],
               );
@@ -92,27 +92,21 @@ class _LessonItemPageState extends State<LessonItemPage> {
   }
 }
 
-class _OtherLessonItems extends StatelessWidget {
+class _LessonItems extends StatelessWidget {
+  final LessonItem currentLessonItem;
+
+  const _LessonItems({
+    Key? key,
+    required this.currentLessonItem,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LessonItemBloc, LessonItemState>(
-      builder: (context, state) {
-        return state.maybeWhen(
-          success: (LessonItem lessonItem) {
-            return _buildLessonItemsBloc(lessonItem);
-          },
-          orElse: () => Center(child: CircularProgressIndicator()),
-        );
-      },
-    );
-  }
-
-  Widget _buildLessonItemsBloc(LessonItem lessonItem) {
     return BlocBuilder<LessonItemsBloc, LessonItemsState>(
       builder: (context, state) {
         return state.maybeWhen(
           success: (List<LessonItem> lessonItems) {
-            return _buildOtherLessonItems(lessonItem, lessonItems);
+            return _buildLessonItems(currentLessonItem, lessonItems);
           },
           orElse: () => Center(child: CircularProgressIndicator()),
         );
@@ -120,32 +114,54 @@ class _OtherLessonItems extends StatelessWidget {
     );
   }
 
-  Widget _buildOtherLessonItems(
+  Widget _buildLessonItems(
     LessonItem lessonItem,
     List<LessonItem> lessonItems,
   ) {
-    final otherLessonItems =
-        lessonItems.where((e) => e.id != lessonItem.id).toList();
-
     return ListView.builder(
-      itemCount: otherLessonItems.length,
+      itemCount: lessonItems.length,
       itemBuilder: (context, index) {
-        final LessonItem lessonItem = otherLessonItems[index];
+        final LessonItem lessonItem = lessonItems[index];
 
         return Container(
-          color: lessonItem.watched
-              ? AppColors.grey.withAlpha(80)
-              : Colors.transparent,
+          color: _getBackgroundColor(lessonItem),
           child: ListTile(
             contentPadding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-            leading: Image(
-              image: NetworkImage(lessonItem.thumbnailUrl),
-            ),
-            title: Text(lessonItem.title ?? ''),
+            leading: _buildLeading(lessonItem),
+            title: Text(lessonItem.title),
             onTap: () => _gotoLessonItemPage(context, lessonItem),
           ),
         );
       },
+    );
+  }
+
+  Color _getBackgroundColor(LessonItem lessonItem) {
+    if (lessonItem == currentLessonItem) {
+      return AppColors.primaryColor.withAlpha(32);
+    } else if (lessonItem.watched) {
+      return AppColors.grey.withAlpha(32);
+    } else {
+      return Colors.transparent;
+    }
+  }
+
+  Widget _buildLeading(LessonItem lessonItem) {
+    if (lessonItem.youtubeId != null) {
+      return Image(
+        image: NetworkImage(lessonItem.thumbnailUrl),
+      );
+    }
+
+    return Container(
+      height: 32,
+      width: 32,
+      alignment: Alignment.center,
+      child: Text(lessonItem.index.toString()),
+      decoration: BoxDecoration(
+        color: AppColors.grey.withAlpha(64),
+        borderRadius: BorderRadius.circular(16),
+      ),
     );
   }
 

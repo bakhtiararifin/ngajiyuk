@@ -42,6 +42,7 @@ class LessonRepository {
 
         lessonItems.add(LessonItem(
           id: doc.id,
+          index: data['index'],
           title: data['title'],
           youtubeId: data['youtubeId'],
           videoUrl: data['videoUrl'],

@@ -18,14 +18,14 @@ Future<void> main() async {
   await DotEnv.load(fileName: ".env");
 
   return runZonedGuarded(() async {
-    await SentryFlutter.init((options) {
-      options.environment = DotEnv.env['ENVIRONMENT'];
-      options.dsn = DotEnv.env['SENTRY_DSN'];
-    });
-
-    runApp(
-      GlobalBlocProvider(
-        child: AppWidget(),
+    await SentryFlutter.init(
+      (options) => options
+        ..dsn = DotEnv.env['SENTRY_DSN']
+        ..environment = DotEnv.env['ENVIRONMENT'],
+      appRunner: () => runApp(
+        GlobalBlocProvider(
+          child: AppWidget(),
+        ),
       ),
     );
   }, (error, stack) {

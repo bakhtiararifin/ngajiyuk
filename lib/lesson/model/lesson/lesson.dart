@@ -9,6 +9,10 @@ class Lesson with _$Lesson {
     String? id,
     required String title,
     required String thumbnailUrl,
+    required String description,
+    required String prerequisite,
+    required int price,
+    required int discount,
     @Default(false) bool watched,
   }) = _Lesson;
 

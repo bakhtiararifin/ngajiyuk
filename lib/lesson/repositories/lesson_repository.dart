@@ -22,6 +22,10 @@ class LessonRepository {
           id: doc.id,
           title: data['title'],
           thumbnailUrl: data['thumbnailUrl'],
+          description: data['description'],
+          prerequisite: data['prerequisite'],
+          price: data['price'],
+          discount: data['discount'],
         );
       }).toList();
     });

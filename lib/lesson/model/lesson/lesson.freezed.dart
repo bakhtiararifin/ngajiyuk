@@ -24,11 +24,19 @@ class _$LessonTearOff {
       {String? id,
       required String title,
       required String thumbnailUrl,
+      required String description,
+      required String prerequisite,
+      required int price,
+      required int discount,
       bool watched = false}) {
     return _Lesson(
       id: id,
       title: title,
       thumbnailUrl: thumbnailUrl,
+      description: description,
+      prerequisite: prerequisite,
+      price: price,
+      discount: discount,
       watched: watched,
     );
   }
@@ -46,6 +54,10 @@ mixin _$Lesson {
   String? get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get thumbnailUrl => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  String get prerequisite => throw _privateConstructorUsedError;
+  int get price => throw _privateConstructorUsedError;
+  int get discount => throw _privateConstructorUsedError;
   bool get watched => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -57,7 +69,15 @@ mixin _$Lesson {
 abstract class $LessonCopyWith<$Res> {
   factory $LessonCopyWith(Lesson value, $Res Function(Lesson) then) =
       _$LessonCopyWithImpl<$Res>;
-  $Res call({String? id, String title, String thumbnailUrl, bool watched});
+  $Res call(
+      {String? id,
+      String title,
+      String thumbnailUrl,
+      String description,
+      String prerequisite,
+      int price,
+      int discount,
+      bool watched});
 }
 
 /// @nodoc
@@ -73,6 +93,10 @@ class _$LessonCopyWithImpl<$Res> implements $LessonCopyWith<$Res> {
     Object? id = freezed,
     Object? title = freezed,
     Object? thumbnailUrl = freezed,
+    Object? description = freezed,
+    Object? prerequisite = freezed,
+    Object? price = freezed,
+    Object? discount = freezed,
     Object? watched = freezed,
   }) {
     return _then(_value.copyWith(
@@ -88,6 +112,22 @@ class _$LessonCopyWithImpl<$Res> implements $LessonCopyWith<$Res> {
           ? _value.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      prerequisite: prerequisite == freezed
+          ? _value.prerequisite
+          : prerequisite // ignore: cast_nullable_to_non_nullable
+              as String,
+      price: price == freezed
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as int,
+      discount: discount == freezed
+          ? _value.discount
+          : discount // ignore: cast_nullable_to_non_nullable
+              as int,
       watched: watched == freezed
           ? _value.watched
           : watched // ignore: cast_nullable_to_non_nullable
@@ -101,7 +141,15 @@ abstract class _$LessonCopyWith<$Res> implements $LessonCopyWith<$Res> {
   factory _$LessonCopyWith(_Lesson value, $Res Function(_Lesson) then) =
       __$LessonCopyWithImpl<$Res>;
   @override
-  $Res call({String? id, String title, String thumbnailUrl, bool watched});
+  $Res call(
+      {String? id,
+      String title,
+      String thumbnailUrl,
+      String description,
+      String prerequisite,
+      int price,
+      int discount,
+      bool watched});
 }
 
 /// @nodoc
@@ -118,6 +166,10 @@ class __$LessonCopyWithImpl<$Res> extends _$LessonCopyWithImpl<$Res>
     Object? id = freezed,
     Object? title = freezed,
     Object? thumbnailUrl = freezed,
+    Object? description = freezed,
+    Object? prerequisite = freezed,
+    Object? price = freezed,
+    Object? discount = freezed,
     Object? watched = freezed,
   }) {
     return _then(_Lesson(
@@ -133,6 +185,22 @@ class __$LessonCopyWithImpl<$Res> extends _$LessonCopyWithImpl<$Res>
           ? _value.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      prerequisite: prerequisite == freezed
+          ? _value.prerequisite
+          : prerequisite // ignore: cast_nullable_to_non_nullable
+              as String,
+      price: price == freezed
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as int,
+      discount: discount == freezed
+          ? _value.discount
+          : discount // ignore: cast_nullable_to_non_nullable
+              as int,
       watched: watched == freezed
           ? _value.watched
           : watched // ignore: cast_nullable_to_non_nullable
@@ -149,6 +217,10 @@ class _$_Lesson implements _Lesson {
       {this.id,
       required this.title,
       required this.thumbnailUrl,
+      required this.description,
+      required this.prerequisite,
+      required this.price,
+      required this.discount,
       this.watched = false});
 
   factory _$_Lesson.fromJson(Map<String, dynamic> json) =>
@@ -160,13 +232,21 @@ class _$_Lesson implements _Lesson {
   final String title;
   @override
   final String thumbnailUrl;
+  @override
+  final String description;
+  @override
+  final String prerequisite;
+  @override
+  final int price;
+  @override
+  final int discount;
   @JsonKey(defaultValue: false)
   @override
   final bool watched;
 
   @override
   String toString() {
-    return 'Lesson(id: $id, title: $title, thumbnailUrl: $thumbnailUrl, watched: $watched)';
+    return 'Lesson(id: $id, title: $title, thumbnailUrl: $thumbnailUrl, description: $description, prerequisite: $prerequisite, price: $price, discount: $discount, watched: $watched)';
   }
 
   @override
@@ -180,6 +260,17 @@ class _$_Lesson implements _Lesson {
             (identical(other.thumbnailUrl, thumbnailUrl) ||
                 const DeepCollectionEquality()
                     .equals(other.thumbnailUrl, thumbnailUrl)) &&
+            (identical(other.description, description) ||
+                const DeepCollectionEquality()
+                    .equals(other.description, description)) &&
+            (identical(other.prerequisite, prerequisite) ||
+                const DeepCollectionEquality()
+                    .equals(other.prerequisite, prerequisite)) &&
+            (identical(other.price, price) ||
+                const DeepCollectionEquality().equals(other.price, price)) &&
+            (identical(other.discount, discount) ||
+                const DeepCollectionEquality()
+                    .equals(other.discount, discount)) &&
             (identical(other.watched, watched) ||
                 const DeepCollectionEquality().equals(other.watched, watched)));
   }
@@ -190,6 +281,10 @@ class _$_Lesson implements _Lesson {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(thumbnailUrl) ^
+      const DeepCollectionEquality().hash(description) ^
+      const DeepCollectionEquality().hash(prerequisite) ^
+      const DeepCollectionEquality().hash(price) ^
+      const DeepCollectionEquality().hash(discount) ^
       const DeepCollectionEquality().hash(watched);
 
   @JsonKey(ignore: true)
@@ -208,6 +303,10 @@ abstract class _Lesson implements Lesson {
       {String? id,
       required String title,
       required String thumbnailUrl,
+      required String description,
+      required String prerequisite,
+      required int price,
+      required int discount,
       bool watched}) = _$_Lesson;
 
   factory _Lesson.fromJson(Map<String, dynamic> json) = _$_Lesson.fromJson;
@@ -218,6 +317,14 @@ abstract class _Lesson implements Lesson {
   String get title => throw _privateConstructorUsedError;
   @override
   String get thumbnailUrl => throw _privateConstructorUsedError;
+  @override
+  String get description => throw _privateConstructorUsedError;
+  @override
+  String get prerequisite => throw _privateConstructorUsedError;
+  @override
+  int get price => throw _privateConstructorUsedError;
+  @override
+  int get discount => throw _privateConstructorUsedError;
   @override
   bool get watched => throw _privateConstructorUsedError;
   @override

@@ -5,6 +5,8 @@ part 'lesson.g.dart';
 
 @freezed
 class Lesson with _$Lesson {
+  const Lesson._();
+
   factory Lesson({
     String? id,
     required String title,
@@ -17,4 +19,8 @@ class Lesson with _$Lesson {
   }) = _Lesson;
 
   factory Lesson.fromJson(Map<String, dynamic> json) => _$LessonFromJson(json);
+
+  int get sellPrice => price - discount;
+
+  bool get isFree => price <= 0;
 }

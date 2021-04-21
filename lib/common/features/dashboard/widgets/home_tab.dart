@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:ngajiyuk/common/widgets/loading_widget.dart';
 import 'package:ngajiyuk/core/theme/app_colors.dart';
 import 'package:ngajiyuk/lesson/blocs/lesson/lesson_bloc.dart';
 import 'package:ngajiyuk/lesson/blocs/lessons/lessons_bloc.dart';
@@ -14,18 +16,25 @@ class HomeTab extends StatelessWidget {
       builder: (context, state) {
         return state.maybeWhen(
           success: (List<Lesson> lessons) {
-            return GridView.count(
-              crossAxisCount: 2,
-              padding: EdgeInsets.all(16),
+            return StaggeredGridView.count(
+              crossAxisCount: 12,
               mainAxisSpacing: 16,
               crossAxisSpacing: 16,
-              children: lessons.map((lesson) => _Lesson(lesson)).toList(),
+              padding: const EdgeInsets.all(16),
+              staggeredTiles: _getStaggeredTiles(lessons),
+              children: lessons.map((e) => _Lesson(e)).toList(),
             );
           },
-          orElse: () => Center(child: CircularProgressIndicator()),
+          orElse: () => LoadingWidget(),
         );
       },
     );
+  }
+
+  List<StaggeredTile> _getStaggeredTiles(List<Lesson> lessons) {
+    return lessons.map((e) {
+      return StaggeredTile.count(6, e.isFree ? 5 : 6);
+    }).toList();
   }
 }
 
@@ -42,40 +51,23 @@ class _Lesson extends StatelessWidget {
     return InkWell(
       onTap: () => _gotoLessonPage(context),
       child: Container(
-        decoration: BoxDecoration(
-          color: lesson.watched
-              ? AppColors.grey.withAlpha(80)
-              : Colors.transparent,
-          borderRadius: BorderRadius.circular(8.0),
-        ),
+        decoration: _getDecoration(),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AspectRatio(
-              aspectRatio: 4 / 3,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8.0),
-                child: CachedNetworkImage(
-                  imageUrl: lesson.thumbnailUrl,
-                  progressIndicatorBuilder: (context, url, downloadProgress) {
-                    return Center(child: CircularProgressIndicator());
-                  },
-                  errorWidget: (context, url, error) => Icon(Icons.error),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            Expanded(
-              child: Center(
-                child: Text(
-                  lesson.title,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.bodyText1,
-                ),
-              ),
-            ),
+            _LessonImage(lesson: lesson),
+            _LessonInfo(lesson: lesson),
           ],
         ),
       ),
+    );
+  }
+
+  BoxDecoration _getDecoration() {
+    return BoxDecoration(
+      color: lesson.watched ? AppColors.grey.withAlpha(64) : Colors.transparent,
+      borderRadius: BorderRadius.circular(8.0),
+      border: Border.all(color: AppColors.grey.withAlpha(64)),
     );
   }
 
@@ -86,6 +78,63 @@ class _Lesson extends StatelessWidget {
 
     Navigator.of(context).push(
       MaterialPageRoute(builder: (_) => LessonPage()),
+    );
+  }
+}
+
+class _LessonInfo extends StatelessWidget {
+  const _LessonInfo({
+    Key? key,
+    required this.lesson,
+  }) : super(key: key);
+
+  final Lesson lesson;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(lesson.title),
+            if (!lesson.isFree) SizedBox(height: 8),
+            if (!lesson.isFree)
+              Text(
+                lesson.sellPrice.toString(),
+                style: Theme.of(context).textTheme.headline6,
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _LessonImage extends StatelessWidget {
+  const _LessonImage({
+    Key? key,
+    required this.lesson,
+  }) : super(key: key);
+
+  final Lesson lesson;
+
+  @override
+  Widget build(BuildContext context) {
+    return AspectRatio(
+      aspectRatio: 16 / 9,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(8.0),
+        child: CachedNetworkImage(
+          imageUrl: lesson.thumbnailUrl,
+          progressIndicatorBuilder: (context, url, downloadProgress) {
+            return LoadingWidget();
+          },
+          fit: BoxFit.cover,
+        ),
+      ),
     );
   }
 }

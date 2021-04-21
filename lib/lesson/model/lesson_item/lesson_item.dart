@@ -19,7 +19,8 @@ class LessonItem with _$LessonItem {
   factory LessonItem.fromJson(Map<String, dynamic> json) =>
       _$LessonItemFromJson(json);
 
-  get url => 'https://www.youtube.com/watch?v=$youtubeId';
+  String get url => 'https://www.youtube.com/watch?v=$youtubeId';
 
-  get thumbnailUrl => 'https://img.youtube.com/vi/$youtubeId/hqdefault.jpg';
+  String get thumbnailUrl =>
+      'https://img.youtube.com/vi/$youtubeId/hqdefault.jpg';
 }

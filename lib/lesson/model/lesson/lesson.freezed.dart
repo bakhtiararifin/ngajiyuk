@@ -212,7 +212,7 @@ class __$LessonCopyWithImpl<$Res> extends _$LessonCopyWithImpl<$Res>
 @JsonSerializable()
 
 /// @nodoc
-class _$_Lesson implements _Lesson {
+class _$_Lesson extends _Lesson {
   _$_Lesson(
       {this.id,
       required this.title,
@@ -221,7 +221,8 @@ class _$_Lesson implements _Lesson {
       required this.prerequisite,
       required this.price,
       required this.discount,
-      this.watched = false});
+      this.watched = false})
+      : super._();
 
   factory _$_Lesson.fromJson(Map<String, dynamic> json) =>
       _$_$_LessonFromJson(json);
@@ -298,7 +299,7 @@ class _$_Lesson implements _Lesson {
   }
 }
 
-abstract class _Lesson implements Lesson {
+abstract class _Lesson extends Lesson {
   factory _Lesson(
       {String? id,
       required String title,
@@ -308,6 +309,7 @@ abstract class _Lesson implements Lesson {
       required int price,
       required int discount,
       bool watched}) = _$_Lesson;
+  _Lesson._() : super._();
 
   factory _Lesson.fromJson(Map<String, dynamic> json) = _$_Lesson.fromJson;
 

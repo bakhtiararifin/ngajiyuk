@@ -28,6 +28,7 @@ class LearningRepository {
           userEmail: data['userEmail'],
           lessonId: data['lessonId'],
           lessonTitle: data['lessonTitle'],
+          paid: data['paid'] ?? false,
         );
       }).toList();
     });

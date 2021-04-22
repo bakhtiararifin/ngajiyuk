@@ -47,11 +47,11 @@ class LessonItemBloc extends Bloc<LessonItemEvent, LessonItemState> {
     );
 
     if (user != null && lesson != null) {
-      if (!lesson.watched) {
+      if (lesson.isFree && !lesson.bought) {
         _learningRepository.saveLearning(user, lesson);
       }
 
-      if (!lessonItem.watched) {
+      if ((lesson.isFree || lesson.paid) && !lessonItem.watched) {
         _learningRepository.saveLearningItem(user, lesson, lessonItem);
       }
     }

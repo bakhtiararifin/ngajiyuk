@@ -91,8 +91,12 @@ class LessonsBloc extends Bloc<LessonsEvent, LessonsState> {
       final Iterable<Learning> learnings = rawLearnings.where(
         (learning) => learning.lessonId == lesson.id,
       );
+      final Learning? learning = learnings.length > 0 ? learnings.first : null;
 
-      return lesson.copyWith(watched: learnings.length > 0);
+      return lesson.copyWith(
+        bought: learning != null,
+        paid: learning?.paid ?? false,
+      );
     }).toList();
 
     return lessons;

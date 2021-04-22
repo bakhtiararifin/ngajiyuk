@@ -65,7 +65,7 @@ class _Lesson extends StatelessWidget {
 
   BoxDecoration _getDecoration() {
     return BoxDecoration(
-      color: lesson.watched ? AppColors.grey.withAlpha(64) : Colors.transparent,
+      color: lesson.bought ? AppColors.grey.withAlpha(64) : Colors.transparent,
       borderRadius: BorderRadius.circular(8.0),
       border: Border.all(color: AppColors.grey.withAlpha(64)),
     );

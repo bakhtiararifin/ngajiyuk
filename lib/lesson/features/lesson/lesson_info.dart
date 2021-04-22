@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ngajiyuk/auth/blocs/user/user_bloc.dart';
+import 'package:ngajiyuk/auth/features/login/blocs/login/login_bloc.dart';
+import 'package:ngajiyuk/auth/features/login/widgets/login_page.dart';
+import 'package:ngajiyuk/auth/models/user/user.dart';
+import 'package:ngajiyuk/core/services/configure_injection.dart';
 import 'package:ngajiyuk/lesson/features/confirmation/confirmation_page.dart';
 import 'package:ngajiyuk/lesson/model/lesson/lesson.dart';
 
@@ -21,6 +27,8 @@ class LessonInfo extends StatelessWidget {
             lesson.title,
             style: Theme.of(context).textTheme.headline5,
           ),
+          SizedBox(height: 8),
+          Text(lesson.description),
           if (!lesson.isFree) _LessonPricing(lesson: lesson),
         ],
       ),
@@ -38,11 +46,23 @@ class _LessonPricing extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (lesson.isFree || lesson.paid) {
+      return Container();
+    }
+
+    if (lesson.bought && !lesson.paid) {
+      return Column(
+        children: [
+          SizedBox(height: 8),
+          Text(
+              'Dalam proses verifikasi pembayaran. Segera lakukan pembayaran jika kamu belum melakukan.'),
+        ],
+      );
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: 8),
-        Text(lesson.description),
         SizedBox(height: 8),
         Text(
           lesson.sellPrice.toString(),
@@ -60,8 +80,27 @@ class _LessonPricing extends StatelessWidget {
   }
 
   void _buyLesson(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => ConfirmationPage()),
-    );
+    final User? user = context.read<UserBloc>().state.maybeWhen(
+          success: (user) => user,
+          orElse: () => null,
+        );
+
+    if (user != null) {
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (_) => ConfirmationPage()),
+      );
+    } else {
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(
+          builder: (context) {
+            return BlocProvider<LoginBloc>(
+              create: (_) => getIt<LoginBloc>(),
+              child: LoginPage(),
+            );
+          },
+        ),
+        (route) => route.isFirst,
+      );
+    }
   }
 }

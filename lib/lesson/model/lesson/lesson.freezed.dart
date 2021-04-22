@@ -28,7 +28,8 @@ class _$LessonTearOff {
       required String prerequisite,
       required int price,
       required int discount,
-      bool watched = false}) {
+      bool bought = false,
+      bool paid = false}) {
     return _Lesson(
       id: id,
       title: title,
@@ -37,7 +38,8 @@ class _$LessonTearOff {
       prerequisite: prerequisite,
       price: price,
       discount: discount,
-      watched: watched,
+      bought: bought,
+      paid: paid,
     );
   }
 
@@ -58,7 +60,8 @@ mixin _$Lesson {
   String get prerequisite => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   int get discount => throw _privateConstructorUsedError;
-  bool get watched => throw _privateConstructorUsedError;
+  bool get bought => throw _privateConstructorUsedError;
+  bool get paid => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -77,7 +80,8 @@ abstract class $LessonCopyWith<$Res> {
       String prerequisite,
       int price,
       int discount,
-      bool watched});
+      bool bought,
+      bool paid});
 }
 
 /// @nodoc
@@ -97,7 +101,8 @@ class _$LessonCopyWithImpl<$Res> implements $LessonCopyWith<$Res> {
     Object? prerequisite = freezed,
     Object? price = freezed,
     Object? discount = freezed,
-    Object? watched = freezed,
+    Object? bought = freezed,
+    Object? paid = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -128,9 +133,13 @@ class _$LessonCopyWithImpl<$Res> implements $LessonCopyWith<$Res> {
           ? _value.discount
           : discount // ignore: cast_nullable_to_non_nullable
               as int,
-      watched: watched == freezed
-          ? _value.watched
-          : watched // ignore: cast_nullable_to_non_nullable
+      bought: bought == freezed
+          ? _value.bought
+          : bought // ignore: cast_nullable_to_non_nullable
+              as bool,
+      paid: paid == freezed
+          ? _value.paid
+          : paid // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -149,7 +158,8 @@ abstract class _$LessonCopyWith<$Res> implements $LessonCopyWith<$Res> {
       String prerequisite,
       int price,
       int discount,
-      bool watched});
+      bool bought,
+      bool paid});
 }
 
 /// @nodoc
@@ -170,7 +180,8 @@ class __$LessonCopyWithImpl<$Res> extends _$LessonCopyWithImpl<$Res>
     Object? prerequisite = freezed,
     Object? price = freezed,
     Object? discount = freezed,
-    Object? watched = freezed,
+    Object? bought = freezed,
+    Object? paid = freezed,
   }) {
     return _then(_Lesson(
       id: id == freezed
@@ -201,9 +212,13 @@ class __$LessonCopyWithImpl<$Res> extends _$LessonCopyWithImpl<$Res>
           ? _value.discount
           : discount // ignore: cast_nullable_to_non_nullable
               as int,
-      watched: watched == freezed
-          ? _value.watched
-          : watched // ignore: cast_nullable_to_non_nullable
+      bought: bought == freezed
+          ? _value.bought
+          : bought // ignore: cast_nullable_to_non_nullable
+              as bool,
+      paid: paid == freezed
+          ? _value.paid
+          : paid // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -221,7 +236,8 @@ class _$_Lesson extends _Lesson {
       required this.prerequisite,
       required this.price,
       required this.discount,
-      this.watched = false})
+      this.bought = false,
+      this.paid = false})
       : super._();
 
   factory _$_Lesson.fromJson(Map<String, dynamic> json) =>
@@ -243,11 +259,14 @@ class _$_Lesson extends _Lesson {
   final int discount;
   @JsonKey(defaultValue: false)
   @override
-  final bool watched;
+  final bool bought;
+  @JsonKey(defaultValue: false)
+  @override
+  final bool paid;
 
   @override
   String toString() {
-    return 'Lesson(id: $id, title: $title, thumbnailUrl: $thumbnailUrl, description: $description, prerequisite: $prerequisite, price: $price, discount: $discount, watched: $watched)';
+    return 'Lesson(id: $id, title: $title, thumbnailUrl: $thumbnailUrl, description: $description, prerequisite: $prerequisite, price: $price, discount: $discount, bought: $bought, paid: $paid)';
   }
 
   @override
@@ -272,8 +291,10 @@ class _$_Lesson extends _Lesson {
             (identical(other.discount, discount) ||
                 const DeepCollectionEquality()
                     .equals(other.discount, discount)) &&
-            (identical(other.watched, watched) ||
-                const DeepCollectionEquality().equals(other.watched, watched)));
+            (identical(other.bought, bought) ||
+                const DeepCollectionEquality().equals(other.bought, bought)) &&
+            (identical(other.paid, paid) ||
+                const DeepCollectionEquality().equals(other.paid, paid)));
   }
 
   @override
@@ -286,7 +307,8 @@ class _$_Lesson extends _Lesson {
       const DeepCollectionEquality().hash(prerequisite) ^
       const DeepCollectionEquality().hash(price) ^
       const DeepCollectionEquality().hash(discount) ^
-      const DeepCollectionEquality().hash(watched);
+      const DeepCollectionEquality().hash(bought) ^
+      const DeepCollectionEquality().hash(paid);
 
   @JsonKey(ignore: true)
   @override
@@ -308,7 +330,8 @@ abstract class _Lesson extends Lesson {
       required String prerequisite,
       required int price,
       required int discount,
-      bool watched}) = _$_Lesson;
+      bool bought,
+      bool paid}) = _$_Lesson;
   _Lesson._() : super._();
 
   factory _Lesson.fromJson(Map<String, dynamic> json) = _$_Lesson.fromJson;
@@ -328,7 +351,9 @@ abstract class _Lesson extends Lesson {
   @override
   int get discount => throw _privateConstructorUsedError;
   @override
-  bool get watched => throw _privateConstructorUsedError;
+  bool get bought => throw _privateConstructorUsedError;
+  @override
+  bool get paid => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$LessonCopyWith<_Lesson> get copyWith => throw _privateConstructorUsedError;

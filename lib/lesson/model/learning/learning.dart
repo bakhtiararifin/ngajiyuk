@@ -12,6 +12,7 @@ class Learning with _$Learning {
     String? userEmail,
     String? lessonId,
     String? lessonTitle,
+    @Default(false) bool paid,
   }) = _Learning;
 
   factory Learning.fromJson(Map<String, dynamic> json) =>

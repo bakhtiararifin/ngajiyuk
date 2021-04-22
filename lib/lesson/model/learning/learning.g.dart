@@ -14,6 +14,7 @@ _$_Learning _$_$_LearningFromJson(Map<String, dynamic> json) {
     userEmail: json['userEmail'] as String?,
     lessonId: json['lessonId'] as String?,
     lessonTitle: json['lessonTitle'] as String?,
+    paid: json['paid'] as bool? ?? false,
   );
 }
 
@@ -25,4 +26,5 @@ Map<String, dynamic> _$_$_LearningToJson(_$_Learning instance) =>
       'userEmail': instance.userEmail,
       'lessonId': instance.lessonId,
       'lessonTitle': instance.lessonTitle,
+      'paid': instance.paid,
     };

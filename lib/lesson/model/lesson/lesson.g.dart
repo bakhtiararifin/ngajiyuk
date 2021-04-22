@@ -15,7 +15,8 @@ _$_Lesson _$_$_LessonFromJson(Map<String, dynamic> json) {
     prerequisite: json['prerequisite'] as String,
     price: json['price'] as int,
     discount: json['discount'] as int,
-    watched: json['watched'] as bool? ?? false,
+    bought: json['bought'] as bool? ?? false,
+    paid: json['paid'] as bool? ?? false,
   );
 }
 
@@ -27,5 +28,6 @@ Map<String, dynamic> _$_$_LessonToJson(_$_Lesson instance) => <String, dynamic>{
       'prerequisite': instance.prerequisite,
       'price': instance.price,
       'discount': instance.discount,
-      'watched': instance.watched,
+      'bought': instance.bought,
+      'paid': instance.paid,
     };

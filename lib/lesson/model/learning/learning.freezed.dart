@@ -26,7 +26,8 @@ class _$LearningTearOff {
       String? userName,
       String? userEmail,
       String? lessonId,
-      String? lessonTitle}) {
+      String? lessonTitle,
+      bool paid = false}) {
     return _Learning(
       id: id,
       userId: userId,
@@ -34,6 +35,7 @@ class _$LearningTearOff {
       userEmail: userEmail,
       lessonId: lessonId,
       lessonTitle: lessonTitle,
+      paid: paid,
     );
   }
 
@@ -53,6 +55,7 @@ mixin _$Learning {
   String? get userEmail => throw _privateConstructorUsedError;
   String? get lessonId => throw _privateConstructorUsedError;
   String? get lessonTitle => throw _privateConstructorUsedError;
+  bool get paid => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -70,7 +73,8 @@ abstract class $LearningCopyWith<$Res> {
       String? userName,
       String? userEmail,
       String? lessonId,
-      String? lessonTitle});
+      String? lessonTitle,
+      bool paid});
 }
 
 /// @nodoc
@@ -89,6 +93,7 @@ class _$LearningCopyWithImpl<$Res> implements $LearningCopyWith<$Res> {
     Object? userEmail = freezed,
     Object? lessonId = freezed,
     Object? lessonTitle = freezed,
+    Object? paid = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -115,6 +120,10 @@ class _$LearningCopyWithImpl<$Res> implements $LearningCopyWith<$Res> {
           ? _value.lessonTitle
           : lessonTitle // ignore: cast_nullable_to_non_nullable
               as String?,
+      paid: paid == freezed
+          ? _value.paid
+          : paid // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -130,7 +139,8 @@ abstract class _$LearningCopyWith<$Res> implements $LearningCopyWith<$Res> {
       String? userName,
       String? userEmail,
       String? lessonId,
-      String? lessonTitle});
+      String? lessonTitle,
+      bool paid});
 }
 
 /// @nodoc
@@ -150,6 +160,7 @@ class __$LearningCopyWithImpl<$Res> extends _$LearningCopyWithImpl<$Res>
     Object? userEmail = freezed,
     Object? lessonId = freezed,
     Object? lessonTitle = freezed,
+    Object? paid = freezed,
   }) {
     return _then(_Learning(
       id: id == freezed
@@ -176,6 +187,10 @@ class __$LearningCopyWithImpl<$Res> extends _$LearningCopyWithImpl<$Res>
           ? _value.lessonTitle
           : lessonTitle // ignore: cast_nullable_to_non_nullable
               as String?,
+      paid: paid == freezed
+          ? _value.paid
+          : paid // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -190,7 +205,8 @@ class _$_Learning implements _Learning {
       this.userName,
       this.userEmail,
       this.lessonId,
-      this.lessonTitle});
+      this.lessonTitle,
+      this.paid = false});
 
   factory _$_Learning.fromJson(Map<String, dynamic> json) =>
       _$_$_LearningFromJson(json);
@@ -207,10 +223,13 @@ class _$_Learning implements _Learning {
   final String? lessonId;
   @override
   final String? lessonTitle;
+  @JsonKey(defaultValue: false)
+  @override
+  final bool paid;
 
   @override
   String toString() {
-    return 'Learning(id: $id, userId: $userId, userName: $userName, userEmail: $userEmail, lessonId: $lessonId, lessonTitle: $lessonTitle)';
+    return 'Learning(id: $id, userId: $userId, userName: $userName, userEmail: $userEmail, lessonId: $lessonId, lessonTitle: $lessonTitle, paid: $paid)';
   }
 
   @override
@@ -232,7 +251,9 @@ class _$_Learning implements _Learning {
                     .equals(other.lessonId, lessonId)) &&
             (identical(other.lessonTitle, lessonTitle) ||
                 const DeepCollectionEquality()
-                    .equals(other.lessonTitle, lessonTitle)));
+                    .equals(other.lessonTitle, lessonTitle)) &&
+            (identical(other.paid, paid) ||
+                const DeepCollectionEquality().equals(other.paid, paid)));
   }
 
   @override
@@ -243,7 +264,8 @@ class _$_Learning implements _Learning {
       const DeepCollectionEquality().hash(userName) ^
       const DeepCollectionEquality().hash(userEmail) ^
       const DeepCollectionEquality().hash(lessonId) ^
-      const DeepCollectionEquality().hash(lessonTitle);
+      const DeepCollectionEquality().hash(lessonTitle) ^
+      const DeepCollectionEquality().hash(paid);
 
   @JsonKey(ignore: true)
   @override
@@ -263,7 +285,8 @@ abstract class _Learning implements Learning {
       String? userName,
       String? userEmail,
       String? lessonId,
-      String? lessonTitle}) = _$_Learning;
+      String? lessonTitle,
+      bool paid}) = _$_Learning;
 
   factory _Learning.fromJson(Map<String, dynamic> json) = _$_Learning.fromJson;
 
@@ -279,6 +302,8 @@ abstract class _Learning implements Learning {
   String? get lessonId => throw _privateConstructorUsedError;
   @override
   String? get lessonTitle => throw _privateConstructorUsedError;
+  @override
+  bool get paid => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$LearningCopyWith<_Learning> get copyWith =>

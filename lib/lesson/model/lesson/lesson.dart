@@ -15,7 +15,8 @@ class Lesson with _$Lesson {
     required String prerequisite,
     required int price,
     required int discount,
-    @Default(false) bool watched,
+    @Default(false) bool bought,
+    @Default(false) bool paid,
   }) = _Lesson;
 
   factory Lesson.fromJson(Map<String, dynamic> json) => _$LessonFromJson(json);

@@ -4,9 +4,17 @@ import 'package:ngajiyuk/core/theme/app_colors.dart';
 import 'package:ngajiyuk/lesson/blocs/lesson_item/lesson_item_bloc.dart';
 import 'package:ngajiyuk/lesson/blocs/lesson_items/lesson_items_bloc.dart';
 import 'package:ngajiyuk/lesson/features/lesson_item/lesson_item_page.dart';
+import 'package:ngajiyuk/lesson/model/lesson/lesson.dart';
 import 'package:ngajiyuk/lesson/model/lesson_item/lesson_item.dart';
 
 class LessonItems extends StatelessWidget {
+  final Lesson lesson;
+
+  const LessonItems({
+    Key? key,
+    required this.lesson,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LessonItemsBloc, LessonItemsState>(
@@ -65,6 +73,10 @@ class LessonItems extends StatelessWidget {
   }
 
   void _gotoLessonItemPage(BuildContext context, LessonItem lessonItem) {
+    if (!lesson.isFree && !lesson.paid) {
+      return;
+    }
+
     BlocProvider.of<LessonItemBloc>(context).add(
       LessonItemEvent.setLessonItem(lessonItem),
     );

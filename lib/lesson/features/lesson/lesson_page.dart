@@ -30,7 +30,7 @@ class _LessonPageState extends State<LessonPage> {
                 children: [
                   LessonImage(lesson: lesson),
                   LessonInfo(lesson: lesson),
-                  LessonItems(),
+                  LessonItems(lesson: lesson),
                 ],
               ),
             );

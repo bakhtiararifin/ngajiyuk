@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ngajiyuk/lesson/features/confirmation/confirmation_page.dart';
 import 'package:ngajiyuk/lesson/model/lesson/lesson.dart';
 
 class LessonInfo extends StatelessWidget {
@@ -50,11 +51,17 @@ class _LessonPricing extends StatelessWidget {
         SizedBox(
           width: double.infinity,
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () => _buyLesson(context),
             child: Text('Beli Sekarang'),
           ),
         ),
       ],
+    );
+  }
+
+  void _buyLesson(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (_) => ConfirmationPage()),
     );
   }
 }

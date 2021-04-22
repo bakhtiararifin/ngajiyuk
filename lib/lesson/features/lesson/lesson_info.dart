@@ -18,12 +18,43 @@ class LessonInfo extends StatelessWidget {
         children: [
           Text(
             lesson.title,
-            style: Theme.of(context).textTheme.headline4,
+            style: Theme.of(context).textTheme.headline5,
           ),
-          SizedBox(height: 8),
-          Text(lesson.description),
+          if (!lesson.isFree) _LessonPricing(lesson: lesson),
         ],
       ),
+    );
+  }
+}
+
+class _LessonPricing extends StatelessWidget {
+  const _LessonPricing({
+    Key? key,
+    required this.lesson,
+  }) : super(key: key);
+
+  final Lesson lesson;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(height: 8),
+        Text(lesson.description),
+        SizedBox(height: 8),
+        Text(
+          lesson.sellPrice.toString(),
+          style: Theme.of(context).textTheme.headline5,
+        ),
+        SizedBox(
+          width: double.infinity,
+          child: ElevatedButton(
+            onPressed: () {},
+            child: Text('Beli Sekarang'),
+          ),
+        ),
+      ],
     );
   }
 }

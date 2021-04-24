@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ngajiyuk/auth/blocs/user/user_bloc.dart';
+import 'package:ngajiyuk/common/services/formatter.dart';
 import 'package:ngajiyuk/common/widgets/loading_widget.dart';
 import 'package:ngajiyuk/core/services/configure_injection.dart';
 import 'package:ngajiyuk/lesson/blocs/lesson/lesson_bloc.dart';
@@ -99,7 +100,7 @@ class _HowToPay extends StatelessWidget {
                   style: DefaultTextStyle.of(context).style,
                   children: <TextSpan>[
                     TextSpan(
-                      text: lesson.sellPrice.toString(),
+                      text: Formatter.formatNumber(lesson.sellPrice),
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     TextSpan(

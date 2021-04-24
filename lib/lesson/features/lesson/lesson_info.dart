@@ -4,6 +4,7 @@ import 'package:ngajiyuk/auth/blocs/user/user_bloc.dart';
 import 'package:ngajiyuk/auth/features/login/blocs/login/login_bloc.dart';
 import 'package:ngajiyuk/auth/features/login/widgets/login_page.dart';
 import 'package:ngajiyuk/auth/models/user/user.dart';
+import 'package:ngajiyuk/common/services/formatter.dart';
 import 'package:ngajiyuk/core/services/configure_injection.dart';
 import 'package:ngajiyuk/lesson/features/confirmation/confirmation_page.dart';
 import 'package:ngajiyuk/lesson/model/lesson/lesson.dart';
@@ -65,7 +66,7 @@ class _LessonPricing extends StatelessWidget {
       children: [
         SizedBox(height: 8),
         Text(
-          lesson.sellPrice.toString(),
+          Formatter.formatNumber(lesson.sellPrice),
           style: Theme.of(context).textTheme.headline5,
         ),
         SizedBox(

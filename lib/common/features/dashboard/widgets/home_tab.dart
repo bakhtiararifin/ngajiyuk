@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:ngajiyuk/common/services/formatter.dart';
 import 'package:ngajiyuk/common/widgets/loading_widget.dart';
 import 'package:ngajiyuk/core/theme/app_colors.dart';
 import 'package:ngajiyuk/lesson/blocs/lesson/lesson_bloc.dart';
@@ -103,7 +104,7 @@ class _LessonInfo extends StatelessWidget {
             if (!lesson.isFree) SizedBox(height: 8),
             if (!lesson.isFree)
               Text(
-                lesson.sellPrice.toString(),
+                Formatter.formatNumber(lesson.sellPrice),
                 style: Theme.of(context).textTheme.headline6,
               ),
           ],

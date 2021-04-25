@@ -34,7 +34,10 @@ class HomeTab extends StatelessWidget {
 
   List<StaggeredTile> _getStaggeredTiles(List<Lesson> lessons) {
     return lessons.map((e) {
-      return StaggeredTile.count(6, e.isFree ? 5 : 6);
+      return StaggeredTile.count(
+        6,
+        e.isFree || e.paid ? 5 : 6,
+      );
     }).toList();
   }
 }
@@ -101,8 +104,8 @@ class _LessonInfo extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(lesson.title),
-            if (!lesson.isFree) SizedBox(height: 8),
-            if (!lesson.isFree)
+            if (!lesson.isFree && !lesson.paid) SizedBox(height: 8),
+            if (!lesson.isFree && !lesson.paid)
               Text(
                 Formatter.formatNumber(lesson.sellPrice),
                 style: Theme.of(context).textTheme.headline6,

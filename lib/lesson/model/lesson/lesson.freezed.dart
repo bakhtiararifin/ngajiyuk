@@ -22,12 +22,12 @@ class _$LessonTearOff {
 
   _Lesson call(
       {String? id,
-      required String title,
-      required String thumbnailUrl,
-      required String description,
-      required String prerequisite,
-      required int price,
-      required int discount,
+      String? title,
+      String? thumbnailUrl,
+      String? description,
+      String? prerequisite,
+      int price = 0,
+      int discount = 0,
       bool bought = false,
       bool paid = false}) {
     return _Lesson(
@@ -54,10 +54,10 @@ const $Lesson = _$LessonTearOff();
 /// @nodoc
 mixin _$Lesson {
   String? get id => throw _privateConstructorUsedError;
-  String get title => throw _privateConstructorUsedError;
-  String get thumbnailUrl => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
-  String get prerequisite => throw _privateConstructorUsedError;
+  String? get title => throw _privateConstructorUsedError;
+  String? get thumbnailUrl => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  String? get prerequisite => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   int get discount => throw _privateConstructorUsedError;
   bool get bought => throw _privateConstructorUsedError;
@@ -74,10 +74,10 @@ abstract class $LessonCopyWith<$Res> {
       _$LessonCopyWithImpl<$Res>;
   $Res call(
       {String? id,
-      String title,
-      String thumbnailUrl,
-      String description,
-      String prerequisite,
+      String? title,
+      String? thumbnailUrl,
+      String? description,
+      String? prerequisite,
       int price,
       int discount,
       bool bought,
@@ -112,19 +112,19 @@ class _$LessonCopyWithImpl<$Res> implements $LessonCopyWith<$Res> {
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       thumbnailUrl: thumbnailUrl == freezed
           ? _value.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       prerequisite: prerequisite == freezed
           ? _value.prerequisite
           : prerequisite // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -152,10 +152,10 @@ abstract class _$LessonCopyWith<$Res> implements $LessonCopyWith<$Res> {
   @override
   $Res call(
       {String? id,
-      String title,
-      String thumbnailUrl,
-      String description,
-      String prerequisite,
+      String? title,
+      String? thumbnailUrl,
+      String? description,
+      String? prerequisite,
       int price,
       int discount,
       bool bought,
@@ -191,19 +191,19 @@ class __$LessonCopyWithImpl<$Res> extends _$LessonCopyWithImpl<$Res>
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       thumbnailUrl: thumbnailUrl == freezed
           ? _value.thumbnailUrl
           : thumbnailUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       prerequisite: prerequisite == freezed
           ? _value.prerequisite
           : prerequisite // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -230,12 +230,12 @@ class __$LessonCopyWithImpl<$Res> extends _$LessonCopyWithImpl<$Res>
 class _$_Lesson extends _Lesson {
   _$_Lesson(
       {this.id,
-      required this.title,
-      required this.thumbnailUrl,
-      required this.description,
-      required this.prerequisite,
-      required this.price,
-      required this.discount,
+      this.title,
+      this.thumbnailUrl,
+      this.description,
+      this.prerequisite,
+      this.price = 0,
+      this.discount = 0,
       this.bought = false,
       this.paid = false})
       : super._();
@@ -246,15 +246,17 @@ class _$_Lesson extends _Lesson {
   @override
   final String? id;
   @override
-  final String title;
+  final String? title;
   @override
-  final String thumbnailUrl;
+  final String? thumbnailUrl;
   @override
-  final String description;
+  final String? description;
   @override
-  final String prerequisite;
+  final String? prerequisite;
+  @JsonKey(defaultValue: 0)
   @override
   final int price;
+  @JsonKey(defaultValue: 0)
   @override
   final int discount;
   @JsonKey(defaultValue: false)
@@ -324,12 +326,12 @@ class _$_Lesson extends _Lesson {
 abstract class _Lesson extends Lesson {
   factory _Lesson(
       {String? id,
-      required String title,
-      required String thumbnailUrl,
-      required String description,
-      required String prerequisite,
-      required int price,
-      required int discount,
+      String? title,
+      String? thumbnailUrl,
+      String? description,
+      String? prerequisite,
+      int price,
+      int discount,
       bool bought,
       bool paid}) = _$_Lesson;
   _Lesson._() : super._();
@@ -339,13 +341,13 @@ abstract class _Lesson extends Lesson {
   @override
   String? get id => throw _privateConstructorUsedError;
   @override
-  String get title => throw _privateConstructorUsedError;
+  String? get title => throw _privateConstructorUsedError;
   @override
-  String get thumbnailUrl => throw _privateConstructorUsedError;
+  String? get thumbnailUrl => throw _privateConstructorUsedError;
   @override
-  String get description => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
   @override
-  String get prerequisite => throw _privateConstructorUsedError;
+  String? get prerequisite => throw _privateConstructorUsedError;
   @override
   int get price => throw _privateConstructorUsedError;
   @override

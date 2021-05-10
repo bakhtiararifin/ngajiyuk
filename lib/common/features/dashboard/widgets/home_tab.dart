@@ -103,7 +103,7 @@ class _LessonInfo extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(lesson.title),
+            Text(lesson.title ?? ''),
             if (!lesson.isFree && !lesson.paid) SizedBox(height: 8),
             if (!lesson.isFree && !lesson.paid)
               Text(
@@ -127,12 +127,14 @@ class _LessonImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (lesson.thumbnailUrl == null) return Container();
+
     return AspectRatio(
       aspectRatio: 16 / 9,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8.0),
         child: CachedNetworkImage(
-          imageUrl: lesson.thumbnailUrl,
+          imageUrl: lesson.thumbnailUrl!,
           progressIndicatorBuilder: (context, url, downloadProgress) {
             return LoadingWidget();
           },

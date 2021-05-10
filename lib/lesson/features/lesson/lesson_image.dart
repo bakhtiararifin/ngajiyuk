@@ -11,10 +11,12 @@ class LessonImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (lesson.thumbnailUrl == null) return Container();
+
     return AspectRatio(
       aspectRatio: 16 / 9,
       child: CachedNetworkImage(
-        imageUrl: lesson.thumbnailUrl,
+        imageUrl: lesson.thumbnailUrl!,
         progressIndicatorBuilder: (context, url, downloadProgress) {
           return Center(child: CircularProgressIndicator());
         },

@@ -9,12 +9,12 @@ class Lesson with _$Lesson {
 
   factory Lesson({
     String? id,
-    required String title,
-    required String thumbnailUrl,
-    required String description,
-    required String prerequisite,
-    required int price,
-    required int discount,
+    String? title,
+    String? thumbnailUrl,
+    String? description,
+    String? prerequisite,
+    @Default(0) int price,
+    @Default(0) int discount,
     @Default(false) bool bought,
     @Default(false) bool paid,
   }) = _Lesson;

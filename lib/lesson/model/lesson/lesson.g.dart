@@ -9,12 +9,12 @@ part of 'lesson.dart';
 _$_Lesson _$_$_LessonFromJson(Map<String, dynamic> json) {
   return _$_Lesson(
     id: json['id'] as String?,
-    title: json['title'] as String,
-    thumbnailUrl: json['thumbnailUrl'] as String,
-    description: json['description'] as String,
-    prerequisite: json['prerequisite'] as String,
-    price: json['price'] as int,
-    discount: json['discount'] as int,
+    title: json['title'] as String?,
+    thumbnailUrl: json['thumbnailUrl'] as String?,
+    description: json['description'] as String?,
+    prerequisite: json['prerequisite'] as String?,
+    price: json['price'] as int? ?? 0,
+    discount: json['discount'] as int? ?? 0,
     bought: json['bought'] as bool? ?? false,
     paid: json['paid'] as bool? ?? false,
   );

@@ -25,11 +25,11 @@ class LessonInfo extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            lesson.title,
+            lesson.title ?? '',
             style: Theme.of(context).textTheme.headline5,
           ),
           SizedBox(height: 8),
-          Text(lesson.description),
+          Text(lesson.description ?? ''),
           if (!lesson.isFree) _LessonPricing(lesson: lesson),
         ],
       ),

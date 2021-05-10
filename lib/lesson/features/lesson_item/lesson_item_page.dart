@@ -84,7 +84,7 @@ class _LessonItemPageState extends State<LessonItemPage> {
     return BlocBuilder<LessonBloc, LessonState>(
       builder: (context, state) {
         return state.maybeWhen(
-          success: (lesson) => Text(lesson.title),
+          success: (lesson) => Text(lesson.title ?? ''),
           orElse: () => Container(),
         );
       },
@@ -128,7 +128,7 @@ class _LessonItems extends StatelessWidget {
           child: ListTile(
             contentPadding: EdgeInsets.fromLTRB(16, 8, 16, 8),
             leading: _buildLeading(lessonItem),
-            title: Text(lessonItem.title),
+            title: Text(lessonItem.title ?? ''),
             onTap: () => _gotoLessonItemPage(context, lessonItem),
           ),
         );

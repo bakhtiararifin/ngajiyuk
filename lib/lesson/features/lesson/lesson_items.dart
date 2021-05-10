@@ -45,7 +45,7 @@ class LessonItems extends StatelessWidget {
           child: ListTile(
             contentPadding: EdgeInsets.fromLTRB(16, 8, 16, 8),
             leading: _buildLeading(lessonItem),
-            title: Text(lessonItem.title),
+            title: Text(lessonItem.title ?? ''),
             onTap: () => _gotoLessonItemPage(context, lessonItem),
           ),
         );

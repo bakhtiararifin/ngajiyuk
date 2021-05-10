@@ -9,8 +9,8 @@ class LessonItem with _$LessonItem {
 
   factory LessonItem({
     String? id,
-    required int index,
-    required String title,
+    int? index,
+    String? title,
     String? youtubeId,
     String? videoUrl,
     @Default(false) bool watched,

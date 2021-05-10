@@ -97,6 +97,7 @@ class __$GetLessonItemsCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_GetLessonItems implements _GetLessonItems {
   const _$_GetLessonItems();
 
@@ -195,6 +196,7 @@ class __$SetLessonItemsCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_SetLessonItems implements _SetLessonItems {
   const _$_SetLessonItems(this.lessonItems);
 
@@ -377,6 +379,7 @@ class __$InitialCopyWithImpl<$Res> extends _$LessonItemsStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -467,6 +470,7 @@ class __$LoadingCopyWithImpl<$Res> extends _$LessonItemsStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Loading implements _Loading {
   const _$_Loading();
 
@@ -570,6 +574,7 @@ class __$SuccessCopyWithImpl<$Res> extends _$LessonItemsStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Success implements _Success {
   const _$_Success(this.lessonItems);
 
@@ -678,6 +683,7 @@ class __$ErrorCopyWithImpl<$Res> extends _$LessonItemsStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Error implements _Error {
   const _$_Error();
 

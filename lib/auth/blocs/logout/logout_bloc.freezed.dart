@@ -83,6 +83,7 @@ class __$LogoutCopyWithImpl<$Res> extends _$LogoutEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Logout implements _Logout {
   const _$_Logout();
 
@@ -239,6 +240,7 @@ class __$InitialCopyWithImpl<$Res> extends _$LogoutStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -329,6 +331,7 @@ class __$LoadingCopyWithImpl<$Res> extends _$LogoutStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Loading implements _Loading {
   const _$_Loading();
 
@@ -419,6 +422,7 @@ class __$SuccessCopyWithImpl<$Res> extends _$LogoutStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Success implements _Success {
   const _$_Success();
 
@@ -509,6 +513,7 @@ class __$ErrorCopyWithImpl<$Res> extends _$LogoutStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Error implements _Error {
   const _$_Error();
 

@@ -154,9 +154,8 @@ class __$LearningItemCopyWithImpl<$Res> extends _$LearningItemCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_LearningItem implements _LearningItem {
   _$_LearningItem(
       {this.id, this.lessonItemId, this.lessonItemTitle, this.youtubeId});

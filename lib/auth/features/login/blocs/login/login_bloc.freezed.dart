@@ -83,6 +83,7 @@ class __$LoginCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Login with DiagnosticableTreeMixin implements _Login {
   const _$_Login();
 
@@ -245,6 +246,7 @@ class __$InitialCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   const _$_Initial();
 
@@ -341,6 +343,7 @@ class __$LoadingCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Loading with DiagnosticableTreeMixin implements _Loading {
   const _$_Loading();
 
@@ -437,6 +440,7 @@ class __$SuccessCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Success with DiagnosticableTreeMixin implements _Success {
   const _$_Success();
 
@@ -533,6 +537,7 @@ class __$ErrorCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Error with DiagnosticableTreeMixin implements _Error {
   const _$_Error();
 

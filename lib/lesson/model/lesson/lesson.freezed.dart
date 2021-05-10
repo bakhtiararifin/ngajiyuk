@@ -224,9 +224,8 @@ class __$LessonCopyWithImpl<$Res> extends _$LessonCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Lesson extends _Lesson {
   _$_Lesson(
       {this.id,

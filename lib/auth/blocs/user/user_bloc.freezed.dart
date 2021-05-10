@@ -114,6 +114,7 @@ class __$SetUserCopyWithImpl<$Res> extends _$UserEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_SetUser implements _SetUser {
   const _$_SetUser(this.user);
 
@@ -214,6 +215,7 @@ class __$ClearUserCopyWithImpl<$Res> extends _$UserEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_ClearUser implements _ClearUser {
   const _$_ClearUser();
 
@@ -383,6 +385,7 @@ class __$InitialCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -477,6 +480,7 @@ class __$LoadingCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Loading implements _Loading {
   const _$_Loading();
 
@@ -593,6 +597,7 @@ class __$SuccessCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Success implements _Success {
   const _$_Success(this.user);
 
@@ -704,6 +709,7 @@ class __$ClearedCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Cleared implements _Cleared {
   const _$_Cleared();
 
@@ -798,6 +804,7 @@ class __$ErrorCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Error implements _Error {
   const _$_Error();
 

@@ -115,6 +115,7 @@ class __$InitialCopyWithImpl<$Res> extends _$LaunchStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -209,6 +210,7 @@ class __$LoadingCopyWithImpl<$Res> extends _$LaunchStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Loading implements _Loading {
   const _$_Loading();
 
@@ -305,6 +307,7 @@ class __$AuthenticatedCopyWithImpl<$Res> extends _$LaunchStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Authenticated implements _Authenticated {
   const _$_Authenticated();
 
@@ -402,6 +405,7 @@ class __$NotAuthenticatedCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_NotAuthenticated implements _NotAuthenticated {
   const _$_NotAuthenticated();
 
@@ -496,6 +500,7 @@ class __$ErrorCopyWithImpl<$Res> extends _$LaunchStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Error implements _Error {
   const _$_Error();
 
@@ -644,6 +649,7 @@ class __$LaunchCopyWithImpl<$Res> extends _$LaunchEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Launch implements _Launch {
   const _$_Launch();
 

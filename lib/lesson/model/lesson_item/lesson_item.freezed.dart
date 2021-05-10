@@ -183,9 +183,8 @@ class __$LessonItemCopyWithImpl<$Res> extends _$LessonItemCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_LessonItem extends _LessonItem {
   _$_LessonItem(
       {this.id,

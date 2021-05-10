@@ -141,9 +141,8 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_User implements _User {
   _$_User(
       {this.id,

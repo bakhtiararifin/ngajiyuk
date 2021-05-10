@@ -195,9 +195,8 @@ class __$LearningCopyWithImpl<$Res> extends _$LearningCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Learning implements _Learning {
   _$_Learning(
       {this.id,

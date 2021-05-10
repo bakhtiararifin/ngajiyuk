@@ -3,14 +3,38 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ngajiyuk/auth/blocs/logout/logout_bloc.dart';
 import 'package:ngajiyuk/auth/features/login/blocs/login/login_bloc.dart';
 import 'package:ngajiyuk/common/features/dashboard/widgets/home_page.dart';
+import 'package:ngajiyuk/common/services/dynamic_link_service.dart';
 import 'package:ngajiyuk/common/widgets/loading_button.dart';
 import 'package:ngajiyuk/core/services/configure_injection.dart';
 import 'package:ngajiyuk/core/theme/app_colors.dart';
 import 'package:ngajiyuk/core/theme/app_sizes.dart';
 import 'package:ngajiyuk/core/theme/app_typography.dart';
+import 'package:ngajiyuk/lesson/blocs/lesson/lesson_bloc.dart';
 import 'package:ngajiyuk/lesson/blocs/lessons/lessons_bloc.dart';
+import 'package:ngajiyuk/lesson/features/lesson/lesson_page.dart';
+import 'package:ngajiyuk/lesson/model/lesson/lesson.dart';
+import 'package:ngajiyuk/lesson/repositories/lesson_repository.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  @override
+  void initState() {
+    super.initState();
+    getIt<DynamicLinkService>().initDynamicLinks((path, queryParameters) async {
+      if (path == '/lesson' && queryParameters['id'] != null) {
+        final Lesson lesson = await getIt<LessonRepository>().getLesson(
+          queryParameters['id']!,
+        );
+        _gotoHome(context);
+        _gotoLesson(context, lesson);
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +70,7 @@ class LoginPage extends StatelessWidget {
             BlocConsumer<LoginBloc, LoginState>(
               listener: (context, state) {
                 state.maybeWhen(
-                  success: () => _gotoHomePage(context),
+                  success: () => _gotoHome(context),
                   error: () => _showError(context),
                   orElse: () {},
                 );
@@ -74,7 +98,7 @@ class LoginPage extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: TextButton(
-                onPressed: () => _gotoHomePage(context),
+                onPressed: () => _gotoHome(context),
                 child: Text(
                   'Nanti Saja',
                   style: AppTypography.small.copyWith(color: AppColors.grey),
@@ -87,7 +111,7 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  void _gotoHomePage(BuildContext context) {
+  void _gotoHome(BuildContext context) {
     BlocProvider.of<LessonsBloc>(context).add(LessonsEvent.getLessons());
 
     Navigator.of(context).pushReplacement(
@@ -99,6 +123,16 @@ class LoginPage extends StatelessWidget {
           child: HomePage(),
         ),
       ),
+    );
+  }
+
+  void _gotoLesson(BuildContext context, Lesson lesson) {
+    BlocProvider.of<LessonBloc>(context).add(
+      LessonEvent.setLesson(lesson),
+    );
+
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (_) => LessonPage()),
     );
   }
 

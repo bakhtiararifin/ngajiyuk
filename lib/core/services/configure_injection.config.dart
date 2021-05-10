@@ -16,13 +16,14 @@ import '../../auth/blocs/user/user_bloc.dart' as _i9;
 import '../../auth/features/login/blocs/login/login_bloc.dart' as _i13;
 import '../../auth/services/auth_service.dart' as _i10;
 import '../../common/features/launch/blocs/launch/launch_bloc.dart' as _i11;
+import '../../common/services/dynamic_link_service.dart' as _i18;
 import '../../lesson/blocs/lesson/lesson_bloc.dart' as _i15;
 import '../../lesson/blocs/lesson_item/lesson_item_bloc.dart' as _i16;
 import '../../lesson/blocs/lesson_items/lesson_items_bloc.dart' as _i17;
 import '../../lesson/blocs/lessons/lessons_bloc.dart' as _i12;
 import '../../lesson/repositories/learning_repository.dart' as _i7;
 import '../../lesson/repositories/lesson_repository.dart' as _i8;
-import 'register_module.dart' as _i18; // ignore_for_file: unnecessary_lambdas
+import 'register_module.dart' as _i19; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
@@ -62,7 +63,8 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       get<_i7.LearningRepository>(),
       get<_i9.UserBloc>(),
       get<_i15.LessonBloc>()));
+  gh.singleton<_i18.DynamicLinkService>(_i18.DynamicLinkService());
   return get;
 }
 
-class _$RegisterModule extends _i18.RegisterModule {}
+class _$RegisterModule extends _i19.RegisterModule {}

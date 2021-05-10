@@ -12,7 +12,7 @@ class LessonRepository {
   Stream<List<Lesson>> getLessons() {
     final lessonsStream = _firestore
         .collection('lessons')
-        .orderBy('title', descending: false)
+        .orderBy('index', descending: false)
         .snapshots();
 
     return lessonsStream.map((QuerySnapshot snapshot) {
@@ -55,5 +55,20 @@ class LessonRepository {
 
       return lessonItems;
     });
+  }
+
+  Future<Lesson> getLesson(String id) async {
+    final DocumentSnapshot doc =
+        await _firestore.collection('lessons').doc(id).get();
+    final data = doc.data();
+    return Lesson(
+      id: doc.id,
+      title: data?['title'],
+      thumbnailUrl: data?['thumbnailUrl'],
+      description: data?['description'],
+      prerequisite: data?['prerequisite'],
+      price: data?['price'],
+      discount: data?['discount'],
+    );
   }
 }

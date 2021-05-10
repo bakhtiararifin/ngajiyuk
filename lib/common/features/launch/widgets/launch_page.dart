@@ -6,8 +6,13 @@ import 'package:ngajiyuk/auth/features/login/blocs/login/login_bloc.dart';
 import 'package:ngajiyuk/auth/features/login/widgets/login_page.dart';
 import 'package:ngajiyuk/common/features/dashboard/widgets/home_page.dart';
 import 'package:ngajiyuk/common/features/launch/blocs/launch/launch_bloc.dart';
+import 'package:ngajiyuk/common/services/dynamic_link_service.dart';
 import 'package:ngajiyuk/core/services/configure_injection.dart';
+import 'package:ngajiyuk/lesson/blocs/lesson/lesson_bloc.dart';
 import 'package:ngajiyuk/lesson/blocs/lessons/lessons_bloc.dart';
+import 'package:ngajiyuk/lesson/features/lesson/lesson_page.dart';
+import 'package:ngajiyuk/lesson/model/lesson/lesson.dart';
+import 'package:ngajiyuk/lesson/repositories/lesson_repository.dart';
 
 class LaunchPage extends StatefulWidget {
   @override
@@ -17,8 +22,17 @@ class LaunchPage extends StatefulWidget {
 class _LaunchPageState extends State<LaunchPage> {
   @override
   void initState() {
-    getIt<FirebaseAnalytics>().logEvent(name: 'LaunchPage');
     super.initState();
+    getIt<FirebaseAnalytics>().logEvent(name: 'LaunchPage');
+    getIt<DynamicLinkService>().initDynamicLinks((path, queryParameters) async {
+      if (path == '/lesson' && queryParameters['id'] != null) {
+        final Lesson lesson = await getIt<LessonRepository>().getLesson(
+          queryParameters['id']!,
+        );
+        _gotoHome(context);
+        _gotoLesson(context, lesson);
+      }
+    });
   }
 
   @override
@@ -57,6 +71,16 @@ class _LaunchPageState extends State<LaunchPage> {
           child: HomePage(),
         ),
       ),
+    );
+  }
+
+  void _gotoLesson(BuildContext context, Lesson lesson) {
+    BlocProvider.of<LessonBloc>(context).add(
+      LessonEvent.setLesson(lesson),
+    );
+
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (_) => LessonPage()),
     );
   }
 

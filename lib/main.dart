@@ -7,6 +7,7 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:ngajiyuk/core/services/configure_injection.dart';
 import 'package:ngajiyuk/core/widgets/app_widget.dart';
 import 'package:ngajiyuk/core/widgets/global_bloc_provider.dart';
+import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 Future<void> main() async {
@@ -16,6 +17,8 @@ Future<void> main() async {
   await Firebase.initializeApp();
   await configureInjection();
   await DotEnv.load(fileName: ".env");
+
+  await OneSignal.shared.setAppId(DotEnv.env['ONESIGNAL_APP_ID'] ?? '');
 
   return runZonedGuarded(() async {
     await SentryFlutter.init(

@@ -20,15 +20,14 @@ class LearningRepository {
 
     return learningStream.map((QuerySnapshot snapshot) {
       return snapshot.docs.map((QueryDocumentSnapshot doc) {
-        final data = doc.data();
         return Learning(
           id: doc.id,
-          userId: data['userId'],
-          userName: data['userName'],
-          userEmail: data['userEmail'],
-          lessonId: data['lessonId'],
-          lessonTitle: data['lessonTitle'],
-          paid: data['paid'] ?? false,
+          userId: doc['userId'],
+          userName: doc['userName'],
+          userEmail: doc['userEmail'],
+          lessonId: doc['lessonId'],
+          lessonTitle: doc['lessonTitle'],
+          paid: doc['paid'] ?? false,
         );
       }).toList();
     });
@@ -47,13 +46,11 @@ class LearningRepository {
     return learningItemsStream.map((QuerySnapshot snapshot) {
       List<LearningItem> learningItems = [];
       for (final QueryDocumentSnapshot doc in snapshot.docs) {
-        final data = doc.data();
-
         learningItems.add(LearningItem(
           id: doc.id,
-          lessonItemId: data['lessonItemId'],
-          lessonItemTitle: data['lessonItemTitle'],
-          youtubeId: data['youtubeId'],
+          lessonItemId: doc['lessonItemId'],
+          lessonItemTitle: doc['lessonItemTitle'],
+          youtubeId: doc['youtubeId'],
         ));
       }
 

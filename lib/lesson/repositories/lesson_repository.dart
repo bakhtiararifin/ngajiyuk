@@ -15,8 +15,8 @@ class LessonRepository {
         .orderBy('index', descending: false)
         .snapshots();
 
-    return lessonsStream.map((QuerySnapshot snapshot) {
-      return snapshot.docs.map((QueryDocumentSnapshot doc) {
+    return lessonsStream.map((snapshot) {
+      return snapshot.docs.map((doc) {
         final data = doc.data();
         return Lesson(
           id: doc.id,
@@ -39,11 +39,10 @@ class LessonRepository {
         .orderBy('index', descending: false)
         .snapshots();
 
-    return lessonItemsStream.map((QuerySnapshot snapshot) {
+    return lessonItemsStream.map((snapshot) {
       List<LessonItem> lessonItems = [];
-      for (final QueryDocumentSnapshot doc in snapshot.docs) {
+      for (final doc in snapshot.docs) {
         final data = doc.data();
-
         lessonItems.add(LessonItem(
           id: doc.id,
           index: data['index'],
@@ -58,8 +57,7 @@ class LessonRepository {
   }
 
   Future<Lesson> getLesson(String id) async {
-    final DocumentSnapshot doc =
-        await _firestore.collection('lessons').doc(id).get();
+    final doc = await _firestore.collection('lessons').doc(id).get();
     final data = doc.data();
     return Lesson(
       id: doc.id,

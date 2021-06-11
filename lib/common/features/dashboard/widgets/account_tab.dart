@@ -92,7 +92,7 @@ class _NotLoggedInUser extends StatelessWidget {
           ),
           SizedBox(height: AppSizes.paddingLarge),
           Text(
-            'ngajikuy v${packageInfo.version}',
+            'ngajiyuk v${packageInfo.version}',
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.overline,
           ),
@@ -133,7 +133,7 @@ class _LoggedInAccount extends StatelessWidget {
         _LogoutButton(),
         SizedBox(height: AppSizes.paddingLarge),
         Text(
-          'ngajikuy v${packageInfo.version}',
+          'ngajiyuk v${packageInfo.version}',
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.overline,
         ),

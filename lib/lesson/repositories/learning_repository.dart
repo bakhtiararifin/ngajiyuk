@@ -18,16 +18,17 @@ class LearningRepository {
         .where('userId', isEqualTo: user.id)
         .snapshots();
 
-    return learningStream.map((QuerySnapshot snapshot) {
-      return snapshot.docs.map((QueryDocumentSnapshot doc) {
+    return learningStream.map((snapshot) {
+      return snapshot.docs.map((doc) {
+        final data = doc.data();
         return Learning(
           id: doc.id,
-          userId: doc['userId'],
-          userName: doc['userName'],
-          userEmail: doc['userEmail'],
-          lessonId: doc['lessonId'],
-          lessonTitle: doc['lessonTitle'],
-          paid: doc['paid'] ?? false,
+          userId: data['userId'],
+          userName: data['userName'],
+          userEmail: data['userEmail'],
+          lessonId: data['lessonId'],
+          lessonTitle: data['lessonTitle'],
+          paid: data['paid'] ?? false,
         );
       }).toList();
     });
@@ -43,14 +44,15 @@ class LearningRepository {
         .collection('learningItems')
         .snapshots();
 
-    return learningItemsStream.map((QuerySnapshot snapshot) {
+    return learningItemsStream.map((snapshot) {
       List<LearningItem> learningItems = [];
-      for (final QueryDocumentSnapshot doc in snapshot.docs) {
+      for (final doc in snapshot.docs) {
+        final data = doc.data();
         learningItems.add(LearningItem(
           id: doc.id,
-          lessonItemId: doc['lessonItemId'],
-          lessonItemTitle: doc['lessonItemTitle'],
-          youtubeId: doc['youtubeId'],
+          lessonItemId: data['lessonItemId'],
+          lessonItemTitle: data['lessonItemTitle'],
+          youtubeId: data['youtubeId'],
         ));
       }
 

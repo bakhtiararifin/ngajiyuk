@@ -11,7 +11,7 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: true,
       theme: AppTheme.getDefaultTheme(context),
       home: BlocProvider<LaunchBloc>(
         create: (context) =>

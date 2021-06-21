@@ -1,6 +1,8 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ngajiyuk/common/features/dashboard/widgets/learning_tab.dart';
+import 'package:ngajiyuk/common/features/dashboard/widgets/search_tab.dart';
 import 'package:ngajiyuk/common/features/dashboard/widgets/account_tab.dart';
 import 'package:ngajiyuk/common/features/dashboard/widgets/home_tab.dart';
 import 'package:ngajiyuk/common/services/dynamic_link_service.dart';
@@ -46,6 +48,14 @@ class _HomePageState extends State<HomePage> {
             label: 'Beranda',
           ),
           BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Pencarian',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.folder),
+            label: 'Pelajaranku',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Akun',
           ),
@@ -70,9 +80,15 @@ class _HomePageState extends State<HomePage> {
   Widget _buildBody() {
     if (_currentNavBarIndex == 0) {
       return HomeTab();
-    } else {
+    } else if (_currentNavBarIndex == 1) {
+      return SearchTab();
+    } else if (_currentNavBarIndex == 2) {
+      return LearningTab();
+    } else if (_currentNavBarIndex == 3) {
       return AccountTab();
     }
+
+    return Container();
   }
 
   void _gotoLesson(BuildContext context, Lesson lesson) {

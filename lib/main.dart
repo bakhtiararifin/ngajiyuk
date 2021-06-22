@@ -13,10 +13,10 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await initializeDateFormatting('id_ID', null);
+  await initializeDateFormatting('id_ID');
   await Firebase.initializeApp();
   await configureInjection();
-  await dotenv.load(fileName: ".env");
+  await dotenv.load();
 
   await OneSignal.shared.setAppId(dotenv.env['ONESIGNAL_APP_ID'] ?? '');
 

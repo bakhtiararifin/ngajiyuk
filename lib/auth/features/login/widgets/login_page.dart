@@ -45,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                children: const [
                   AspectRatio(
                     aspectRatio: 16 / 9,
                     child: Image(
@@ -87,8 +87,8 @@ class _LoginPageState extends State<LoginPage> {
                     return SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        child: Text('Login dengan Google'),
                         onPressed: () => _login(context),
+                        child: const Text('Login dengan Google'),
                       ),
                     );
                   },
@@ -112,7 +112,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _gotoHome(BuildContext context) {
-    BlocProvider.of<LessonsBloc>(context).add(LessonsEvent.getLessons());
+    BlocProvider.of<LessonsBloc>(context).add(const LessonsEvent.getLessons());
 
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
@@ -132,18 +132,18 @@ class _LoginPageState extends State<LoginPage> {
     );
 
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => LessonPage()),
+      MaterialPageRoute(builder: (_) => const LessonPage()),
     );
   }
 
-  void _login(BuildContext context) async {
-    BlocProvider.of<LoginBloc>(context).add(LoginEvent.login());
+  void _login(BuildContext context) {
+    BlocProvider.of<LoginBloc>(context).add(const LoginEvent.login());
   }
 
   void _showError(BuildContext context) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       backgroundColor: Theme.of(context).errorColor,
-      content: Text('Login gagal. Silahkan coba beberapa saat lagi.'),
+      content: const Text('Login gagal. Silahkan coba beberapa saat lagi.'),
     ));
   }
 }

@@ -1,6 +1,6 @@
 import 'package:ngajiyuk/auth/exceptions/auth_exception.dart';
-import 'package:ngajiyuk/auth/models/user/user.dart' as UserModel;
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:ngajiyuk/auth/models/user/user.dart';
+import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 
@@ -11,7 +11,7 @@ class AuthService {
 
   AuthService(this._firebaseAuth, this._googleSignIn);
 
-  Future<UserModel.User> loginWithGoogle() async {
+  Future<User> loginWithGoogle() async {
     try {
       final googleUser = await _googleSignIn.signIn();
       final googleAuth = await googleUser?.authentication;
@@ -28,7 +28,7 @@ class AuthService {
       final firebaseUser = userCredential.user;
       if (firebaseUser == null) throw AuthException();
 
-      return UserModel.User(
+      return User(
         id: firebaseUser.uid,
         name: firebaseUser.displayName ?? '',
         email: firebaseUser.email ?? '',
@@ -39,11 +39,11 @@ class AuthService {
     }
   }
 
-  UserModel.User? getCurrentUser() {
+  User? getCurrentUser() {
     final firebaseUser = _firebaseAuth.currentUser;
     if (firebaseUser == null) return null;
 
-    return UserModel.User(
+    return User(
       id: firebaseUser.uid,
       name: firebaseUser.displayName ?? '',
       email: firebaseUser.email ?? '',

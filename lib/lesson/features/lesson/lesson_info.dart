@@ -28,7 +28,7 @@ class LessonInfo extends StatelessWidget {
             lesson.title ?? '',
             style: Theme.of(context).textTheme.headline5,
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(lesson.description ?? ''),
           if (!lesson.isFree) _LessonPricing(lesson: lesson),
         ],
@@ -54,12 +54,12 @@ class _LessonPricing extends StatelessWidget {
     if (lesson.bought && !lesson.paid) {
       return Column(
         children: [
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           SizedBox(
             width: double.infinity,
             child: OutlinedButton.icon(
-              icon: Icon(Icons.info),
-              label: Text('Menunggu pembayaran'),
+              icon: const Icon(Icons.info),
+              label: const Text('Menunggu pembayaran'),
               onPressed: () => _showPaymentInfoDialog(context),
             ),
           ),
@@ -70,16 +70,16 @@ class _LessonPricing extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Text(
-          Formatter.formatNumber(lesson.sellPrice),
+          formatNumber(lesson.sellPrice),
           style: Theme.of(context).textTheme.headline5,
         ),
         SizedBox(
           width: double.infinity,
           child: ElevatedButton(
             onPressed: () => _buyLesson(context),
-            child: Text('Beli Sekarang'),
+            child: const Text('Beli Sekarang'),
           ),
         ),
       ],
@@ -91,15 +91,15 @@ class _LessonPricing extends StatelessWidget {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Menunggu Pembayaran'),
+          title: const Text('Menunggu Pembayaran'),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
                 _ConfirmationDescription(lesson: lesson),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 _HowToPay(lesson: lesson),
-                SizedBox(height: 16),
-                Text(
+                const SizedBox(height: 16),
+                const Text(
                   'Setelah itu kami akan mengkonfirmasi pembayaran kamu dan kamu bisa tonton video pembelajaran yang sudah kamu pilih.',
                 ),
               ],
@@ -107,10 +107,10 @@ class _LessonPricing extends StatelessWidget {
           ),
           actions: <Widget>[
             TextButton(
-              child: Text('OK'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
+              child: const Text('OK'),
             ),
           ],
         );
@@ -159,7 +159,7 @@ class _HowToPay extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('1. '),
+            const Text('1. '),
             Expanded(
               child: RichText(
                 text: TextSpan(
@@ -167,18 +167,18 @@ class _HowToPay extends StatelessWidget {
                   style: DefaultTextStyle.of(context).style,
                   children: <TextSpan>[
                     TextSpan(
-                      text: Formatter.formatNumber(lesson.sellPrice),
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      text: formatNumber(lesson.sellPrice),
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    TextSpan(
+                    const TextSpan(
                       text: ' ke rekening ',
                     ),
-                    TextSpan(
+                    const TextSpan(
                       text:
                           'Bank Syariah Mandiri nomor 12345678 a/n Bakhtiar Arifin',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    TextSpan(
+                    const TextSpan(
                       text: ' dan simpan bukti transfer nya.',
                     ),
                   ],
@@ -187,18 +187,18 @@ class _HowToPay extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('2. '),
+            const Text('2. '),
             Expanded(
               child: RichText(
                 text: TextSpan(
                   text:
                       'Kirim bukti transfer, nama user, dan judul pelajaran via whatsapp ke nomor ',
                   style: DefaultTextStyle.of(context).style,
-                  children: <TextSpan>[
+                  children: const <TextSpan>[
                     TextSpan(
                       text: '08123456789',
                       style: TextStyle(
@@ -233,9 +233,9 @@ class _ConfirmationDescription extends StatelessWidget {
         children: <TextSpan>[
           TextSpan(
             text: lesson.title,
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
-          TextSpan(
+          const TextSpan(
             text: '. Kamu tinggal melakukan langkah langkah dibawah ini:',
           ),
         ],

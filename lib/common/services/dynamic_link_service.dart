@@ -53,7 +53,7 @@ class DynamicLinkService {
       final ShortDynamicLink shortLink = await parameters.buildShortLink();
       return shortLink.shortUrl;
     } else {
-      return await parameters.buildUrl();
+      return parameters.buildUrl();
     }
   }
 }

@@ -16,7 +16,7 @@ class LogoutBloc extends Bloc<LogoutEvent, LogoutState> {
   LogoutBloc(
     this._authService,
     this._userBloc,
-  ) : super(_Initial());
+  ) : super(const _Initial());
 
   @override
   Stream<LogoutState> mapEventToState(LogoutEvent gEvent) async* {
@@ -26,11 +26,11 @@ class LogoutBloc extends Bloc<LogoutEvent, LogoutState> {
   }
 
   Stream<LogoutState> _logout() async* {
-    yield LogoutState.loading();
+    yield const LogoutState.loading();
 
     await _authService.logout();
-    _userBloc.add(UserEvent.clearUser());
+    _userBloc.add(const UserEvent.clearUser());
 
-    yield LogoutState.success();
+    yield const LogoutState.success();
   }
 }

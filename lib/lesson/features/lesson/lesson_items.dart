@@ -23,7 +23,7 @@ class LessonItems extends StatelessWidget {
           success: (List<LessonItem> lessonItems) {
             return _buildLessonItems(lessonItems);
           },
-          orElse: () => Center(child: CircularProgressIndicator()),
+          orElse: () => const Center(child: CircularProgressIndicator()),
         );
       },
     );
@@ -32,8 +32,8 @@ class LessonItems extends StatelessWidget {
   Widget _buildLessonItems(List<LessonItem> lessonItems) {
     return ListView.builder(
       shrinkWrap: true,
-      physics: ScrollPhysics(),
-      padding: EdgeInsets.only(top: 8),
+      physics: const ScrollPhysics(),
+      padding: const EdgeInsets.only(top: 8),
       itemCount: lessonItems.length,
       itemBuilder: (context, index) {
         final LessonItem lessonItem = lessonItems[index];
@@ -43,7 +43,7 @@ class LessonItems extends StatelessWidget {
               ? AppColors.grey.withAlpha(80)
               : Colors.transparent,
           child: ListTile(
-            contentPadding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+            contentPadding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
             leading: _buildLeading(lessonItem),
             title: Text(lessonItem.title ?? ''),
             onTap: () => _gotoLessonItemPage(context, lessonItem),
@@ -64,11 +64,11 @@ class LessonItems extends StatelessWidget {
       height: 32,
       width: 32,
       alignment: Alignment.center,
-      child: Text(lessonItem.index.toString()),
       decoration: BoxDecoration(
         color: AppColors.grey.withAlpha(64),
         borderRadius: BorderRadius.circular(16),
       ),
+      child: Text(lessonItem.index.toString()),
     );
   }
 
@@ -82,7 +82,7 @@ class LessonItems extends StatelessWidget {
     );
 
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => LessonItemPage()),
+      MaterialPageRoute(builder: (_) => const LessonItemPage()),
     );
   }
 }

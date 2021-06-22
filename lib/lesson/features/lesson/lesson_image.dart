@@ -18,7 +18,7 @@ class LessonImage extends StatelessWidget {
       child: CachedNetworkImage(
         imageUrl: lesson.thumbnailUrl!,
         progressIndicatorBuilder: (context, url, downloadProgress) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         },
         fit: BoxFit.cover,
       ),

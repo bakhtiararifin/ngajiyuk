@@ -81,7 +81,7 @@ class _Lesson extends StatelessWidget {
     );
 
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => LessonPage()),
+      MaterialPageRoute(builder: (_) => const LessonPage()),
     );
   }
 }
@@ -104,10 +104,10 @@ class _LessonInfo extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(lesson.title ?? ''),
-            if (!lesson.isFree && !lesson.paid) SizedBox(height: 8),
+            if (!lesson.isFree && !lesson.paid) const SizedBox(height: 8),
             if (!lesson.isFree && !lesson.paid)
               Text(
-                Formatter.formatNumber(lesson.sellPrice),
+                formatNumber(lesson.sellPrice),
                 style: Theme.of(context).textTheme.headline6,
               ),
           ],

@@ -44,7 +44,7 @@ class _LessonPageState extends State<LessonPage> {
   @override
   void didChangeDependencies() {
     BlocProvider.of<LessonItemsBloc>(context).add(
-      LessonItemsEvent.getLessonItems(),
+      const LessonItemsEvent.getLessonItems(),
     );
 
     final lessonBloc = BlocProvider.of<LessonBloc>(context);

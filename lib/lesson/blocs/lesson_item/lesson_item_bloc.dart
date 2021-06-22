@@ -24,7 +24,7 @@ class LessonItemBloc extends Bloc<LessonItemEvent, LessonItemState> {
     this._learningRepository,
     this._userBloc,
     this._lessonBloc,
-  ) : super(_Initial());
+  ) : super(const _Initial());
 
   @override
   Stream<LessonItemState> mapEventToState(

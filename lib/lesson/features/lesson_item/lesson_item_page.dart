@@ -60,8 +60,8 @@ class _LessonItemPageState extends State<LessonItemPage> {
                     YoutubePlayer(lessonItem: lessonItem),
                   if (lessonItem.videoUrl != null)
                     VideoPlayer(lessonItem: lessonItem),
-                  Padding(
-                    padding: const EdgeInsets.all(AppSizes.paddingRegular),
+                  const Padding(
+                    padding: EdgeInsets.all(AppSizes.paddingRegular),
                     child: Text(
                       'Daftar Video',
                       style: AppTypography.body,
@@ -73,7 +73,7 @@ class _LessonItemPageState extends State<LessonItemPage> {
                 ],
               );
             },
-            orElse: () => Center(child: CircularProgressIndicator()),
+            orElse: () => const Center(child: CircularProgressIndicator()),
           );
         },
       ),
@@ -108,7 +108,7 @@ class _LessonItems extends StatelessWidget {
           success: (List<LessonItem> lessonItems) {
             return _buildLessonItems(currentLessonItem, lessonItems);
           },
-          orElse: () => Center(child: CircularProgressIndicator()),
+          orElse: () => const Center(child: CircularProgressIndicator()),
         );
       },
     );
@@ -126,7 +126,7 @@ class _LessonItems extends StatelessWidget {
         return Container(
           color: _getBackgroundColor(lessonItem),
           child: ListTile(
-            contentPadding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+            contentPadding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
             leading: _buildLeading(lessonItem),
             title: Text(lessonItem.title ?? ''),
             onTap: () => _gotoLessonItemPage(context, lessonItem),
@@ -157,11 +157,11 @@ class _LessonItems extends StatelessWidget {
       height: 32,
       width: 32,
       alignment: Alignment.center,
-      child: Text(lessonItem.index.toString()),
       decoration: BoxDecoration(
         color: AppColors.grey.withAlpha(64),
         borderRadius: BorderRadius.circular(16),
       ),
+      child: Text(lessonItem.index.toString()),
     );
   }
 
@@ -174,7 +174,7 @@ class _LessonItems extends StatelessWidget {
     );
 
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => LessonItemPage()),
+      MaterialPageRoute(builder: (_) => const LessonItemPage()),
     );
   }
 }

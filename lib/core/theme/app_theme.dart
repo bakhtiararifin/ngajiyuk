@@ -6,14 +6,14 @@ class AppTheme {
     return ThemeData(
       primaryColor: AppColors.primaryColor,
       accentColor: AppColors.secondaryColor,
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
         elevation: 0,
       ),
       scaffoldBackgroundColor: AppColors.background,
-      floatingActionButtonTheme: FloatingActionButtonThemeData(
+      floatingActionButtonTheme: const FloatingActionButtonThemeData(
         foregroundColor: AppColors.white,
       ),
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         backgroundColor: AppColors.white,
         selectedItemColor: AppColors.secondaryColor,
         unselectedItemColor: AppColors.grey,

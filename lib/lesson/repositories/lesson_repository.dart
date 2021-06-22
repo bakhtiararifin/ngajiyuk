@@ -20,12 +20,12 @@ class LessonRepository {
         final data = doc.data();
         return Lesson(
           id: doc.id,
-          title: data['title'],
-          thumbnailUrl: data['thumbnailUrl'],
-          description: data['description'],
-          prerequisite: data['prerequisite'],
-          price: data['price'],
-          discount: data['discount'],
+          title: data['title'] as String?,
+          thumbnailUrl: data['thumbnailUrl'] as String?,
+          description: data['description'] as String?,
+          prerequisite: data['prerequisite'] as String?,
+          price: data['price'] as int,
+          discount: data['discount'] as int,
         );
       }).toList();
     });
@@ -40,15 +40,15 @@ class LessonRepository {
         .snapshots();
 
     return lessonItemsStream.map((snapshot) {
-      List<LessonItem> lessonItems = [];
+      final List<LessonItem> lessonItems = [];
       for (final doc in snapshot.docs) {
         final data = doc.data();
         lessonItems.add(LessonItem(
           id: doc.id,
-          index: data['index'],
-          title: data['title'],
-          youtubeId: data['youtubeId'],
-          videoUrl: data['videoUrl'],
+          index: data['index'] as int,
+          title: data['title'] as String?,
+          youtubeId: data['youtubeId'] as String?,
+          videoUrl: data['videoUrl'] as String?,
         ));
       }
 
@@ -61,12 +61,12 @@ class LessonRepository {
     final data = doc.data();
     return Lesson(
       id: doc.id,
-      title: data?['title'],
-      thumbnailUrl: data?['thumbnailUrl'],
-      description: data?['description'],
-      prerequisite: data?['prerequisite'],
-      price: data?['price'],
-      discount: data?['discount'],
+      title: data?['title'] as String?,
+      thumbnailUrl: data?['thumbnailUrl'] as String?,
+      description: data?['description'] as String?,
+      prerequisite: data?['prerequisite'] as String?,
+      price: data?['price'] as int,
+      discount: data?['discount'] as int,
     );
   }
 }

@@ -28,7 +28,7 @@ class LessonItemsBloc extends Bloc<LessonItemsEvent, LessonItemsState> {
 
   LessonItemsBloc(this._lessonRepository, this._learningRepository,
       this._userBloc, this._lessonBloc)
-      : super(_Initial());
+      : super(const _Initial());
 
   @override
   Stream<LessonItemsState> mapEventToState(
@@ -47,7 +47,7 @@ class LessonItemsBloc extends Bloc<LessonItemsEvent, LessonItemsState> {
   }
 
   Stream<LessonItemsState> _getLessonItems() async* {
-    yield LessonItemsState.loading();
+    yield const LessonItemsState.loading();
 
     final User? user = _userBloc.state.maybeWhen(
       success: (user) => user,
@@ -111,7 +111,7 @@ class LessonItemsBloc extends Bloc<LessonItemsEvent, LessonItemsState> {
         (learningItem) => learningItem.lessonItemId == lessonItem.id,
       );
 
-      return lessonItem.copyWith(watched: learningItems.length > 0);
+      return lessonItem.copyWith(watched: learningItems.isNotEmpty);
     }).toList();
 
     return lessonItems;

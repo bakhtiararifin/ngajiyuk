@@ -17,7 +17,7 @@ class SelectBoxWidget<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.symmetric(vertical: 8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -29,8 +29,8 @@ class SelectBoxWidget<T> extends StatelessWidget {
             items: items
                 .map(
                   (e) => DropdownMenuItem<T>(
-                    child: Text(e.label),
                     value: e.value,
+                    child: Text(e.label),
                   ),
                 )
                 .toList(),
@@ -39,8 +39,8 @@ class SelectBoxWidget<T> extends StatelessWidget {
             isExpanded: true,
             underline: Container(),
           ),
-          SizedBox(height: 8),
-          Divider(
+          const SizedBox(height: 8),
+          const Divider(
             thickness: 1,
             color: Colors.grey,
             height: 0,

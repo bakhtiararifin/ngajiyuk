@@ -19,22 +19,22 @@ class LaunchBloc extends Bloc<LaunchEvent, LaunchState> {
   LaunchBloc(
     this._authService,
     this._userBloc,
-  ) : super(_Initial());
+  ) : super(const _Initial());
 
   @override
   Stream<LaunchState> mapEventToState(LaunchEvent event) async* {
     yield* event.when(
       launch: () async* {
-        yield LaunchState.loading();
+        yield const LaunchState.loading();
 
-        await Future.delayed(Duration(seconds: 3));
+        await Future.delayed(const Duration(seconds: 3));
         final User? user = _authService.getCurrentUser();
 
         if (user != null) {
           _userBloc.add(UserEvent.setUser(user));
-          yield LaunchState.authenticated();
+          yield const LaunchState.authenticated();
         } else {
-          yield LaunchState.notAuthenticated();
+          yield const LaunchState.notAuthenticated();
         }
       },
     );

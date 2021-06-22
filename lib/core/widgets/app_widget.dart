@@ -14,7 +14,8 @@ class AppWidget extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme.getDefaultTheme(context),
       home: BlocProvider<LaunchBloc>(
-        create: (context) => getIt<LaunchBloc>()..add(LaunchEvent.launch()),
+        create: (context) =>
+            getIt<LaunchBloc>()..add(const LaunchEvent.launch()),
         child: LaunchPage(),
       ),
       navigatorObservers: [

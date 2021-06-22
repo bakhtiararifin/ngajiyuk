@@ -18,21 +18,21 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc(
     this._authService,
     this._userBloc,
-  ) : super(_Initial());
+  ) : super(const _Initial());
 
   @override
   Stream<LoginState> mapEventToState(LoginEvent event) async* {
     yield* event.when(
       login: () async* {
-        yield LoginState.loading();
+        yield const LoginState.loading();
 
         try {
           final user = await _authService.loginWithGoogle();
           _userBloc.add(UserEvent.setUser(user));
 
-          yield LoginState.success();
+          yield const LoginState.success();
         } on AuthException catch (_) {
-          yield LoginState.error();
+          yield const LoginState.error();
         }
       },
     );

@@ -46,7 +46,7 @@ class _LaunchPageState extends State<LaunchPage> {
         );
       },
       builder: (context, state) {
-        return Scaffold(
+        return const Scaffold(
           body: Center(
             child: Image(
               image: AssetImage('assets/images/logo.png'),
@@ -60,7 +60,7 @@ class _LaunchPageState extends State<LaunchPage> {
   }
 
   void _gotoHome(BuildContext context) {
-    BlocProvider.of<LessonsBloc>(context).add(LessonsEvent.getLessons());
+    BlocProvider.of<LessonsBloc>(context).add(const LessonsEvent.getLessons());
 
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
@@ -80,7 +80,7 @@ class _LaunchPageState extends State<LaunchPage> {
     );
 
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => LessonPage()),
+      MaterialPageRoute(builder: (_) => const LessonPage()),
     );
   }
 

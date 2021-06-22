@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Ngajiyuk'),
+        title: const Text('Ngajiyuk'),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
     Navigator.of(context).popUntil((route) => route.isFirst);
 
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => LessonPage()),
+      MaterialPageRoute(builder: (_) => const LessonPage()),
     );
   }
 }

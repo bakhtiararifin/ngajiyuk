@@ -5,8 +5,6 @@ part 'lesson_item.g.dart';
 
 @freezed
 class LessonItem with _$LessonItem {
-  const LessonItem._();
-
   factory LessonItem({
     String? id,
     int? index,
@@ -18,6 +16,8 @@ class LessonItem with _$LessonItem {
 
   factory LessonItem.fromJson(Map<String, dynamic> json) =>
       _$LessonItemFromJson(json);
+
+  const LessonItem._();
 
   String get url => 'https://www.youtube.com/watch?v=$youtubeId';
 

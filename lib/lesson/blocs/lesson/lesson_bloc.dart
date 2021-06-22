@@ -16,7 +16,7 @@ class LessonBloc extends Bloc<LessonEvent, LessonState> {
 
   StreamSubscription? _lessonsListener;
 
-  LessonBloc(this._lessonsBloc) : super(_Initial()) {}
+  LessonBloc(this._lessonsBloc) : super(const _Initial());
 
   @override
   Stream<LessonState> mapEventToState(
@@ -42,7 +42,7 @@ class LessonBloc extends Bloc<LessonEvent, LessonState> {
         (element) => element.id == lesson.id,
       );
 
-      if (updatedLessons.length > 0) {
+      if (updatedLessons.isNotEmpty) {
         add(LessonEvent.setLesson(updatedLessons.first));
       }
     });

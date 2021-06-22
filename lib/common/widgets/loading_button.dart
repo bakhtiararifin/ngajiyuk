@@ -5,7 +5,8 @@ class LoadingButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      child: SizedBox(
+      onPressed: () {},
+      child: const SizedBox(
         height: 16,
         width: 16,
         child: CircularProgressIndicator(
@@ -13,7 +14,6 @@ class LoadingButton extends StatelessWidget {
           valueColor: AlwaysStoppedAnimation<Color>(AppColors.white),
         ),
       ),
-      onPressed: () {},
     );
   }
 }

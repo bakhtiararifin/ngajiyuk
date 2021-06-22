@@ -15,25 +15,6 @@ class DatePickerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 8),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(label, style: Theme.of(context).textTheme.caption),
-            SizedBox(height: 8),
-            Text(
-              date.toLocal().toString().substring(0, 10),
-            ),
-            SizedBox(height: 16),
-            Divider(
-              thickness: 1,
-              color: Colors.grey,
-              height: 0,
-            ),
-          ],
-        ),
-      ),
       onTap: () async {
         final now = DateTime.now();
         final DateTime? date = await showDatePicker(
@@ -45,6 +26,25 @@ class DatePickerWidget extends StatelessWidget {
 
         onChanged(date);
       },
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(label, style: Theme.of(context).textTheme.caption),
+            const SizedBox(height: 8),
+            Text(
+              date.toLocal().toString().substring(0, 10),
+            ),
+            const SizedBox(height: 16),
+            const Divider(
+              thickness: 1,
+              color: Colors.grey,
+              height: 0,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

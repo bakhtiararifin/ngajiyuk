@@ -23,8 +23,7 @@ class _YoutubePlayerState extends State<YoutubePlayer> {
     super.initState();
     _controller = YoutubePlayerController(
       initialVideoId: widget.lessonItem.youtubeId ?? '',
-      params: YoutubePlayerParams(
-        showControls: true,
+      params: const YoutubePlayerParams(
         showFullscreenButton: true,
       ),
     );
@@ -47,9 +46,7 @@ class _YoutubePlayerState extends State<YoutubePlayer> {
   Widget build(BuildContext context) {
     return YoutubePlayerControllerProvider(
       controller: _controller,
-      child: YoutubePlayerIFrame(
-        aspectRatio: 16 / 9,
-      ),
+      child: const YoutubePlayerIFrame(),
     );
   }
 }

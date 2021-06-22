@@ -9,7 +9,7 @@ part 'user_state.dart';
 
 @lazySingleton
 class UserBloc extends Bloc<UserEvent, UserState> {
-  UserBloc() : super(_Initial());
+  UserBloc() : super(const _Initial());
 
   @override
   Stream<UserState> mapEventToState(UserEvent gEvent) async* {
@@ -20,7 +20,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   }
 
   Stream<UserState> _clearUser() async* {
-    yield UserState.cleared();
+    yield const UserState.cleared();
   }
 
   Stream<UserState> _setUser(User user) async* {

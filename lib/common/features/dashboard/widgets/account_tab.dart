@@ -65,32 +65,32 @@ class _NotLoggedInUser extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          AspectRatio(
+          const AspectRatio(
             aspectRatio: 16 / 9,
             child: Image(
               image: AssetImage('assets/images/account_image.png'),
             ),
           ),
-          SizedBox(height: AppSizes.paddingRegular),
-          Text(
+          const SizedBox(height: AppSizes.paddingRegular),
+          const Text(
             'Data akun kamu akan tampil disini',
             textAlign: TextAlign.center,
             style: AppTypography.body,
           ),
-          SizedBox(height: AppSizes.paddingRegular),
+          const SizedBox(height: AppSizes.paddingRegular),
           SizedBox(
             width: double.infinity,
             child: TextButton(
+              onPressed: () => _gotoLogin(context),
               child: Text(
                 'Login',
                 style: AppTypography.body.copyWith(
                   color: AppColors.grey,
                 ),
               ),
-              onPressed: () => _gotoLogin(context),
             ),
           ),
-          SizedBox(height: AppSizes.paddingLarge),
+          const SizedBox(height: AppSizes.paddingLarge),
           Text(
             'ngajiyuk v${packageInfo.version}',
             textAlign: TextAlign.center,
@@ -126,18 +126,18 @@ class _LoggedInAccount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       children: [
-        _UserProfile(),
-        SizedBox(height: AppSizes.paddingLarge),
+        const _UserProfile(),
+        const SizedBox(height: AppSizes.paddingLarge),
         _LogoutButton(),
-        SizedBox(height: AppSizes.paddingLarge),
+        const SizedBox(height: AppSizes.paddingLarge),
         Text(
           'ngajiyuk v${packageInfo.version}',
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.overline,
         ),
-        SizedBox(height: AppSizes.paddingLarge),
+        const SizedBox(height: AppSizes.paddingLarge),
       ],
     );
   }
@@ -159,13 +159,13 @@ class _UserProfile extends StatelessWidget {
                   backgroundColor: Theme.of(context).primaryColorLight,
                   backgroundImage: NetworkImage(user.photoUrl),
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 Text(
                   user.name,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.headline5,
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Text(
                   user.email,
                   textAlign: TextAlign.center,
@@ -193,8 +193,8 @@ class _LogoutButton extends StatelessWidget {
         },
         builder: (context, state) {
           return ListTile(
-            leading: Icon(Icons.power_settings_new),
-            title: Text('Keluar'),
+            leading: const Icon(Icons.power_settings_new),
+            title: const Text('Keluar'),
             onTap: () => _logout(context),
           );
         },
@@ -214,6 +214,6 @@ class _LogoutButton extends StatelessWidget {
   }
 
   void _logout(BuildContext context) {
-    BlocProvider.of<LogoutBloc>(context).add(LogoutEvent.logout());
+    BlocProvider.of<LogoutBloc>(context).add(const LogoutEvent.logout());
   }
 }

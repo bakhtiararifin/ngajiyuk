@@ -8,7 +8,9 @@ class LearningTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: [Text('LearningTab')],
+      children: const [
+        Text('LearningTab'),
+      ],
     );
   }
 }

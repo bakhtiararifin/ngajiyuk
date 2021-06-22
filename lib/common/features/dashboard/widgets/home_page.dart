@@ -81,9 +81,9 @@ class _HomePageState extends State<HomePage> {
     if (_currentNavBarIndex == 0) {
       return HomeTab();
     } else if (_currentNavBarIndex == 1) {
-      return SearchTab();
+      return const SearchTab();
     } else if (_currentNavBarIndex == 2) {
-      return LearningTab();
+      return const LearningTab();
     } else if (_currentNavBarIndex == 3) {
       return AccountTab();
     }

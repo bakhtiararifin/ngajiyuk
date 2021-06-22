@@ -8,7 +8,9 @@ class SearchTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: [Text('SearchTab')],
+      children: const [
+        Text('SearchTab'),
+      ],
     );
   }
 }

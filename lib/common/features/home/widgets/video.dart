@@ -1,30 +1,12 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Ngajiyuk'),
-      ),
-      body: ListView(
-        children: const [
-          _Lesson(),
-          _Lesson(),
-          _Lesson(),
-          _Lesson(),
-        ],
-      ),
-    );
-  }
-}
-
-class _Lesson extends StatelessWidget {
-  const _Lesson({
+class Video extends StatelessWidget {
+  const Video({
     Key? key,
+    this.isFavorite = false,
   }) : super(key: key);
+
+  final bool isFavorite;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +24,10 @@ class _Lesson extends StatelessWidget {
           subtitle: const Text('12 juni 2021'),
           trailing: IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.favorite),
+            icon: Icon(
+              Icons.favorite,
+              color: isFavorite ? Colors.pink.shade300 : null,
+            ),
           ),
         ),
       ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ngajiyuk/common/features/home/widgets/favorite_tab.dart';
 import 'package:ngajiyuk/common/features/home/widgets/home_tab.dart';
+import 'package:ngajiyuk/common/features/search/widgets/search_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -21,6 +22,16 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Ngajiyuk'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const SearchPage()),
+              );
+            },
+            icon: const Icon(Icons.search),
+          ),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const [

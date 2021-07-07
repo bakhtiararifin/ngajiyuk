@@ -8,6 +8,8 @@ class SearchPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const TextField(
+          autofocus: true,
+          textInputAction: TextInputAction.search,
           style: TextStyle(color: Colors.white),
           decoration: InputDecoration(
             hintText: 'Pencarian...',
